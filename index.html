@@ -8,7 +8,7 @@
         content="Template project website. Replace this line with a one-sentence summary of your project.">
   <meta name="keywords" content="project website, template, research">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Title</title>
+  <title>Anytime Trajectory Planning</title>
 <!------------------------------------------------------------------------->
 
 
@@ -246,7 +246,43 @@
           <h2 class="title is-3" id="intro">I. Introduction</h2>
           <div class="content has-text-justified">
             <p>
-              The introduction part of the report can be provided here
+              Accurate trajectory prediction is a key technique in autonomous vehicle control systems.
+              In a standard pipeline, models are given sensor data of the environment, identify obstacles,
+              and forecast their future positions or velocities. Furthermore, downstream tasks and hardware
+              availability impose hard constraints on the performance and size of the model. This is a
+              complex problem that has received significant attention, as effective obstacle avoidance is
+              the difference between a safe and unsafe autonomous navigation system.
+            </p>
+            
+            <p>
+              We introduce a model that enables accurate trajectory prediction for lightweight machinery
+              using a single RGB sensor. Our work consists of the following key features:
+            </p>
+            
+            <ul>
+              <li>
+                <em>Anytime querying:</em>
+                We introduce an anytime query method that allows our model to meet downstream-defined
+                latency requirements.
+              </li>
+            
+              <li>
+                <em>Probabilistic trajectory modeling:</em>
+                We model future trajectories as a mixture of Gaussians, enabling an explicit and structured
+                representation of multimodal uncertainty.
+              </li>
+            
+              <li>
+                <em>Ability to reason about interactions between agents:</em>
+                We design the model infrastructure to allow the model to consider pairwise interactions
+                between agents.
+              </li>
+            </ul>
+            
+            <p>
+              Although early stoppage, probabilistic trajectories, and agent-interaction modeling have each
+              been studied individually, prior work has not jointly combined all of these components into
+              a single pipeline.
             </p>
           </div>
         </div>
