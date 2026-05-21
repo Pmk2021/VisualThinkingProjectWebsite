@@ -49,7 +49,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Project Title</h1>
+          <h1 class="title is-1 publication-title">Anytime Trajectory Prediction</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://people.epfl.ch/">John Doe</a>,
@@ -354,9 +354,103 @@
           <h2 class="title is-3" id="method">III. Methodology</h2>
           <div class="content has-text-justified">
             <img src="assets/a.drawio.png"/>
-            <p>
-              The methodology part of the report can be provided here
-            </p>
+    <section>
+    
+      <p>
+        Our Anytime Trajectory Model pipeline is displayed above. For each frame fed into the model,
+        the algorithm computes a hidden state, which is then reused when the next frame arrives.
+      </p>
+    
+      <h2>Anytime Trajectory Model</h2>
+    
+      <p>
+        Uniquely, we achieve anytime prediction through iterative refinement steps. At every frame,
+        the model continuously refines its output until a trajectory is requested. At that point,
+        the hidden state is passed through the trajectory predictor to generate an estimate.
+      </p>
+    
+      <p>
+        If a new frame arrives before querying, the process is interrupted and the hidden state is
+        reused together with the new frame. This enables a tradeoff between latency and accuracy:
+        earlier queries produce faster but less accurate predictions, while later queries produce
+        more accurate but higher-latency outputs.
+      </p>
+    
+      <h2>Feature Extractor</h2>
+    
+      <p>
+        YOLO-nano combined with local feature extraction is used to encode visual inputs into a
+        compact representation suitable for downstream trajectory prediction.
+      </p>
+    
+      <h2>Refinement Module</h2>
+    
+      <p>
+        Three different refinement models were designed and evaluated. Their architectures are shown below.
+      </p>
+        
+      <section class="section">
+        <div class="container is-max-desktop">
+    
+          <div id="refinement-carousel" class="carousel results-carousel">
+    
+            <!-- Model 1 -->
+            <div class="carousel-item">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="./static/gifs/refine1.gif" alt="Refinement Model 1">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <p class="title is-5">Refinement Model A</p>
+                  <p class="content">
+                    This model applies iterative updates using a lightweight recurrent refinement block.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Model 2 -->
+            <div class="carousel-item">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="./static/gifs/refine2.gif" alt="Refinement Model 2">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <p class="title is-5">Refinement Model B</p>
+                  <p class="content">
+                    This variant uses attention-based refinement to update trajectory hypotheses over time.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Model 3 -->
+            <div class="carousel-item">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="./static/gifs/refine3.gif" alt="Refinement Model 3">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <p class="title is-5">Refinement Model C</p>
+                  <p class="content">
+                    This model performs coarse-to-fine refinement using hierarchical feature updates.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    
+        </div>
+      </section>
+    
+    </section>
           </div>
         </div>
       </div>
