@@ -301,7 +301,41 @@
           <h2 class="title is-3" id="related-work">II. Related Works</h2>
           <div class="content has-text-justified">
             <p>
-              The related works part of the report can be provided here
+              Classical approaches to trajectory prediction often rely on state estimation techniques such as
+              Kalman filters, which assume linear dynamics and Gaussian noise, but struggle with complex,
+              multimodal behavior. Consequently, neural networks have become widely used in the field of
+              trajectory planning.
+            </p>
+            
+            <p>
+              Additionally, with the rise of autonomous driving, a multitude of contests and datasets for
+              object prediction have been created, including the Waymo Open Motion Dataset and related
+              benchmarks.
+            </p>
+            
+            <p>
+              This has led to many new state-of-the-art algorithms that address the challenge by outputting
+              multimodal trajectory predictions. Specifically, our model is inspired by the following two
+              areas of work:
+            </p>
+            
+            <p>
+              <strong>Mixture Density Networks:</strong>
+              Mixture Density Networks (MDNs) are models that output mixtures of Gaussians. These approaches
+              have been applied to trajectory prediction and related sequence modeling tasks. However,
+              training them has been shown to be difficult in practice due to their tendency to collapse
+              into a single mode. As a result, several alternative training methods have been proposed,
+              including a “best-of-N” loss function, where only the best prediction is considered. This
+              encourages the model to predict a diverse range of trajectories, an approach that we adapt
+              in our work.
+            </p>
+            
+            <p>
+              <strong>Diffusion Models:</strong>
+              Diffusion-based trajectory prediction methods model future trajectories through iterative
+              denoising processes and have recently demonstrated strong performance on multimodal motion
+              forecasting tasks. These methods provide flexible generative modeling capabilities for complex
+              trajectory distributions.
             </p>
           </div>
         </div>
