@@ -313,7 +313,7 @@
 									We introduce an anytime query method that allows our model to
 									meet downstream-defined latency requirements.
 								</li>
-
+	
 								<li>
 									<em>Probabilistic trajectory modeling:</em>
 									We model future trajectories as a mixture of Gaussians,
@@ -329,10 +329,8 @@
 							</ul>
 
 							<p>
-								Although early stoppage, probabilistic trajectories, and
-								agent-interaction modeling have each been studied individually,
-								prior work has not jointly combined all of these components into
-								a single pipeline.
+								Anytime querying is the key feature of our model, unlike existing methods, we defined our model to be able to run for a varyable amount of iterations in order to continuously refine its predictions. Users can choose to
+								run the model for a limited amount of iterations for low-latency but less confident predictions, or alloow the model to run for longer in order to recieve more accurate predictions.
 							</p>
 						</div>
 					</div>
