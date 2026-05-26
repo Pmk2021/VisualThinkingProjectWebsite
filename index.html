@@ -1,96 +1,81 @@
 <!doctype html>
 <html>
-	<head>
-		<!--TODO: THE METADATA OF THE WEBSITE CAN BE EDITED USING THE META TAGS BELOW -->
-		<meta charset="utf-8" />
-		<meta
-			name="description"
-			content="Template project website. Replace this line with a one-sentence summary of your project."
-		/>
-		<meta name="keywords" content="project website, template, research" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Anytime Trajectory Planning</title>
-		<!------------------------------------------------------------------------->
 
-		<link
-			href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-			rel="stylesheet"
-		/>
+<head>
+	<!--TODO: THE METADATA OF THE WEBSITE CAN BE EDITED USING THE META TAGS BELOW -->
+	<meta charset="utf-8" />
+	<meta name="description"
+		content="Template project website. Replace this line with a one-sentence summary of your project." />
+	<meta name="keywords" content="project website, template, research" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Anytime Trajectory Planning</title>
+	<!------------------------------------------------------------------------->
 
-		<link rel="stylesheet" href="./static/css/bulma.min.css" />
-		<link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
-		<link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
-		<link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-		/>
-		<link rel="stylesheet" href="./static/css/index.css" />
-		<link rel="icon" href="./static/images/favicon.svg" />
+	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script defer src="./static/js/fontawesome.all.min.js"></script>
-		<script src="./static/js/bulma-carousel.min.js"></script>
-		<script src="./static/js/bulma-slider.min.js"></script>
-		<script src="./static/js/index.js"></script>
-		<script>
-			window.MathJax = {
-				tex: {
-					inlineMath: [
-						["$", "$"],
-						["\\(", "\\)"],
-					],
-					displayMath: [
-						["$$", "$$"],
-						["\\[", "\\]"],
-					],
-				},
-			};
-		</script>
-		<script
-			defer
-			src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-		></script>
-	</head>
-	<body>
-		<!--TODO: THE HEADLINE OF THE WEBPAGE: TITLE AND AUTHORS -->
+	<link rel="stylesheet" href="./static/css/bulma.min.css" />
+	<link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+	<link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+	<link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+	<link rel="stylesheet" href="./static/css/index.css" />
+	<link rel="icon" href="./static/images/favicon.svg" />
 
-		<section class="hero">
-			<div class="hero-body">
-				<div class="container is-max-desktop">
-					<div class="columns is-centered">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script defer src="./static/js/fontawesome.all.min.js"></script>
+	<script src="./static/js/bulma-carousel.min.js"></script>
+	<script src="./static/js/bulma-slider.min.js"></script>
+	<script src="./static/js/index.js"></script>
+	<script>
+		window.MathJax = {
+			tex: {
+				inlineMath: [
+					["$", "$"],
+					["\\(", "\\)"],
+				],
+				displayMath: [
+					["$$", "$$"],
+					["\\[", "\\]"],
+				],
+			},
+		};
+	</script>
+	<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+	<!--TODO: THE HEADLINE OF THE WEBPAGE: TITLE AND AUTHORS -->
+
+	<section class="hero">
+		<div class="hero-body">
+			<div class="container is-max-desktop">
+				<div class="columns is-centered">
+					<div class="column has-text-centered">
+						<h1 class="title is-1 publication-title">
+							Anytime Trajectory Prediction
+						</h1>
+						<div class="is-size-5 publication-authors">
+							<span class="author-block">
+								<a href="https://people.epfl.ch/giovanni.santantonio">Giovanni Santantonio</a>,
+							</span>
+							<span class="author-block">
+								<a href="https://people.epfl.ch/pranav.muralikrishnan">Pranav Muralikrishnan</a>,
+							</span>
+							<span class="author-block">
+								<a href="https://people.epfl.ch/leonard.amsler">Léonard Amsler</a>,
+							</span>
+							<span class="author-block">
+								<a href="https://people.epfl.ch/nathan.gromb">Nathan Gromb</a>
+							</span>
+						</div>
+
+						<!------------------------------------------------------------------------->
+
+						<!--TODO: THE LINKS RELATED TO THE PROJECT -->
 						<div class="column has-text-centered">
-							<h1 class="title is-1 publication-title">
-								Anytime Trajectory Prediction
-							</h1>
-							<div class="is-size-5 publication-authors">
-								<span class="author-block">
-									<a href="https://people.epfl.ch/giovanni.santantonio"
-										>Giovanni Santantonio</a
-									>,
-								</span>
-								<span class="author-block">
-									<a href="https://people.epfl.ch/pranav.muralikrishnan"
-										>Pranav Muralikrishnan</a
-									>,
-								</span>
-								<span class="author-block">
-									<a href="https://people.epfl.ch/leonard.amsler"
-										>Léonard Amsler</a
-									>,
-								</span>
-								<span class="author-block">
-									<a href="https://people.epfl.ch/nathan.gromb">Nathan Gromb</a>
-								</span>
-							</div>
-
-							<!------------------------------------------------------------------------->
-
-							<!--TODO: THE LINKS RELATED TO THE PROJECT -->
-							<div class="column has-text-centered">
-								<div class="publication-links">
-									<!-- PDF Link. -->
-									<!--
+							<div class="publication-links">
+								<!-- PDF Link. -->
+								<!--
                   <span class="link-block">
 										<a
 											href="https://arxiv.org"
@@ -103,8 +88,8 @@
 										</a>
 									</span>
                   -->
-									<!-- YouTube Link. -->
-									<!--
+								<!-- YouTube Link. -->
+								<!--
 									<span class="link-block">
 										<a
 											href="https://www.youtube.com"
@@ -117,20 +102,18 @@
 										</a>
 									</span>
                   -->
-									<!-- GitHub Link. -->
-									<span class="link-block">
-										<a
-											href="https://github.com/Pmk2021/VisualThinkingProject"
-											class="external-link button is-normal is-rounded is-dark"
-										>
-											<span class="icon">
-												<i class="fab fa-github"></i>
-											</span>
-											<span>Project Code</span>
-										</a>
-									</span>
-									<!-- Dataset Link. -->
-									<!--
+								<!-- GitHub Link. -->
+								<span class="link-block">
+									<a href="https://github.com/Pmk2021/VisualThinkingProject"
+										class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fab fa-github"></i>
+										</span>
+										<span>Project Code</span>
+									</a>
+								</span>
+								<!-- Dataset Link. -->
+								<!--
 									<span class="link-block">
 										<a
 											href="https://drive.google.com/drive/folders/13W_453e-h2TWAfAnp6Ga00TYwEzTnMtg?usp=sharing"
@@ -143,694 +126,664 @@
 										</a>
 									</span>
                   -->
-									<!-- GitHub Website Link. -->
-									<span class="link-block">
-										<a
-											href="https://github.com/Pmk2021/VisualThinkingProjectWebsite"
-											class="external-link button is-normal is-rounded is-dark"
-										>
-											<span class="icon">
-												<i class="fab fa-github"></i>
-											</span>
-											<span>Website Code</span>
-										</a>
-									</span>
-								</div>
+								<!-- GitHub Website Link. -->
+								<span class="link-block">
+									<a href="https://github.com/Pmk2021/VisualThinkingProjectWebsite"
+										class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fab fa-github"></i>
+										</span>
+										<span>Website Code</span>
+									</a>
+								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<!------------------------------------------------------------------------->
+		</div>
+	</section>
+	<!------------------------------------------------------------------------->
 
-		<!--TODO: THE LINKS RELATED TO THE PROJECT -->
+	<!--TODO: THE LINKS RELATED TO THE PROJECT -->
 
-		<section class="hero teaser">
-			<div class="container is-max-desktop">
-				<div class="hero-body">
-					<!-- TODO: Replace with your teaser image, gif or video file. Choose something that represents your project. -->
-					<video id="teaser" autoplay muted loop playsinline height="100%">
-						<source src="./static/videos/teaser.mp4" type="video/mp4" />
-					</video>
-					<h2 class="subtitle has-text-centered">
-						<span class="dnerf">Anytime Trajectory Prediction</span>
-						Real obstacle avoidance with tight constraints on UAVS.
-					</h2>
+	<section class="hero teaser">
+		<div class="container is-max-desktop">
+			<div class="hero-body">
+				<!-- TODO: Replace with your teaser image, gif or video file. Choose something that represents your project. -->
+				<img src="assets/sample_gif_1.gif" alt="Sample animation"
+					style="width: 7000px; max-width: 500px; border-radius: 8px; display: block; margin: 0 auto;" />
+				<h2 class="subtitle has-text-centered">
+					<span class="dnerf">Anytime Trajectory Prediction</span>
+
+				</h2>
+			</div>
+		</div>
+	</section>
+
+	<!------------------------------------------------------------------------->
+
+	<!--TODO: ABSTRACT OF THE PROJECT -->
+
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Abstract. -->
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<h2 class="title is-3">Abstract</h2>
+					<div class="content has-text-justified">
+						<p>
+							<!-- [Problem] Briefly describe the problem your project tackles and why it matters. -->
+							Automated vehicles require not only perception of their
+							environment, but also prediction of the actions of surrounding
+							agents. While this field is well studied, most existing work
+							focuses on autonomous vehicles with high computational
+							resources, rather than platforms such as drones, which operate
+							under strict latency constraints and limited hardware
+							capabilities.
+						</p>
+						<p>
+							<!-- [Approach] Explain your main idea, model, or system in one to two sentences. -->
+							To address this gap, we introduce Anytime Trajectory Prediction
+							(ATP), a lightweight, adaptable trajectory prediction pipeline.
+							ATP supports anytime inference, allowing it to produce usable
+							predictions under varying constraints.
+						</p>
+						<p>
+							<!-- [Results] Summarize key outcomes, such as quantitativeimprovements, qualitative observations, and main conclusions. -->
+						</p>
+					</div>
 				</div>
 			</div>
-		</section>
+			<!--/ Abstract. -->
+			<!------------------------------------------------------------------------->
+			<!--TODO: LIST OF ITEMS IN THE WEBSITE -->
 
-		<!------------------------------------------------------------------------->
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3">Overview</h2>
+					<div class="tile is-ancestor is-centered" style="vertical-align: middle">
+						<div class="tile is-parent">
+							<a href="#intro" class="tile is-child box">
+								<p class="subtitle">
+									<font size="-1">Introduction</font>
+								</p>
+							</a>
+						</div>
 
-		<!--TODO: ABSTRACT OF THE PROJECT -->
+						<div class="tile is-parent">
+							<a href="#related-work" class="tile is-child box">
+								<p class="subtitle">
+									<font size="-1">Related Works</font>
+								</p>
+							</a>
+						</div>
 
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Abstract. -->
-				<div class="columns is-centered has-text-centered">
-					<div class="column is-four-fifths">
-						<h2 class="title is-3">Abstract</h2>
-						<div class="content has-text-justified">
-							<p>
-								<!-- [Problem] Briefly describe the problem your project tackles and why it matters. -->
-								Automated vehicles require not only perception of their
-								environment, but also prediction of the actions of surrounding
-								agents. While this field is well studied, most existing work
-								focuses on autonomous vehicles with high computational
-								resources, rather than platforms such as drones, which operate
-								under strict latency constraints and limited hardware
-								capabilities.
-							</p>
-							<p>
-								<!-- [Approach] Explain your main idea, model, or system in one to two sentences. -->
-								To address this gap, we introduce Anytime Trajectory Prediction
-								(ATP), a lightweight, adaptable trajectory prediction pipeline.
-								ATP supports anytime inference, allowing it to produce usable
-								predictions under varying constraints.
-							</p>
-							<p>
-								<!-- [Results] Summarize key outcomes, such as quantitativeimprovements, qualitative observations, and main conclusions. -->
-							</p>
+						<div class="tile is-parent">
+							<a href="#method" class="tile is-child box">
+								<p class="subtitle">
+									<font size="-1">Methodology</font>
+								</p>
+							</a>
+						</div>
+
+						<div class="tile is-parent">
+							<a href="#results" class="tile is-child box">
+								<p class="subtitle">
+									<font size="-1">Results</font>
+								</p>
+							</a>
+						</div>
+
+						<div class="tile is-parent">
+							<a href="#conclusion" class="tile is-child box">
+								<p class="subtitle">
+									<font size="-1">Conclusion and Limitations</font>
+								</p>
+							</a>
+						</div>
+						<!--- TODO: Remove this part, this is here to show you possible visualizations used in the website ---------------->
+
+						<div class="tile is-parent">
+							<a href="#visual_items" class="tile is-child box">
+								<p class="subtitle">
+									<font size="-1">Visual Items</font>
+								</p>
+							</a>
 						</div>
 					</div>
 				</div>
-				<!--/ Abstract. -->
-				<!------------------------------------------------------------------------->
-				<!--TODO: LIST OF ITEMS IN THE WEBSITE -->
-
-				<div class="columns is-centered has-text-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3">Overview</h2>
-						<div
-							class="tile is-ancestor is-centered"
-							style="vertical-align: middle"
-						>
-							<div class="tile is-parent">
-								<a href="#intro" class="tile is-child box">
-									<p class="subtitle">
-										<font size="-1">Introduction</font>
-									</p>
-								</a>
-							</div>
-
-							<div class="tile is-parent">
-								<a href="#related-work" class="tile is-child box">
-									<p class="subtitle">
-										<font size="-1">Related Works</font>
-									</p>
-								</a>
-							</div>
-
-							<div class="tile is-parent">
-								<a href="#method" class="tile is-child box">
-									<p class="subtitle">
-										<font size="-1">Methodology</font>
-									</p>
-								</a>
-							</div>
-
-							<div class="tile is-parent">
-								<a href="#results" class="tile is-child box">
-									<p class="subtitle">
-										<font size="-1">Results</font>
-									</p>
-								</a>
-							</div>
-
-							<div class="tile is-parent">
-								<a href="#conclusion" class="tile is-child box">
-									<p class="subtitle">
-										<font size="-1">Conclusion and Limitations</font>
-									</p>
-								</a>
-							</div>
-							<!--- TODO: Remove this part, this is here to show you possible visualizations used in the website ---------------->
-
-							<div class="tile is-parent">
-								<a href="#visual_items" class="tile is-child box">
-									<p class="subtitle">
-										<font size="-1">Visual Items</font>
-									</p>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!------------------------------------------------------------------------->
 			</div>
-		</section>
+			<!------------------------------------------------------------------------->
+		</div>
+	</section>
 
-		<!-----------------------------TODO: INTRODUCTION-------------------------------->
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Introduction. -->
-				<div class="columns is-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3" id="intro">I. Introduction</h2>
-						<div class="content has-text-justified">
-							<p>
-								Accurate trajectory prediction is a key technique in autonomous
-								vehicle control systems. In a standard pipeline, models are
-								given sensor data of the environment, identify obstacles, and
-								forecast their future positions or velocities. Furthermore,
-								downstream tasks and hardware availability impose hard
-								constraints on the performance and size of the model. This is a
-								complex problem that has received significant attention, as
-								effective obstacle avoidance is the difference between a safe
-								and unsafe autonomous navigation system.
-							</p>
+	<!-----------------------------TODO: INTRODUCTION-------------------------------->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Introduction. -->
+			<div class="columns is-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3" id="intro">I. Introduction</h2>
+					<div class="content has-text-justified">
+						<p>
+							Accurate trajectory prediction is a key technique in autonomous
+							vehicle control systems. In a standard pipeline, models are
+							given sensor data of the environment, identify obstacles, and
+							forecast their future positions or velocities. Furthermore,
+							downstream tasks and hardware availability impose hard
+							constraints on the performance and size of the model. This is a
+							complex problem that has received significant attention, as
+							effective obstacle avoidance is the difference between a safe
+							and unsafe autonomous navigation system.
+						</p>
 
-							<p>
-								We introduce a model that enables accurate trajectory prediction
-								for lightweight machinery using a single RGB sensor. Our work
-								consists of the following key features:
-							</p>
+						<p>
+							We introduce a model that enables accurate trajectory prediction
+							for lightweight machinery using a single RGB sensor. Our work
+							consists of the following key features:
+						</p>
 
-							<ul>
-								<li>
-									<em>Anytime querying:</em>
-									We introduce an anytime query method that allows our model to
-									meet downstream-defined latency requirements.
-								</li>
-	
-								<li>
-									<em>Probabilistic trajectory modeling:</em>
-									We model future trajectories as a mixture of Gaussians,
-									enabling an explicit and structured representation of
-									multimodal uncertainty.
-								</li>
+						<ul>
+							<li>
+								<em>Anytime querying:</em>
+								We introduce an anytime query method that allows our model to
+								meet downstream-defined latency requirements.
+							</li>
 
-								<li>
-									<em>Ability to reason about interactions between agents:</em>
-									We design the model infrastructure to allow the model to
-									consider pairwise interactions between agents.
-								</li>
-							</ul>
+							<li>
+								<em>Probabilistic trajectory modeling:</em>
+								We model future trajectories as a mixture of Gaussians,
+								enabling an explicit and structured representation of
+								multimodal uncertainty.
+							</li>
 
-							<p>
-								Anytime querying is the key feature of our model, unlike existing methods, we defined our model to be able to run for a varyable amount of iterations in order to continuously refine its predictions. Users can choose to
-								run the model for a limited amount of iterations for low-latency but less confident predictions, or alloow the model to run for longer in order to recieve more accurate predictions.
-							</p>
+							<li>
+								<em>Ability to reason about interactions between agents:</em>
+								We design the model infrastructure to allow the model to
+								consider pairwise interactions between agents.
+							</li>
+						</ul>
 
-					
-														
-							<div style="display: flex; gap: 24px; margin-top: 24px; align-items: flex-start;">
-								<!-- Standard pipeline -->
-								<div style="flex: 1; text-align: center;">
-									<h3>Standard Trajectory Predictive Pipeline</h3>
-									<img
-										src="assets/no_anytime.png"
-										alt="Standard trajectory predictive pipeline"
-										style="width: 100%; max-width: 500px; border-radius: 8px;"
-									/>
-								</div>
-							
-								<!-- Variable latency -->
-								<div style="flex: 1; text-align: center;">
-									<h3><strong>Variable Latency</strong></h3>
-									<img
-										src="assets/anytime.png"
-										alt="Variable latency anytime querying"
-										style="width: 100%; max-width: 500px; border-radius: 8px;"
-									/>
-								</div>
+						<p>
+							Anytime querying is the key feature of our model, unlike existing methods, we defined our
+							model to be able to run for a varyable amount of iterations in order to continuously refine
+							its predictions. Users can choose to
+							run the model for a limited amount of iterations for low-latency but less confident
+							predictions, or alloow the model to run for longer in order to recieve more accurate
+							predictions.
+						</p>
+
+
+
+						<div style="display: flex; gap: 24px; margin-top: 24px; align-items: stretch;">
+							<!-- Standard pipeline -->
+							<div
+								style="flex: 1; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+								<h3>Standard Trajectory Predictive Pipeline</h3>
+								<img src="assets/no_anytime.jpeg" alt="Standard trajectory predictive pipeline"
+									style="width: 100%; max-width: 500px; border-radius: 8px;" />
+							</div>
+
+							<!-- Variable latency -->
+							<div
+								style="flex: 1; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);margin-top: 20px">
+								<h3 style="color: rgb(16, 0, 67); font-weight: 900;">Variable Latency</h3>
+								<img src="assets/anytime.jpeg" alt="Variable latency anytime querying"
+									style="width: 100%; max-width: 500px; border-radius: 8px;" />
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--/ Introduction. -->
 			</div>
-		</section>
-		<!------------------------------------------------------------------------->
+	</section>
+	<!------------------------------------------------------------------------->
 
-		<!-----------------------------TODO: RELATED WORKS-------------------------------->
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Related Works. -->
-				<div class="columns is-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3" id="related-work">II. Related Works</h2>
-						<div class="content has-text-justified">
-							<p>
-								Classical approaches to trajectory prediction often rely on
-								state estimation techniques such as Kalman filters, which assume
-								linear dynamics and Gaussian noise, but struggle with complex,
-								multimodal behavior. Consequently, neural networks have become
-								widely used in the field of trajectory planning.
-							</p>
+	<!-----------------------------TODO: RELATED WORKS-------------------------------->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Related Works. -->
+			<div class="columns is-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3" id="related-work">II. Related Works</h2>
+					<div class="content has-text-justified">
+						<p>
+							Classical approaches to trajectory prediction often rely on
+							state estimation techniques such as Kalman filters, which assume
+							linear dynamics and Gaussian noise, but struggle with complex,
+							multimodal behavior. Consequently, neural networks have become
+							widely used in the field of trajectory planning.
+						</p>
 
-							<p>
-								Additionally, with the rise of autonomous driving, a multitude
-								of contests and datasets for object prediction have been
-								created, including the Waymo Open Motion Dataset and related
-								benchmarks.
-							</p>
+						<p>
+							Additionally, with the rise of autonomous driving, a multitude
+							of contests and datasets for object prediction have been
+							created, including the Waymo Open Motion Dataset and related
+							benchmarks.
+						</p>
 
-							<p>
-								This has led to many new state-of-the-art algorithms that
-								address the challenge by outputting multimodal trajectory
-								predictions. Specifically, our model is inspired by the
-								following two areas of work:
-							</p>
+						<p>
+							This has led to many new state-of-the-art algorithms that
+							address the challenge by outputting multimodal trajectory
+							predictions. Specifically, our model is inspired by the
+							following two areas of work:
+						</p>
 
-							<p>
-								<strong>Mixture Density Networks:</strong>
-								Mixture Density Networks (MDNs) are models that output mixtures
-								of Gaussians. These approaches have been applied to trajectory
-								prediction and related sequence modeling tasks. However,
-								training them has been shown to be difficult in practice due to
-								their tendency to collapse into a single mode. As a result,
-								several alternative training methods have been proposed,
-								including a “best-of-N” loss function, where only the best
-								prediction is considered. This encourages the model to predict a
-								diverse range of trajectories, an approach that we adapt in our
-								work.
-							</p>
+						<p>
+							<strong>Mixture Density Networks:</strong>
+							Mixture Density Networks (MDNs) are models that output mixtures
+							of Gaussians. These approaches have been applied to trajectory
+							prediction and related sequence modeling tasks. However,
+							training them has been shown to be difficult in practice due to
+							their tendency to collapse into a single mode. As a result,
+							several alternative training methods have been proposed,
+							including a “best-of-N” loss function, where only the best
+							prediction is considered. This encourages the model to predict a
+							diverse range of trajectories, an approach that we adapt in our
+							work.
+						</p>
 
-							<p>
-								<strong>Diffusion Models:</strong>
-								Diffusion-based trajectory prediction methods model future
-								trajectories through iterative denoising processes and have
-								recently demonstrated strong performance on multimodal motion
-								forecasting tasks. These methods provide flexible generative
-								modeling capabilities for complex trajectory distributions.
-							</p>
-						</div>
+						<p>
+							<strong>Diffusion Models:</strong>
+							Diffusion-based trajectory prediction methods model future
+							trajectories through iterative denoising processes and have
+							recently demonstrated strong performance on multimodal motion
+							forecasting tasks. These methods provide flexible generative
+							modeling capabilities for complex trajectory distributions.
+						</p>
 					</div>
 				</div>
-				<!--/ Related Works. -->
 			</div>
-		</section>
-		<!------------------------------------------------------------------------->
+			<!--/ Related Works. -->
+		</div>
+	</section>
+	<!------------------------------------------------------------------------->
 
-		<!-----------------------------TODO: METHODOLOGY-------------------------------->
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Methodology. -->
-				<div class="columns is-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3" id="method">III. Methodology</h2>
-						<div class="content has-text-justified">
-							<img src="assets/a.drawio.png" />
-							<section>
-								<p>
-									Our Anytime Trajectory Model pipeline is displayed above. For
-									each frame fed into the model, the algorithm computes a hidden
-									state, which is then reused when the next frame arrives.
-								</p>
+	<!-----------------------------TODO: METHODOLOGY-------------------------------->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Methodology. -->
+			<div class="columns is-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3" id="method">III. Methodology</h2>
+					<div class="content has-text-justified">
+						<img src="assets/a.drawio.png" />
+						<section>
+							<p>
+								Our Anytime Trajectory Model pipeline is displayed above. For
+								each frame fed into the model, the algorithm computes a hidden
+								state, which is then reused when the next frame arrives.
+							</p>
 
-								<h2>Anytime Trajectory Model</h2>
+							<h2>Anytime Trajectory Model</h2>
 
-								<p>
-									Uniquely, we achieve anytime prediction through iterative
-									refinement steps. At every frame, the model continuously
-									refines its output until a trajectory is requested. At that
-									point, the hidden state is passed through the trajectory
-									predictor to generate an estimate.
-								</p>
+							<p>
+								Uniquely, we achieve anytime prediction through iterative
+								refinement steps. At every frame, the model continuously
+								refines its output until a trajectory is requested. At that
+								point, the hidden state is passed through the trajectory
+								predictor to generate an estimate.
+							</p>
 
-								<p>
-									If a new frame arrives before querying, the process is
-									interrupted and the hidden state is reused together with the
-									new frame. This enables a tradeoff between latency and
-									accuracy: earlier queries produce faster but less accurate
-									predictions, while later queries produce more accurate but
-									higher-latency outputs.
-								</p>
+							<p>
+								If a new frame arrives before querying, the process is
+								interrupted and the hidden state is reused together with the
+								new frame. This enables a tradeoff between latency and
+								accuracy: earlier queries produce faster but less accurate
+								predictions, while later queries produce more accurate but
+								higher-latency outputs.
+							</p>
 
-								<h2>Feature Extractor</h2>
+							<h2>Feature Extractor</h2>
 
-								<p>
-									YOLO-nano combined with local feature extraction is used to
-									encode visual inputs into a compact representation suitable
-									for downstream trajectory prediction.
-								</p>
+							<p>
+								YOLO-nano combined with local feature extraction is used to
+								encode visual inputs into a compact representation suitable
+								for downstream trajectory prediction.
+							</p>
 
-								<h2>Refinement Module</h2>
+							<h2>Refinement Module</h2>
 
-								<p>
-									Three different refinement models were designed and evaluated.
-									Their architectures are shown below.
-								</p>
+							<p>
+								Three different refinement models were designed and evaluated.
+								Their architectures are shown below.
+							</p>
 
-								<h2>Refinement Module</h2>
+							<h2>Refinement Module</h2>
 
-								<p>
-									Three different refinement models were designed and tested.
-									Their architectures are shown below.
-								</p>
+							<p>
+								Three different refinement models were designed and tested.
+								Their architectures are shown below.
+							</p>
 
-								<div class="container is-max-desktop">
-									<div
-										style="
+							<div class="container is-max-desktop">
+								<div style="
 											display: flex;
 											gap: 20px;
 											justify-content: space-between;
-										"
-									>
-										<!-- Column 1 -->
-										<div style="flex: 1; text-align: center">
-											<img
-												src="assets/a.drawio.png"
-												style="width: 100%; border-radius: 8px"
-											/>
-											<h3>Column One</h3>
-											<p>
-												This is some filler text describing the first item. You
-												can explain a model, dataset, or result here.
-											</p>
-										</div>
+										">
+									<!-- Column 1 -->
+									<div style="flex: 1; text-align: center">
+										<img src="assets/a.drawio.png" style="width: 100%; border-radius: 8px" />
+										<h3>Column One</h3>
+										<p>
+											This is some filler text describing the first item. You
+											can explain a model, dataset, or result here.
+										</p>
+									</div>
 
-										<!-- Column 2 -->
-										<div style="flex: 1; text-align: center">
-											<img
-												src="assets/a.drawio.png"
-												style="width: 100%; border-radius: 8px"
-											/>
-											<h3>Column Two</h3>
-											<p>
-												This is some filler text for the second column. Replace
-												with your own description or analysis.
-											</p>
-										</div>
+									<!-- Column 2 -->
+									<div style="flex: 1; text-align: center">
+										<img src="assets/a.drawio.png" style="width: 100%; border-radius: 8px" />
+										<h3>Column Two</h3>
+										<p>
+											This is some filler text for the second column. Replace
+											with your own description or analysis.
+										</p>
+									</div>
 
-										<!-- Column 3 -->
-										<div style="flex: 1; text-align: center">
-											<img
-												src="assets/a.drawio.png"
-												style="width: 100%; border-radius: 8px"
-											/>
-											<h3>Column Three</h3>
-											<p>
-												This is some filler text for the third column. Useful
-												for comparisons or variants.
-											</p>
-										</div>
+									<!-- Column 3 -->
+									<div style="flex: 1; text-align: center">
+										<img src="assets/a.drawio.png" style="width: 100%; border-radius: 8px" />
+										<h3>Column Three</h3>
+										<p>
+											This is some filler text for the third column. Useful
+											for comparisons or variants.
+										</p>
 									</div>
 								</div>
-
-								<img src="assets/a.drawio.png" />
-							</section>
-						</div>
-					</div>
-				</div>
-				<!--/ Methodology. -->
-			</div>
-		</section>
-
-		<!------------------------------------------------------------------------->
-
-		<!-----------------------------TODO: RESULTS-------------------------------->
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Results. -->
-				<div class="columns is-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3" id="results">IV. Results</h2>
-						<div class="content has-text-justified">
-							<p>The results part of the report can be provided here</p>
-						</div>
-					</div>
-				</div>
-				<!--/ Results. -->
-			</div>
-		</section>
-		<!------------------------------------------------------------------------->
-
-		<!-----------------------------TODO: DISCUSSION-------------------------------->
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Conclusion and Limitations. -->
-				<div class="columns is-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3" id="conclusion">
-							V. Conclusion and Limitations
-						</h2>
-						<div class="content has-text-justified">
-							<p>
-								The conclusion and limitations part of the report can be
-								provided here
-							</p>
-						</div>
-					</div>
-				</div>
-				<!--/ Conclusion and Limitations. -->
-			</div>
-		</section>
-		<!------------------------------------------------------------------------->
-
-		<!-----------------------------TODO: VISUAL ITEMS THAT CAN BE USED-------------------------------->
-		<section class="section">
-			<div class="container is-max-desktop">
-				<!-- Visual Items. -->
-				<div class="columns is-centered">
-					<div class="column is-full-width">
-						<h2 class="title is-3" id="visual_items">V. Visual Items</h2>
-						<div class="content has-text-justified">
-							<p>
-								Here you can see possible visualizations that can be used in
-								this website
-							</p>
-						</div>
-						<h3 class="title is-4">Video Clip</h3>
-						<!-- Video can be added like this -->
-						<div class="content has-text-centered">
-							<video
-								id="replay-video"
-								controls
-								muted
-								preload
-								playsinline
-								width="75%"
-							>
-								<source src="./static/videos/replay.mp4" type="video/mp4" />
-							</video>
-						</div>
-						<!--------------------------------->
-
-						<h3 class="title is-4">Image Interpolation with Slider</h3>
-						<!-- Image can be added like this -->
-						<div class="columns is-vcentered interpolation-panel">
-							<div class="column is-3 has-text-centered">
-								<img
-									src="./static/images/interpolate_start.jpg"
-									class="interpolation-image"
-									alt="Interpolate start reference image."
-								/>
-								<p>Start Frame</p>
 							</div>
-							<div class="column interpolation-video-column">
-								<div id="interpolation-image-wrapper">Loading...</div>
-								<input
-									class="slider is-fullwidth is-large is-info"
-									id="interpolation-slider"
-									step="1"
-									min="0"
-									max="100"
-									value="0"
-									type="range"
-								/>
-							</div>
-							<div class="column is-3 has-text-centered">
-								<img
-									src="./static/images/interpolate_end.jpg"
-									class="interpolation-image"
-									alt="Interpolation end reference image."
-								/>
-								<p class="is-bold">End Frame</p>
-							</div>
-						</div>
 
-						<h3 class="title is-4">Double Column Media Display</h3>
-						<div class="columns is-centered is-multiline">
-							<!-- Column 1. -->
-							<div class="column is-half">
-								<div class="content">
-									<h3 class="title is-5">Column 1</h3>
-									<p>Add a short description for the first video/image.</p>
-									<video
-										id="dollyzoom"
-										autoplay
-										controls
-										muted
-										loop
-										playsinline
-										width="100%"
-									>
-										<source
-											src="./static/videos/dollyzoom-stacked.mp4"
-											type="video/mp4"
-										/>
-									</video>
-								</div>
-							</div>
-							<!--/ Column 1 -->
-
-							<!-- Column 2 -->
-							<div class="column is-half">
-								<div class="content">
-									<h3 class="title is-5">Column 2</h3>
-									<p>Add a short description for the second video/image.</p>
-									<video id="matting-video" controls playsinline width="100%">
-										<source
-											src="./static/videos/matting.mp4"
-											type="video/mp4"
-										/>
-									</video>
-								</div>
-							</div>
-							<!--/ Column 2 -->
-						</div>
-						<!--------------------------------->
-						<h3 class="title is-4">Card Media Display</h3>
-						<div class="columns is-centered">
-							<div class="column is-three-quarters">
-								<div align="center" class="box">
-									<img
-										src="static/images/related_2.gif"
-										alt="3D Bezier curves are used for representing 3D sketches of objects."
-									/>
-									<h5 class="subtitle has-text-centered">
-										<font size="-0.7">
-											<span style="font-weight: normal">
-												Write about the media displayed in the card here. You
-												can also add a link to the media if needed.
-											</span>
-										</font>
-									</h5>
-								</div>
-							</div>
-						</div>
-						<!--------------------------------->
-						<h3 class="title is-4">LaTeX Equation</h3>
-
-						Format the equations using LaTeX and add them to the website like
-						this:
-						<p>
-							\[ D_{\mathrm{KL}}(P \parallel Q) = \sum_{x}
-							P(x)\,\log\!\left(\frac{P(x)}{Q(x)}\right) \]
-						</p>
-						<!--------------------------------->
-
-						<h3 class="title is-4">Sliding Media Display</h3>
-						<section class="section">
-							<div class="container is-max-desktop">
-								<div id="dataset-carousel" class="carousel results-carousel">
-									<a href="./static/gifs/bike.gif" data-lightbox="image">
-										<img src="./static/gifs/bike.gif" alt="Bike Object" />
-									</a>
-
-									<a href="./static/gifs/duck.gif" data-lightbox="image">
-										<img src="./static/gifs/duck.gif" alt="Duck Object" />
-									</a>
-
-									<a href="./static/gifs/horse.gif" data-lightbox="image">
-										<img src="./static/gifs/horse.gif" alt="Horse Object" />
-									</a>
-
-									<a href="./static/gifs/rose.gif" data-lightbox="image">
-										<img src="./static/gifs/rose.gif" alt="Rose Object" />
-									</a>
-								</div>
-							</div>
+							<img src="assets/a.drawio.png" />
 						</section>
-						<!--------------------------------->
-						<h3 class="title is-4">Table</h3>
+					</div>
+				</div>
+			</div>
+			<!--/ Methodology. -->
+		</div>
+	</section>
 
-						<div class="content has-text-justified">
-							<p>
-								The table format below can be used for results and other
-								purposes.
-							</p>
-							<div class="table-container">
-								<table
-									class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
-								>
-									<thead>
-										<tr>
-											<th>Method</th>
-											<th>Metric 1</th>
-											<th>Metric 2</th>
-											<th>Notes</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Baseline</td>
-											<td>0.00</td>
-											<td>0.00</td>
-											<td>Reference setup</td>
-										</tr>
-										<tr>
-											<td>Method A</td>
-											<td>0.00</td>
-											<td>0.00</td>
-											<td>First variant</td>
-										</tr>
-										<tr>
-											<td>Method B</td>
-											<td>0.00</td>
-											<td>0.00</td>
-											<td>Second variant</td>
-										</tr>
-									</tbody>
-								</table>
+	<!------------------------------------------------------------------------->
+
+	<!-----------------------------TODO: RESULTS-------------------------------->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Results. -->
+			<div class="columns is-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3" id="results">IV. Results</h2>
+					<div class="content has-text-justified">
+						<p>
+							In this section, we display both quantitative results to benchmark the performance of our
+							model, as well as qualitative trajectory predictions to explore strengths, biases, and areas
+							of improvement for the model.
+							All results are evaluated using a held out portion of the Waymo Dataset.
+						</p>
+
+						<h3 class="title is-4">Qualitative</h3>
+						<p>Our model predicts trajectories for every object. Sample trajectories are shown below.</p>
+
+						<!-- Carousel -->
+						<div style="text-align: center; margin-top: 16px;">
+							<img id="carousel-img" src="assets/carousel/sample_gif_1.gif" alt="Sample trajectory"
+								style="width: 700px; border-radius: 8px; display: block; margin: 0 auto;" />
+							<div
+								style="margin-top: 16px; display: flex; justify-content: center; align-items: center; gap: 24px;">
+								<button onclick="changeSlide(-1)"
+									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8592;</button>
+								<span id="carousel-counter" style="font-size: 16px;">1 / 3</span>
+								<button onclick="changeSlide(1)"
+									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8594;</button>
 							</div>
 						</div>
 
-						<!--------------------------------->
-						<h3 class="title is-4">Interactive Plot</h3>
-						<div class="box">
-							<iframe
-								src="./static/plotly/interactive_plot.html"
-								frameborder="0"
-								width="100%"
-								height="500px"
-							></iframe>
-						</div>
-
-						<!--------------------------------->
-					</div>
-				</div>
-				<!--/ Visual Items. -->
-			</div>
-		</section>
-
-		<!------------------------------------------------------------------------->
-
-		<footer class="footer">
-			<div class="container">
-				<div class="content has-text-centered">
-					<!-- Optional icon link (e.g., to GitHub repo) -->
-				</div>
-
-				<div class="columns is-centered">
-					<div class="column is-8">
-						<div class="content">
-							<h6 class="title is-6">Individual Contributions</h6>
-							<p>Add the contributions of each team member here.</p>
-							<p>
-								<em>
-									This website is based on the
-									<a
-										href="https://github.com/nerfies/nerfies.github.io"
-										target="_blank"
-										>Nerfies website template</a
-									>, which is licensed under a
-									<a
-										rel="license"
-										href="http://creativecommons.org/licenses/by-sa/4.0/"
-										target="_blank"
-										>Creative Commons Attribution-ShareAlike 4.0 International
-										License</a
-									>.
-								</em>
-							</p>
-						</div>
+						<script>
+							const slides = [
+								"assets/carousel/sample_gif_1.gif",
+								"assets/carousel/sample_gif_2.gif",
+								"assets/carousel/sample_gif_3.gif"
+							];
+							let current = 0;
+							function changeSlide(dir) {
+								current = (current + dir + slides.length) % slides.length;
+								document.getElementById("carousel-img").src = slides[current];
+								document.getElementById("carousel-counter").textContent = (current + 1) + " / " + slides.length;
+							}
+						</script>
 					</div>
 				</div>
 			</div>
-		</footer>
-	</body>
+			<!--/ Results. -->
+		</div>
+	</section>
+	<!------------------------------------------------------------------------->
+
+	<!-----------------------------TODO: DISCUSSION-------------------------------->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Conclusion and Limitations. -->
+			<div class="columns is-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3" id="conclusion">
+						V. Conclusion and Limitations
+					</h2>
+					<div class="content has-text-justified">
+						<p>
+							The conclusion and limitations part of the report can be
+							provided here
+						</p>
+					</div>
+				</div>
+			</div>
+			<!--/ Conclusion and Limitations. -->
+		</div>
+	</section>
+	<!------------------------------------------------------------------------->
+
+	<!-----------------------------TODO: VISUAL ITEMS THAT CAN BE USED-------------------------------->
+	<section class="section">
+		<div class="container is-max-desktop">
+			<!-- Visual Items. -->
+			<div class="columns is-centered">
+				<div class="column is-full-width">
+					<h2 class="title is-3" id="visual_items">V. Visual Items</h2>
+					<div class="content has-text-justified">
+						<p>
+							Here you can see possible visualizations that can be used in
+							this website
+						</p>
+					</div>
+					<h3 class="title is-4">Video Clip</h3>
+					<!-- Video can be added like this -->
+					<div class="content has-text-centered">
+						<video id="replay-video" controls muted preload playsinline width="75%">
+							<source src="./static/videos/replay.mp4" type="video/mp4" />
+						</video>
+					</div>
+					<!--------------------------------->
+
+					<h3 class="title is-4">Image Interpolation with Slider</h3>
+					<!-- Image can be added like this -->
+					<div class="columns is-vcentered interpolation-panel">
+						<div class="column is-3 has-text-centered">
+							<img src="./static/images/interpolate_start.jpg" class="interpolation-image"
+								alt="Interpolate start reference image." />
+							<p>Start Frame</p>
+						</div>
+						<div class="column interpolation-video-column">
+							<div id="interpolation-image-wrapper">Loading...</div>
+							<input class="slider is-fullwidth is-large is-info" id="interpolation-slider" step="1"
+								min="0" max="100" value="0" type="range" />
+						</div>
+						<div class="column is-3 has-text-centered">
+							<img src="./static/images/interpolate_end.jpg" class="interpolation-image"
+								alt="Interpolation end reference image." />
+							<p class="is-bold">End Frame</p>
+						</div>
+					</div>
+
+					<h3 class="title is-4">Double Column Media Display</h3>
+					<div class="columns is-centered is-multiline">
+						<!-- Column 1. -->
+						<div class="column is-half">
+							<div class="content">
+								<h3 class="title is-5">Column 1</h3>
+								<p>Add a short description for the first video/image.</p>
+								<video id="dollyzoom" autoplay controls muted loop playsinline width="100%">
+									<source src="./static/videos/dollyzoom-stacked.mp4" type="video/mp4" />
+								</video>
+							</div>
+						</div>
+						<!--/ Column 1 -->
+
+						<!-- Column 2 -->
+						<div class="column is-half">
+							<div class="content">
+								<h3 class="title is-5">Column 2</h3>
+								<p>Add a short description for the second video/image.</p>
+								<video id="matting-video" controls playsinline width="100%">
+									<source src="./static/videos/matting.mp4" type="video/mp4" />
+								</video>
+							</div>
+						</div>
+						<!--/ Column 2 -->
+					</div>
+					<!--------------------------------->
+					<h3 class="title is-4">Card Media Display</h3>
+					<div class="columns is-centered">
+						<div class="column is-three-quarters">
+							<div align="center" class="box">
+								<img src="sample_gif_1.gif"
+									alt="3D Bezier curves are used for representing 3D sketches of objects." />
+								<h5 class="subtitle has-text-centered">
+									<font size="-0.7">
+										<span style="font-weight: normal">
+											Write about the media displayed in the card here. You
+											can also add a link to the media if needed.
+										</span>
+									</font>
+								</h5>
+							</div>
+						</div>
+					</div>
+					<!--------------------------------->
+					<h3 class="title is-4">LaTeX Equation</h3>
+
+					Format the equations using LaTeX and add them to the website like
+					this:
+					<p>
+						\[ D_{\mathrm{KL}}(P \parallel Q) = \sum_{x}
+						P(x)\,\log\!\left(\frac{P(x)}{Q(x)}\right) \]
+					</p>
+					<!--------------------------------->
+
+					<h3 class="title is-4">Sliding Media Display</h3>
+					<section class="section">
+						<div class="container is-max-desktop">
+							<div id="dataset-carousel" class="carousel results-carousel">
+								<a href="./static/gifs/bike.gif" data-lightbox="image">
+									<img src="./static/gifs/bike.gif" alt="Bike Object" />
+								</a>
+
+								<a href="./static/gifs/duck.gif" data-lightbox="image">
+									<img src="./static/gifs/duck.gif" alt="Duck Object" />
+								</a>
+
+								<a href="./static/gifs/horse.gif" data-lightbox="image">
+									<img src="./static/gifs/horse.gif" alt="Horse Object" />
+								</a>
+
+								<a href="./static/gifs/rose.gif" data-lightbox="image">
+									<img src="./static/gifs/rose.gif" alt="Rose Object" />
+								</a>
+							</div>
+						</div>
+					</section>
+					<!--------------------------------->
+					<h3 class="title is-4">Table</h3>
+
+					<div class="content has-text-justified">
+						<p>
+							The table format below can be used for results and other
+							purposes.
+						</p>
+						<div class="table-container">
+							<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+								<thead>
+									<tr>
+										<th>Method</th>
+										<th>Metric 1</th>
+										<th>Metric 2</th>
+										<th>Notes</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Baseline</td>
+										<td>0.00</td>
+										<td>0.00</td>
+										<td>Reference setup</td>
+									</tr>
+									<tr>
+										<td>Method A</td>
+										<td>0.00</td>
+										<td>0.00</td>
+										<td>First variant</td>
+									</tr>
+									<tr>
+										<td>Method B</td>
+										<td>0.00</td>
+										<td>0.00</td>
+										<td>Second variant</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<!--------------------------------->
+					<h3 class="title is-4">Interactive Plot</h3>
+					<div class="box">
+						<iframe src="./static/plotly/interactive_plot.html" frameborder="0" width="100%"
+							height="500px"></iframe>
+					</div>
+
+					<!--------------------------------->
+				</div>
+			</div>
+			<!--/ Visual Items. -->
+		</div>
+	</section>
+
+	<!------------------------------------------------------------------------->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="content has-text-centered">
+				<!-- Optional icon link (e.g., to GitHub repo) -->
+			</div>
+
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<div class="content">
+						<h6 class="title is-6">Individual Contributions</h6>
+						<p>Add the contributions of each team member here.</p>
+						<p>
+							<em>
+								This website is based on the
+								<a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies website
+									template</a>, which is licensed under a
+								<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+									target="_blank">Creative Commons Attribution-ShareAlike 4.0 International
+									License</a>.
+							</em>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
 </html>
