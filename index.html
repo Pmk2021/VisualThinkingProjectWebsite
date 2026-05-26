@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
 	<link rel="stylesheet" href="./static/css/index.css" />
 	<link rel="icon" href="./static/images/favicon.svg" />
-
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script defer src="./static/js/fontawesome.all.min.js"></script>
 	<script src="./static/js/bulma-carousel.min.js"></script>
@@ -315,7 +315,14 @@
 						</p>
 
 
-
+						<p>
+							This mechanism is particularly relevant for real time use-cases in low-capability hardware,
+							such
+							as embedded systems on UAVs,
+							as the available compute budget can vary depending on the control frequency or the urgency
+							of
+							the navigation decision.
+						</p>
 						<div style="display: flex; gap: 24px; margin-top: 24px; align-items: stretch;">
 							<!-- Standard pipeline -->
 							<div
@@ -333,6 +340,8 @@
 									style="width: 100%; max-width: 500px; border-radius: 8px;" />
 							</div>
 						</div>
+
+
 					</div>
 				</div>
 				<!--/ Introduction. -->
@@ -408,15 +417,36 @@
 				<div class="column is-full-width">
 					<h2 class="title is-3" id="method">III. Methodology</h2>
 					<div class="content has-text-justified">
-						<img src="assets/a.drawio.png" />
+
 						<section>
+
 							<p>
-								Our Anytime Trajectory Model pipeline is displayed above. For
-								each frame fed into the model, the algorithm computes a hidden
-								state, which is then reused when the next frame arrives.
+								Our task is formally defined as follows. Given a sequence of RGB frames and a target
+								agent,
+								we aim to learn a distribution \( P(\tau) \) where \( \tau \in \mathbb{R}^{t \times 3}
+								\)
+								represents a trajectory as a sequence of \( (x, y, z) \) coordinates over \( t \)
+								timesteps.
+								Here, \( x \) and \( y \) denote spatial position, while \( z \) represents the log size
+								of
+								the agent's bounding box — used as a proxy for distance. The distribution \( P \) is
+								modeled
+								as a Gaussian mixture with \( N \) modes, allowing the model to capture the \( N \) most
+								likely trajectories a given agent may follow.
 							</p>
 
-							<h2>Astra</h2>
+							<p>
+								Critically, inference must support variable-length computation: the model should be
+								queryable
+								at any point during processing, trading speed for accuracy depending on the deployment
+								constraints. To achieve this, we build on Astra [cite] as our core
+								architectural
+								inspiration, and extend it with an iterative refinement process that enables continuous
+								improvement of predicted trajectories over time.
+							</p>
+							<h2> Astra Modifications</h2>
+
+
 
 
 
@@ -468,7 +498,7 @@
 					<h3 class="title is-4">Training</h3>
 
 					<p>
-						ATP was trained on the Waymo Motion Dataset <cite>[1]</cite>. At each training step,
+						ATP was trained on the Waymo Motion Dataset [cite]. At each training step,
 						the
 						model
 						received features extracted from the previous <strong>[N]</strong> frames, including
