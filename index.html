@@ -323,21 +323,23 @@
 							of
 							the navigation decision.
 						</p>
-						<div style="display: flex; gap: 24px; margin-top: 24px; align-items: stretch;">
+						<div
+							style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; align-items: stretch;">
+
 							<!-- Standard pipeline -->
 							<div
-								style="flex: 1; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+								style="text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center;">
 								<h3>Standard Trajectory Predictive Pipeline</h3>
 								<img src="assets/no_anytime.jpeg" alt="Standard trajectory predictive pipeline"
-									style="width: 100%; max-width: 500px; border-radius: 8px;" />
+									style="width: 100%; max-width: 500px; border-radius: 8px; display: block; margin: 0 auto;" />
 							</div>
 
 							<!-- Variable latency -->
 							<div
-								style="flex: 1; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);margin-top: 20px">
+								style="text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center;">
 								<h3 style="color: rgb(16, 0, 67); font-weight: 900;">Variable Latency</h3>
 								<img src="assets/anytime.jpeg" alt="Variable latency anytime querying"
-									style="width: 100%; max-width: 500px; border-radius: 8px;" />
+									style="width: 100%; max-width: 500px; border-radius: 8px; display: block; margin: 0 auto;" />
 							</div>
 						</div>
 
@@ -417,6 +419,13 @@
 				<div class="column is-full-width">
 					<h2 class="title is-3" id="method">III. Methodology</h2>
 					<div class="content has-text-justified">
+						<div
+							style="display: block; margin: 20px auto; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: fit-content;">
+							<img src="assets/a.drawio.png" alt="Anytime Trajectory Model pipeline diagram"
+								style="width: 100%; max-width: 400px; border-radius: 8px;" />
+							<p style="margin-top: 12px; font-size: 14px; color: #555;">Anytime Trajectory Model
+								pipeline.</p>
+						</div>
 
 						<section>
 
@@ -452,10 +461,35 @@
 
 							<h2>Feature Extractor</h2>
 
+							<div
+								style="display: block; margin: 20px auto; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: fit-content;">
+								<img src="assets/feature_extractor.gif" alt="Feature extractor example"
+									style="width: 100%; max-width: 600px; border-radius: 8px;" />
+								<p style="margin-top: 12px; font-size: 14px; color: #555;">Feature extractor detections
+									(left) and the corresponding feature map, averaged across spatial dimensions
+									(right).
+								</p>
+							</div>
+
 							<p>
-								YOLO-nano combined with local feature extraction is used to
-								encode visual inputs into a compact representation suitable
-								for downstream trajectory prediction.
+								Using YOLO26 nano for object detection and ByteTrack for tracking allows
+								to perform both global and local feature extraction.
+								This sequence of model and algorithm constitutes the feature extractor block in our
+								pipeline.
+								It is responsible for processing raw RGB inputs and extracting relevant information
+								about
+								the scene, such as:
+							<ul>
+								<li>Bounding box information for each detected object.</li>
+								<li>Object IDs that are consistent across frames.</li>
+								<li>Object class labels.</li>
+								<li>Confidence scores for each detection.</li>
+							</ul>
+							In addition to detection- and tracking-related features, we also use intermediate YOLO layer
+							outputs
+							to encode inputs into compact representation, both at the scene level and at the object
+							level.
+							These features can then be fed into the model for downstream trajectory prediction.
 							</p>
 							<h2 class="title is-4">Iterative Refinement</h2>
 
@@ -612,6 +646,29 @@
 								"As the car drives past the turn, ATM adjusts its most likely mode to once again predict the car will continue moving straight"
 							];
 							let current = 0;
+
+							// Ensure caption container stays the same height to avoid layout shift when switching
+							function setCaptionHeight() {
+								const captionEl = document.getElementById("carousel-caption");
+								const temp = document.createElement('div');
+								temp.style.position = 'absolute';
+								temp.style.visibility = 'hidden';
+								temp.style.width = captionEl.clientWidth + 'px';
+								temp.style.fontSize = window.getComputedStyle(captionEl).fontSize;
+								temp.style.fontFamily = window.getComputedStyle(captionEl).fontFamily;
+								temp.style.lineHeight = window.getComputedStyle(captionEl).lineHeight;
+								document.body.appendChild(temp);
+								let maxH = 0;
+								for (const c of captions) {
+									temp.textContent = c;
+									maxH = Math.max(maxH, temp.clientHeight);
+								}
+								document.body.removeChild(temp);
+								captionEl.style.minHeight = maxH + 'px';
+							}
+
+							window.addEventListener('load', setCaptionHeight);
+							window.addEventListener('resize', setCaptionHeight);
 							function changeSlide(dir) {
 								current = (current + dir + slides.length) % slides.length;
 								document.getElementById("carousel-img").src = slides[current];
