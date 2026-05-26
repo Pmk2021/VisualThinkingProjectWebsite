@@ -416,24 +416,9 @@
 								state, which is then reused when the next frame arrives.
 							</p>
 
-							<h2>Anytime Trajectory Model</h2>
+							<h2>Astra</h2>
 
-							<p>
-								Uniquely, we achieve anytime prediction through iterative
-								refinement steps. At every frame, the model continuously
-								refines its output until a trajectory is requested. At that
-								point, the hidden state is passed through the trajectory
-								predictor to generate an estimate.
-							</p>
 
-							<p>
-								If a new frame arrives before querying, the process is
-								interrupted and the hidden state is reused together with the
-								new frame. This enables a tradeoff between latency and
-								accuracy: earlier queries produce faster but less accurate
-								predictions, while later queries produce more accurate but
-								higher-latency outputs.
-							</p>
 
 							<h2>Feature Extractor</h2>
 
@@ -442,66 +427,95 @@
 								encode visual inputs into a compact representation suitable
 								for downstream trajectory prediction.
 							</p>
-
-							<h2>Refinement Module</h2>
-
-							<p>
-								Three different refinement models were designed and evaluated.
-								Their architectures are shown below.
-							</p>
-
-							<h2>Refinement Module</h2>
+							<h2 class="title is-4">Iterative Refinement</h2>
 
 							<p>
-								Three different refinement models were designed and tested.
-								Their architectures are shown below.
+								To enable anytime refinement in ATP, we adopt an iterative denoise-refinement algorithm.
+								Beginning from a fully random trajectory, the model progressively refines its prediction
+								by conditioning on scene context at each step. The algorithm works as such:
 							</p>
 
-							<div class="container is-max-desktop">
-								<div style="
-											display: flex;
-											gap: 20px;
-											justify-content: space-between;
-										">
-									<!-- Column 1 -->
-									<div style="flex: 1; text-align: center">
-										<img src="assets/a.drawio.png" style="width: 100%; border-radius: 8px" />
-										<h3>Column One</h3>
-										<p>
-											This is some filler text describing the first item. You
-											can explain a model, dataset, or result here.
-										</p>
-									</div>
+							<ol>
+								<li>Initialize a trajectory by sampling from a standard Gaussian distribution.</li>
+								<li>Pass this trajectory into ATP, conditioned on scene information, to produce a
+									refined prediction.</li>
+								<li>If the refinement budget is exhausted, return the current prediction. Otherwise,
+									corrupt the
+									prediction with Gaussian noise according to a scheduled noise level and repeat from
+									step 2.</li>
+							</ol>
 
-									<!-- Column 2 -->
-									<div style="flex: 1; text-align: center">
-										<img src="assets/a.drawio.png" style="width: 100%; border-radius: 8px" />
-										<h3>Column Two</h3>
-										<p>
-											This is some filler text for the second column. Replace
-											with your own description or analysis.
-										</p>
-									</div>
+							<p>
+								The noise scheduler controls the magnitude of noise injected at each iteration. By
+								gradually
+								reducing this noise level across refinement steps, the model is able to incrementally
+								improve
+								its prediction rather than regenerating a trajectory from scratch at every step. This
+								allows
+								ATP to be queried at any point during refinement by trading computation for accuracy,
+								making
+								it well-suited for latency-sensitive deployment scenarios.
+							</p>
 
-									<!-- Column 3 -->
-									<div style="flex: 1; text-align: center">
-										<img src="assets/a.drawio.png" style="width: 100%; border-radius: 8px" />
-										<h3>Column Three</h3>
-										<p>
-											This is some filler text for the third column. Useful
-											for comparisons or variants.
-										</p>
-									</div>
+							<div style="text-align: center; margin-top: 24px;">
+								<div
+									style="display: inline-block; background: white; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+									<img src="assets/atm_iterative_refinement.png" alt="Iterative refinement diagram"
+										style="width: 500px; border-radius: 8px; display: block;" />
 								</div>
 							</div>
-
-							<img src="assets/a.drawio.png" />
-						</section>
 					</div>
-				</div>
-			</div>
-			<!--/ Methodology. -->
-		</div>
+					<h3 class="title is-4">Training</h3>
+
+					<p>
+						ATP was trained on the Waymo Motion Dataset <cite>[1]</cite>. At each training step,
+						the
+						model
+						received features extracted from the previous <strong>[N]</strong> frames, including
+						bounding box
+						information and scene-level context from the scene extractor.
+					</p>
+
+					<p>The loss function is defined as follows:</p>
+
+					<div style="text-align: center; margin: 16px 0; font-style: italic;">
+						1 + 1 = 3
+					</div>
+
+					<p>It consists of three key components:</p>
+
+					<ol>
+						<li><strong>Negative Log-Likelihood Loss</strong> — penalizes the model when the
+							ground
+							truth trajectory is assigned low probability under the predicted distribution.
+						</li>
+						<li><strong>Diversity Loss</strong> — discourages mode collapse,* ensuring the model
+							produces a varied set of plausible trajectories rather than converging to a
+							single
+							prediction.</li>
+						<li><strong>Smoothness Loss</strong> — enforces approximate physical plausibility by
+							encouraging trajectories that are temporally smooth and consistent with
+							realistic
+							motion dynamics.</li>
+					</ol>
+
+					<p>
+						Further mathematical details are provided in the appendix.
+					</p>
+
+					<p style="font-size: 14px; color: #555;">
+						*Mode collapse is a phenomenon common in Mixture Density Networks in which all
+						predicted
+						trajectories collapse to a single output, reducing the diversity and usefulness of
+						the
+						predictions.
+					</p>
+	</section>
+	</div>
+	</div>
+	</div>
+	<!--/ Methodology. -->
+	</div>
 	</section>
 
 	<!------------------------------------------------------------------------->
@@ -522,8 +536,9 @@
 						</p>
 
 						<h3 class="title is-4">Qualitative</h3>
-						<p> Initial checks for model performance were done using qualitative analysis over sample
-							videos:</p>
+						<p> We first evaluated model performance through qualitative analysis on sample videos.
+							Below, we visualize ATP's most likely predicted trajectory for a vehicle approaching an
+							intersection:</p>
 
 						<!-- Carousel -->
 						<div style="text-align: center; margin-top: 16px;">
@@ -531,6 +546,10 @@
 								style="width: 700px; border-radius: 8px; display: block; margin: 0 auto;" />
 							<p id="carousel-label" style="margin-top: 8px; font-weight: 600; font-size: 16px;">Frame 1
 							</p>
+							<p id="carousel-caption"
+								style="margin-top: 4px; font-size: 14px; color: #555; max-width: 700px; margin-left: auto; margin-right: auto;">
+								ATM tracks the movement of an incoming car, and over 8 iterations it refines its output
+								to predict the car will continue to go straight..</p>
 							<div
 								style="margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 24px;">
 								<button onclick="changeSlide(-1)"
@@ -548,31 +567,33 @@
 								"assets/carousel/sample_gif_3.gif"
 							];
 							const labels = ["Frame 1", "Frame 2", "Frame 3"];
-							let current = 0;
-							function changeSlide(dir) {
-								current = (current + dir + slides.length) % slides.length;
-								document.getElementById("carousel-img").src = slides[current];
-								document.getElementById("carousel-counter").textContent = (current + 1) + " / " + slides.length;
-								document.getElementById("carousel-label").textContent = labels[current];
-							}
-						</script>
-
-						<script>
-							const slides = [
-								"assets/carousel/sample_gif_1.gif",
-								"assets/carousel/sample_gif_2.gif",
-								"assets/carousel/sample_gif_3.gif"
+							const captions = [
+								"ATM tracks the movement of an incoming car, and over 8 iterations it refines its output to predict the car will continue to go straight.",
+								"When the car approaches the intersection, the model's most likely mode indicates the car will turn right",
+								"As the car drives past the turn, ATM adjusts its most likely mode to once again predict the car will continue moving straight"
 							];
 							let current = 0;
 							function changeSlide(dir) {
 								current = (current + dir + slides.length) % slides.length;
 								document.getElementById("carousel-img").src = slides[current];
 								document.getElementById("carousel-counter").textContent = (current + 1) + " / " + slides.length;
+								document.getElementById("carousel-label").textContent = labels[current];
+								document.getElementById("carousel-caption").textContent = captions[current];
 							}
 						</script>
 					</div>
 				</div>
 			</div>
+			As demonstrated above, ATM, due to its training on the Waymo dataset, accurately predicts the likely
+			movements of vehicles in a variety of scenarios. The example also highlights ATM's ability to
+			incorporate new information in real time. As the car above approaches the intersection, the model
+			initially predicts a right turn; however, once the car proceeds through the intersection without
+			signaling, the model correctly updates its prediction to straight ahead.
+
+			The first frame further illustrates ATM's anytime refinement in action. Even early refinement
+			steps correctly predicted the vehicle going straight. Despite being relatively inaccurate, this
+			is already useful in a time-constrained pipeline, but with additional computation,
+			ATM's prediction converges closer to the ground truth.
 			<!--/ Results. -->
 		</div>
 	</section>
