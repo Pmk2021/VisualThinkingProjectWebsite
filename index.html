@@ -500,7 +500,16 @@
 					</ol>
 
 					<p>
-						Further mathematical details are provided in the appendix.
+						Further mathematical details are provided in the appendix. The loss curves are displayed below,
+						our model was trained for [N] epochs on a [IDK] gpu, taking around [H] hours.
+
+					<div style="text-align: center; margin-top: 24px;">
+						<div
+							style="display: inline-block; background: white; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+							<img src="assets/loss_curves.png" alt="Iterative refinement diagram"
+								style="width: 500px; border-radius: 8px; display: block;" />
+						</div>
+					</div>
 					</p>
 
 					<p style="font-size: 14px; color: #555;">
@@ -581,21 +590,41 @@
 								document.getElementById("carousel-caption").textContent = captions[current];
 							}
 						</script>
+						As demonstrated above, ATM, due to its training on the Waymo dataset, accurately predicts the
+						likely
+						movements of vehicles in a variety of scenarios. The example also highlights ATM's ability to
+						incorporate new information in real time. As the car above approaches the intersection, the
+						model
+						initially predicts a right turn; however, once the car proceeds through the intersection without
+						signaling, the model correctly updates its prediction to straight ahead.
+
+						The first frame further illustrates ATM's anytime refinement in action. Even early refinement
+						steps correctly predicted the vehicle going straight. Despite being relatively inaccurate, this
+						is already useful in a time-constrained pipeline, but with additional computation,
+						ATM's prediction converges closer to the ground truth.
+						<h3 class="title is-4">Quantitaive</h3>
+						<p>
+							We additionally recorded quantitative results to numerically verify the effectiveness of
+							ATP.
+							Our evaluation focused on three key properties:
+						</p>
+
+						<ol>
+							<li><strong>Accuracy</strong> — How closely do our trajectory predictions match the ground
+								truth?</li>
+							<li><strong>Mode Diversity</strong> — How distinct are the predicted trajectory modes, and
+								does our model avoid mode collapse?</li>
+							<li><strong>Iterative Refinement Effectiveness</strong> — Does prediction accuracy improve
+								as the model is given additional refinement iterations?</li>
+						</ol>
 					</div>
 				</div>
 			</div>
-			As demonstrated above, ATM, due to its training on the Waymo dataset, accurately predicts the likely
-			movements of vehicles in a variety of scenarios. The example also highlights ATM's ability to
-			incorporate new information in real time. As the car above approaches the intersection, the model
-			initially predicts a right turn; however, once the car proceeds through the intersection without
-			signaling, the model correctly updates its prediction to straight ahead.
 
-			The first frame further illustrates ATM's anytime refinement in action. Even early refinement
-			steps correctly predicted the vehicle going straight. Despite being relatively inaccurate, this
-			is already useful in a time-constrained pipeline, but with additional computation,
-			ATM's prediction converges closer to the ground truth.
 			<!--/ Results. -->
+
 		</div>
+
 	</section>
 	<!------------------------------------------------------------------------->
 
