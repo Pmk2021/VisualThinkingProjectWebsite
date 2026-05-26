@@ -522,14 +522,17 @@
 						</p>
 
 						<h3 class="title is-4">Qualitative</h3>
-						<p>Our model predicts trajectories for every object. Sample trajectories are shown below.</p>
+						<p> Initial checks for model performance were done using qualitative analysis over sample
+							videos:</p>
 
 						<!-- Carousel -->
 						<div style="text-align: center; margin-top: 16px;">
 							<img id="carousel-img" src="assets/carousel/sample_gif_1.gif" alt="Sample trajectory"
 								style="width: 700px; border-radius: 8px; display: block; margin: 0 auto;" />
+							<p id="carousel-label" style="margin-top: 8px; font-weight: 600; font-size: 16px;">Frame 1
+							</p>
 							<div
-								style="margin-top: 16px; display: flex; justify-content: center; align-items: center; gap: 24px;">
+								style="margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 24px;">
 								<button onclick="changeSlide(-1)"
 									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8592;</button>
 								<span id="carousel-counter" style="font-size: 16px;">1 / 3</span>
@@ -537,6 +540,22 @@
 									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8594;</button>
 							</div>
 						</div>
+
+						<script>
+							const slides = [
+								"assets/carousel/sample_gif_1.gif",
+								"assets/carousel/sample_gif_2.gif",
+								"assets/carousel/sample_gif_3.gif"
+							];
+							const labels = ["Frame 1", "Frame 2", "Frame 3"];
+							let current = 0;
+							function changeSlide(dir) {
+								current = (current + dir + slides.length) % slides.length;
+								document.getElementById("carousel-img").src = slides[current];
+								document.getElementById("carousel-counter").textContent = (current + 1) + " / " + slides.length;
+								document.getElementById("carousel-label").textContent = labels[current];
+							}
+						</script>
 
 						<script>
 							const slides = [
