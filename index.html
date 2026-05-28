@@ -543,7 +543,25 @@
 					<p>The loss function is defined as follows:</p>
 
 					<div style="text-align: center; margin: 16px 0; font-style: italic;">
-						1 + 1 = 3
+						<!-- TODO Remove use less terms -->
+						$$\begin{align}
+						\mathcal{L} =
+\lambda_{\text{diff}} \mathcal{L}_{\text{diff}}
++ \lambda_{\text{wta-diff}} \mathcal{L}_{\text{wta-diff}}
++ \lambda_{\text{nll}} \mathcal{L}_{\text{nll}}
++ \lambda_{\text{ade}} \mathcal{L}_{\text{minADE}}
++ \lambda_{\text{fde}} \mathcal{L}_{\text{minFDE}} \\
++ \lambda_{\text{mode}} \mathcal{L}_{\text{mode}}
++ \lambda_{\text{mode-margin}} \mathcal{L}_{\text{mode-margin}}
++ \lambda_{\text{cov}} \mathcal{L}_{\text{cov}}
++ \lambda_{\text{bounds}} \mathcal{L}_{\text{bounds}}
++ \lambda_{\text{smooth}} \mathcal{L}_{\text{smooth}} \\
++ \lambda_{\text{accel}} \mathcal{L}_{\text{accel}}
++ \lambda_{\text{jerk}} \mathcal{L}_{\text{jerk}}
++ \lambda_{\text{prior}} \mathcal{L}_{\text{prior-res}}
++ \lambda_{\text{speed}} \mathcal{L}_{\text{speed}}
++ \lambda_{\text{entropy}} \mathcal{L}_{\text{entropy}}
++ \lambda_{\text{div}} \mathcal{L}_{\text{div}}\end{align}$$
 					</div>
 
 					<p>It consists of three key components:</p>
