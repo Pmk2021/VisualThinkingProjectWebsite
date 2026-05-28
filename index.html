@@ -184,13 +184,21 @@
 						</p>
 						<p>
 							<!-- [Approach] Explain your main idea, model, or system in one to two sentences. -->
-							To address this gap, we introduce Anytime Trajectory Prediction
-							(ATP), a lightweight, adaptable trajectory prediction pipeline.
-							ATP supports anytime inference, allowing it to produce usable
-							predictions under varying constraints.
+							In this work we will present ATP, a model based on a anytime prediction framework for which
+                            the agent’s trajectories are iteratively refined, allowing the model to output a usable result
+                            after a limited amount of steps or be improved for longer if more compute is available.
+                            Our approach is based on the transformer architecture and a representation of probable
+                            trajectories as a mixture of gaussians. 
 						</p>
 						<p>
-							<!-- [Results] Summarize key outcomes, such as quantitativeimprovements, qualitative observations, and main conclusions. -->
+							<!-- [Results] Summarize key outcomes, such as quantitative improvements, qualitative observations, and main conclusions. -->
+                            This system has proven to be suitable for real-time trajectory prediction while adapting to the agent’s resources.
+                            From qualitative results, we observed that the model outputs accurate predictions even at early refinement steps,
+                            and that it can predict different probable trajectories.
+                            From quantitative results, the model achieves strong performance on the Waymo Open Motion Dataset,
+                            but doesn't improve with additional refinement steps as expected.
+                            However, we provide improvement directions that we believe will allow the model to fully leverage the anytime prediction framework.
+                            Latency-wise, the model is able to output predictions in a suitable time frame for real-time applications.
 						</p>
 					</div>
 				</div>
@@ -287,41 +295,32 @@
 						<ul>
 							<li>
 								<em>Anytime querying:</em>
-								We introduce an anytime query method that allows our model to
-								meet downstream-defined latency requirements.
+                                We introduce an anytime query method that allows our model to meet downstream-defined latency requirements.
 							</li>
 
 							<li>
 								<em>Probabilistic trajectory modeling:</em>
 								We model future trajectories as a mixture of Gaussians,
 								enabling an explicit and structured representation of
-								multimodal uncertainty.
+								multimodal uncertainty. This allows our model to capture multiple
+                                plausible future trajectories for a given agent.
 							</li>
 
-							<li>
-								<em>Ability to reason about interactions between agents:</em>
-								We design the model infrastructure to allow the model to
-								consider pairwise interactions between agents.
-							</li>
 						</ul>
 
 						<p>
 							Anytime querying is the key feature of our model, unlike existing methods, we defined our
-							model to be able to run for a varyable amount of iterations in order to continuously refine
-							its predictions. Users can choose to
-							run the model for a limited amount of iterations for low-latency but less confident
-							predictions, or alloow the model to run for longer in order to recieve more accurate
-							predictions.
+							model to be able to run for a variable amount of iterations in order to continuously refine
+							its predictions. Users can choose to run the model for a limited amount of iterations for
+                            low-latency but less confident predictions, or allow the model to run for longer in order
+                            to receive more accurate predictions.
 						</p>
 
 
 						<p>
 							This mechanism is particularly relevant for real time use-cases in low-capability hardware,
-							such
-							as embedded systems on UAVs,
-							as the available compute budget can vary depending on the control frequency or the urgency
-							of
-							the navigation decision.
+							such as embedded systems on UAVs, as the available compute budget can vary depending on the
+                            control frequency or the urgency of the navigation decision.
 						</p>
 						<div
 							style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; align-items: stretch;">
