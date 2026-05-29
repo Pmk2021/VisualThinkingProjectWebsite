@@ -184,12 +184,14 @@
 						</p>
 						<p>
 							<!-- [Approach] Explain your main idea, model, or system in one to two sentences. -->
-							In this work we will present ATP, a model based on a anytime prediction framework for which
-							the agent’s trajectories are iteratively refined, allowing the model to output a usable
+							In this work we will present ATP, a model capable of predicting the trajectory of agents
+							based on RGB video input. Our model is based on an anytime prediction framework for which
+							the predicted trajectories are iteratively refined, allowing the model to output a
+							rudamentary
 							result
-							after a limited amount of steps or be improved for longer if more compute is available.
-							Our approach is based on the transformer architecture and a representation of probable
-							trajectories as a mixture of gaussians.
+							after a limited amount of steps or be further improved if more compute is available.
+							Our approach is based off of a diffusion transformer and represents predicted trajectories
+							as a mixture of gaussians distribution.
 						</p>
 						<p>
 							<!-- [Results] Summarize key outcomes, such as quantitative improvements, qualitative observations, and main conclusions. -->
@@ -199,9 +201,8 @@
 							early refinement steps,
 							and that it can predict different probable trajectories.
 							From quantitative results, the model achieves strong performance on the Waymo Open Motion
-							Dataset, increases sightly (6% relative improvement) with more refinement steps but not as
-							much as intended.
-							However, more refinement steps do lead to more confident predictions.
+							Dataset with limited refinement steps, yet additional steps only increased accuracy
+							sightly(6%), while increasing the confidence of our model's predictions.
 							We provide improvement directions that we believe will allow the model to fully
 							leverage the anytime prediction framework.
 							Latency-wise, the model is able to output predictions in a suitable time frame for real-time
