@@ -367,47 +367,73 @@
 					<h2 class="title is-3" id="related-work">II. Related Works</h2>
 					<div class="content has-text-justified">
 						<p>
-							Classical approaches to trajectory prediction often rely on
-							state estimation techniques such as Kalman filters, which assume
-							linear dynamics and Gaussian noise, but struggle with complex,
-							multimodal behavior. Consequently, neural networks have become
-							widely used in the field of trajectory planning.
+							Historically, classical approaches to trajectory prediction often
+                            rely on state estimation techniques such as Kalman filters, which assume
+                            linear dynamics and Gaussian noise, but struggle with complex, multimodal
+                            behavior [CITE]. Consequently, newer architectures such as neural networks
+                            [CITE] and more recently transformers [CITE] have become widely used in the
+                            field of trajectory planning.
 						</p>
 
 						<p>
-							Additionally, with the rise of autonomous driving, a multitude
-							of contests and datasets for object prediction have been
-							created, including the Waymo Open Motion Dataset and related
-							benchmarks.
+							Additionally, with the rise of autonomous driving, a multitude of contests
+                            and datasets for object prediction have been created [CITE KITTI, Argoverse,
+                            nuScenes, Waymo]. The Waymo Open Dataset is a collection of public datasets
+                            that aim to “aid the research community in investigating a wide range of interesting
+                            aspects of machine perception and autonomous driving technology” [CITE]. In our case
+                            the Motion Dataset is the most suitable one with object trajectories and corresponding
+                            3D maps for 103’354 road segments, corresponding to 574 hours of data.
 						</p>
 
 						<p>
-							This has led to many new state-of-the-art algorithms that
-							address the challenge by outputting multimodal trajectory
-							predictions. Specifically, our model is inspired by the
-							following two areas of work:
+							This has led to many new state-of-the-art algorithms which address this challenge by
+                            outputting multimodal trajectory predictions [CITE]. Specifically, our model is inspired
+                            by the following areas of work:
+						</p>
+
+                        <p>
+							<strong>Iterative refinement:</strong>
+								A recent direction in motion prediction consists in predicting the final trajectory
+                                not as a single forward pass but generating a first coarse estimate and then
+                                progressively correcting and improving it with more context information. SmartRefine
+                                is close to this idea: it refines an initial trajectory by retrieving relevant map
+                                and agent context around the trajectory anchors [CITE SmartRefine]. Similarly,
+                                TrackSSM stacks decoder layers to refine trajectories step by step [CITE TrackSSM].
 						</p>
 
 						<p>
 							<strong>Mixture Density Networks:</strong>
-							Mixture Density Networks (MDNs) are models that output mixtures
-							of Gaussians[1]. These approaches have been applied to trajectory
-							prediction and related sequence modeling tasks. However,
-							training them has been shown to be difficult in practice due to
-							their tendency to collapse into a single mode. As a result,
-							several alternative training methods have been proposed,
-							including a “best-of-N” loss function, where only the best
-							prediction is considered. This encourages the model to predict a
-							diverse range of trajectories, an approach that we adapt in our
-							work.
+							Mixture Density networks: MDN are models which output mixed gaussians, this includes
+                            algorithms such as [CITE]. However, training them has been proven to be difficult in
+                            practice due to their tendency to collapse into a single mode. As a result, several
+                            different methods have been suggested, including a "best-of-N" loss function [CITE],
+                            where only the best prediction is considered, encouraging the model to predict a
+                            diverse range of trajectories., which we adapt in our work.
 						</p>
+
+                        <p>
+                            <string>Transformer-based models:</strong>
+                            Wayformer is a family of attention-based architectures for trajectory prediction.
+                            Scenes are first treated by the Encoder to create a useful representation.
+                            Then, the decoder is fed both learned queries and the encoder state to produce the
+                            trajectories. Early fusion of the modality has proven to be efficient by matching
+                            state-of-the-art performances on the Waymo Motion Dataset. The predictor outputs a
+                            Mixture of Gaussians to represent the plausible trajectories agents may take.
+
+                            Also, ASTRA is a transformer-based architecture combining scene and agent information
+                            to perform pedestrian trajectory prediction [CITE]. A U-net feature extractor is used
+                            to extract scenes latent representations besides a graph transformer encoder to model
+                            the social interactions of the agents. These representations are then concatenated and
+                            either fed to a CVAE [CITE] to generate stochastic predictions or through a MLP for a
+                            deterministic output. 
+                        </p>
 
 						<p>
 							<strong>Diffusion Models:</strong>
 							Diffusion-based trajectory prediction methods model future
 							trajectories through iterative denoising processes and have
 							recently demonstrated strong performance on multimodal motion
-							forecasting tasks. These methods provide flexible generative
+							forecasting tasks [CITE]. These methods provide flexible generative
 							modeling capabilities for complex trajectory distributions.
 						</p>
 					</div>
