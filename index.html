@@ -995,24 +995,23 @@
 				<div class="column is-8">
 					<div class="content">
 						<h6 class="title is-6">Individual Contributions</h6>
-						<p>Pranav developed the training pipeline and implemented and trained the graph neural
-							network-based trajectory predictor. Nathan and Léonard configured the AirSim environment
-							and evaluated multiple simulation settings, while Nathan, Giovanni, and Léonard contributed
-							to model design, including transformer and GRU-based architectures. Giovanni additionally
-							set
-							up the Waymo Open Dataset on Izar, developed visualization tools, and implemented and
-							trained
-							the transformer model.
-
-							TO ADD:
+						<p>
+                            Here we outline the specific contributions of each team member to the project:
 						<ul>
 							<li>Giovanni : <ul>
+                                    <li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 							<li>Léonard : <ul>
+                                    <li>AirSim environment setup on izar, which tuned out not working as expected</li>
+                                    <li>Development of the recurent neural network architectures such as LSTM and GRU and their training workflow</li>
+                                    <li>Added evaluation metrics for latency and prediction diversity, including average pairwise distance (APD) and mean pairwise 2-Wasserstein distance (MPW)</li> 
+                                    <li>Tries at improving model loss and numerical stability, including mixture loss fixes, covariance stabilization and masked-object loss support.</li>
+                                    <li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 							<li>Pranav : <ul>
+                                    <li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 							<li>Nathan : <ul>
@@ -1021,6 +1020,7 @@
 										dataset ground truth boxes</li>
 									<li>Attempted YOLO finetuning, which was ultimately abandoned due to repeated
 										training crashes on Izar</li>
+                                    <li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 
