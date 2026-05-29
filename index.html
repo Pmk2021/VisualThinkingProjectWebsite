@@ -890,6 +890,12 @@
 									<td>-71.88 <span class="percent-diff">-4.8%</span></td>
 									<td>-72.45 <span class="percent-diff">-5.6%</span></td>
 								</tr>
+								<tr>
+									<td>Latency (ms)</td>
+									<td>4.09</td>
+									<td>9.99 <span class="percent-diff">+144.0%</span></td>
+									<td>17.60 <span class="percent-diff">+329.8%</span></td>
+								</tr>
 							</tbody>
 						</table>
 
@@ -909,6 +915,16 @@
 						refinement steps help generate more reliable and informative predictions. Even if MinADE does
 						not improve, the model’s increased ability to identify and assign higher confidence to the most
 						likely mode is arguably just as important.
+
+						<p>
+							Latency naturally increases with the number of refinement steps: the prediction head
+							runs in 4 ms with one step, 10 ms with four steps, and 18 ms with eight steps.
+							Since YOLO11n has been measured under 10 ms on lightweight embedded hardware using an
+							NVIDIA Jetson Orin NX 16G at a 640-pixel image size
+							<a class="citation" id="cite-yolo11-latency" href="#ref-yolo11-latency"
+								aria-label="Jump to YOLO11 latency reference">[19]</a>, our compiled 4-step model keeps
+							the full pipeline under 24 ms, which is fast enough for more than 40 FPS in principle.
+						</p>
 
 						<h3 class="title is-4">Additional Examples</h3>
 						We additionally present qualitative examples to further illustrate the strengths and weaknesses of our model. 
@@ -1118,6 +1134,9 @@
                                 </li>
                                 <li id="ref-bytetrack"> Zhang, Y., “ByteTrack: Multi-Object Tracking by Associating Every Detection Box”, <i>arXiv e-prints</i>, Art. no. arXiv:2110.06864, 2021. doi:10.48550/arXiv.2110.06864.
                                     <a class="reference-back" href="#cite-bytetrack" aria-label="Back to ByteTrack reference">Back</a>
+                                </li>
+                                <li id="ref-yolo11-latency"> A. Vina, “Ultralytics YOLO11 on NVIDIA Jetson Orin Nano Super: fast and efficient,” <i>Ultralytics Blog</i>, Jan. 9, 2025. [Online]. Available: https://www.ultralytics.com/blog/ultralytics-yolo11-on-nvidia-jetson-orin-nano-super-fast-and-efficient.
+                                    <a class="reference-back" href="#cite-yolo11-latency" aria-label="Back to YOLO11 latency reference">Back</a>
                                 </li>
 							</ol>
 					</div>
