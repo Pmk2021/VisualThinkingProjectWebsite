@@ -412,14 +412,14 @@
 						</p>
 
                         <p>
-                            <string>Transformer-based models:</strong>
+                            <strong>Transformer-based models:</strong>
                             Wayformer is a family of attention-based architectures for trajectory prediction.
                             Scenes are first treated by the Encoder to create a useful representation.
                             Then, the decoder is fed both learned queries and the encoder state to produce the
                             trajectories. Early fusion of the modality has proven to be efficient by matching
                             state-of-the-art performances on the Waymo Motion Dataset. The predictor outputs a
                             Mixture of Gaussians to represent the plausible trajectories agents may take.
-
+                            <br><br>
                             Also, ASTRA is a transformer-based architecture combining scene and agent information
                             to perform pedestrian trajectory prediction [CITE]. A U-net feature extractor is used
                             to extract scenes latent representations besides a graph transformer encoder to model
@@ -486,13 +486,50 @@
 								inspiration, and extend it with an iterative refinement process that enables continuous
 								improvement of predicted trajectories over time.
 							</p>
-							<h2> Astra Modifications</h2>
 
+                            <h3>Our Model: Anytime Trajectory Predictor (ATP)</h3>
+                            
+                            <p>
+                                Our ATP architecture is heavily inspired by Astra, a transformer architecture trained on
+                                pedestrian trajectory prediction from rgb images: it was trained on bird’s eye view and ground
+                                level view of the scene. Astra has very low latency and low parameter usage, this combined with
+                                its generalizability across views gave us confidence that even a lightweight transformer was
+                                expressive enough to extract relevant information starting from the rgb signal alone.
+                            </p>
 
+                            <p>
+                                We did explore other architectures like GRU and GNN, as they have also shown in the recent
+                                past to be promising models for this specific task. We decided to pivot as at an early
+                                evaluation the transformer architecture was the one behaving the best without significant
+                                tradeoffs in latency or parameter number.
+                            </p>
 
+                            <p>
+                                Like Astra, ATP is divided into a scene extractor and a prediction head. The scene extractor
+                                is a pretrained and then fine-tuned model whose learning objective is detection.
+                                The extractor’s purpose is to identify the targets whose trajectory is to be predicted,
+                                and provide a rich latent space representation of the whole scene. Intuitively it is not
+                                enough to know about all the agents in an environment, but how that environment is in the first place. 
+                            </p>
 
+                            <p>
+                                The extracted features are attended to by a multihead attention capturing all the different
+                                ways in which agents can interact (social interaction/spatial proximity were two captured by ASTRA).
+                                Our prediction head is a diffusion transformer, whose trajectory predictions are fed to a GNN.
+                                Using diffusion provided anytime inference: by calling the sampler an arbitrary amount of times
+                                the output can be made cleaner at the cost of inference time. The parameters of the final GMM
+                                are a simple projection from trajectory points and trajectory hidden state to average and
+                                covariance matrix.
+                            </p>
 
-							<h2>Feature Extractor</h2>
+							<h3> Astra Modifications</h3>
+
+                            <p>
+                                We made several modifications to the original Astra architecture to adapt it to our specific
+                                task and constraints.
+                            </p>
+
+							<h4>Feature Extractor</h4>
 
 							<div
 								style="display: block; margin: 20px auto; text-align: center; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); width: fit-content;">
@@ -634,15 +671,10 @@
 						the
 						predictions.
 					</p>
-	</section>
-	</div>
-	</div>
-	</div>
-	<!--/ Methodology. -->
-	</div>
-	</section>
-
-	<!------------------------------------------------------------------------->
+	            </div>
+             </div>
+        </div>
+    </section>
 
 	<!-----------------------------TODO: RESULTS-------------------------------->
 	<section class="section">
