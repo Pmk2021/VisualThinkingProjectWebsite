@@ -894,12 +894,10 @@
 						</table>
 
 						These quantitative results provide valuable insight into our model’s behavior. As shown above,
-						increasing the number of refinement steps does not lead to substantial improvements in best-mode
-						accuracy. In fact, the mode closest to the ground truth remains almost unchanged across
-						iterations.
+						increasing the number of refinement steps does increase the best-mode accuracy but not as much as expected. 
 
-						However, the other two values, NLL and MaxADE do show more improvement. The reduction
-						in MaxADE indicates that the model’s worst predictions move closer to the ground truth with each
+						However, the MaxADE do show more improvement. This reduction
+						indicates that the model’s worst predictions move closer to the ground truth with each
 						refinement step. Similarly, the decrease in NLL suggests that the model becomes increasingly
 						confident in the correct prediction as the number of refinement steps increases.
 
