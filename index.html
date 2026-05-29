@@ -533,7 +533,10 @@
                             <h3>Our Model: Anytime Trajectory Predictor (ATP)</h3>
                             
                             <p>
-                                Our ATP architecture is heavily inspired by Astra, a transformer architecture trained on
+                                Our ATP architecture is heavily inspired by Astra
+                                <a class="citation" id="cite-astra-method" href="#ref-astra"
+                                    aria-label="Jump to Astra reference">[5]</a>
+                                , a transformer architecture trained on
                                 pedestrian trajectory prediction from rgb images: it was trained on bird’s eye view and ground
                                 level view of the scene. Astra has very low latency and low parameter usage, this combined with
                                 its generalizability across views gave us confidence that even a lightweight transformer was
@@ -541,8 +544,19 @@
                             </p>
 
                             <p>
-                                We did explore other architectures like GRU and GNN, as they have also shown in the recent
-                                past to be promising models for this specific task. We decided to pivot as at an early
+                                We did explore other architectures like GRU 
+                                <a class="citation" id="cite-gru" href="#ref-gru"
+                                    aria-label="Jump to GRU reference">[14]</a>
+                                and GNN
+                                <a class="citation" id="cite-gnn" href="#ref-gnn"
+                                    aria-label="Jump to GNN reference">[15]</a>, 
+                                as they have also shown in the recent
+                                past to be promising models for this specific task
+                                <a class="citation" id="trajectron++" href="#ref-trajectron++"
+                                    aria-label="Jump to Trajectron++ reference">[2]</a>
+                                <a class="citation" id="cite-gnnmodel" href="#ref-gnnmodel"
+                                    aria-label="Jump to GNN model reference">[3]</a>
+                                . We decided to pivot as at an early
                                 evaluation the transformer architecture was the one behaving the best without significant
                                 tradeoffs in latency or parameter number.
                             </p>
@@ -558,7 +572,10 @@
                             <p>
                                 The extracted features are attended to by a multihead attention capturing all the different
                                 ways in which agents can interact (social interaction/spatial proximity were two captured by ASTRA).
-                                Our prediction head is a diffusion transformer, whose trajectory predictions are fed to a GNN.
+                                Our prediction head is a diffusion transformer
+                                <a class="citation" id="cite-diffusion" href="#ref-diffusiontransformer"
+                                    aria-label="Jump to diffusion transformer reference">[16]</a>
+                                , whose trajectory predictions are fed to a GNN.
                                 Using diffusion provided anytime inference: by calling the sampler an arbitrary amount of times
                                 the output can be made cleaner at the cost of inference time. The parameters of the final GMM
                                 are a simple projection from trajectory points and trajectory hidden state to average and
@@ -585,7 +602,13 @@
 							</div>
 
 							<p>
-								Using YOLO26 nano for object detection and ByteTrack for tracking allows
+								Using YOLO26 nano 
+                                <a class="citation" id="cite-yolo26" href="#ref-yolo26"
+                                    aria-label="Jump to YOLO26 reference">[17]</a>
+                                for object detection and ByteTrack 
+                                <a class="citation" id="cite-byetrack" href="#ref-byetrack"
+                                    aria-label="Jump to ByteTrack reference">[18]</a>
+                                for tracking allows
 								to perform both global and local feature extraction.
 								This sequence of model and algorithm constitutes the feature extractor block in our
 								pipeline.
@@ -645,11 +668,10 @@
 					<h3 class="title is-4">Training</h3>
 
 					<p>
-							ATP was trained on the Waymo Motion Dataset
-							<a class="citation" id="cite-waymo-training" href="#ref-waymo"
-								aria-label="Jump to Waymo Motion Dataset reference">[4]</a>. At each training step,
-						the
-						model
+						ATP was trained on the Waymo Motion Dataset
+                        <a class="citation" id="cite-waymo-training" href="#ref-waymo"
+                            aria-label="Jump to Waymo Motion Dataset reference">[9]</a>
+						At each training step, the model
 						received features extracted from the previous <strong>[N]</strong> frames, including
 						bounding box
 						information and scene-level context from the scene extractor.
@@ -697,7 +719,7 @@
 					</ol>
 
 					<p>
-						Further mathematical details are provided in the appendix. The loss curves are displayed below,
+						The loss curves are displayed below,
 						our model was trained for [N] epochs on a 2 NVIDIA V100 GPU, taking around [H] hours.
 
 					<div style="text-align: center; margin-top: 24px;">
@@ -1062,7 +1084,21 @@
                                 <li id="ref-diffusion"> Westny, T., Olofsson, B., and Frisk, E., “Diffusion-Based Environment-Aware Trajectory Prediction”, <i>arXiv e-prints</i>, Art. no. arXiv:2403.11643, 2024. doi:10.48550/arXiv.2403.11643.
                                     <a class="reference-back" href="#cite-diffusion" aria-label="Back to diffusion models reference">Back</a>
                                 </li>
-
+                                <li id="ref-gru"> Cho, K., “Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation”, <i>arXiv e-prints</i>, Art. no. arXiv:1406.1078, 2014. doi:10.48550/arXiv.1406.1078.
+                                    <a class="reference-back" href="#cite-gru" aria-label="Back to GRU reference">Back</a>
+                                </li>
+                                <li id="ref-GNN"> F. Scarselli, M. Gori, A. C. Tsoi, M. Hagenbuchner and G. Monfardini, "The Graph Neural Network Model," in IEEE Transactions on Neural Networks, vol. 20, no. 1, pp. 61-80, Jan. 2009, doi: 10.1109/TNN.2008.2005605. keywords: {Neural networks;Biological system modeling;Data engineering;Computer vision;Chemistry;Biology;Pattern recognition;Data mining;Supervised learning;Parameter estimation;Graphical domains;graph neural networks (GNNs);graph processing;recursive neural networks},
+                                    <a class="reference-back" href="#cite-GNN" aria-label="Back to GNN reference">Back</a>
+                                </li>
+                                <li id="ref-diffusiontransformer"> Peebles, W. and Xie, S., “Scalable Diffusion Models with Transformers”, <i>arXiv e-prints</i>, Art. no. arXiv:2212.09748, 2022. doi:10.48550/arXiv.2212.09748.
+                                    <a class="reference-back" href="#cite-diffusiontransformer" aria-label="Back to Diffusion Transformer reference">Back</a>
+                                </li>
+                                <li id="ref-yolo26"> Hidayatullah, P. and Tubagus, R., “YOLO26: A Comprehensive Architecture Overview and Key Improvements”, <i>arXiv e-prints</i>, Art. no. arXiv:2602.14582, 2026. doi:10.48550/arXiv.2602.14582.
+                                    <a class="reference-back" href="#cite-yolo26" aria-label="Back to YOLO26 reference">Back</a>
+                                </li>
+                                <li id="ref-bytetrack"> Zhang, Y., “ByteTrack: Multi-Object Tracking by Associating Every Detection Box”, <i>arXiv e-prints</i>, Art. no. arXiv:2110.06864, 2021. doi:10.48550/arXiv.2110.06864.
+                                    <a class="reference-back" href="#cite-bytetrack" aria-label="Back to ByteTrack reference">Back</a>
+                                </li>
 							</ol>
 					</div>
 				</div>
