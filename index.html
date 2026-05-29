@@ -976,7 +976,7 @@
 						follow similar directions. Ideally, the predicted trajectories would be sufficiently diverse to
 						capture the full range of plausible motions an object could take.
 
-						<h3> Attempted solutions to fix trajectory failiure points:</h3>
+						<h3> Attempted Failiure Points Improvements:</h3>
 
 						<p>
 							Below, we discuss several solutions we explored in an attempt to address the above
@@ -1099,50 +1099,30 @@
 					<div class="content">
 						<h6 class="title is-6">Individual Contributions</h6>
 						<p>
-							Here we outline the specific contributions of each team member to the project:
-						<ul>
-							<li>Giovanni : <ul>
-									<li>Co-author of the website content and structure </li>
-								</ul>
-							</li>
-							<li>Léonard : <ul>
-									<li>AirSim environment setup on izar, which tuned out not working as expected</li>
-									<li>Development of the recurent neural network architectures such as LSTM and GRU
-										and their training workflow</li>
-									<li>Added evaluation metrics for latency and prediction diversity, including average
-										pairwise distance (APD) and mean pairwise 2-Wasserstein distance (MPW)</li>
-									<li>Tries at improving model loss and numerical stability, including mixture loss
-										fixes, covariance stabilization and masked-object loss support.</li>
-									<li>Co-author of the website content and structure </li>
-								</ul>
-							</li>
-							<li>Pranav : <ul>
-									<li>Co-author of the website content and structure </li>
-								</ul>
-							</li>
-							<li>Nathan : <ul>
-									<li>Feature extractor and End-to-end pipeline implementation</li>
-									<li>Computation of YOLO nano features on both its own detections and on Waymo
-										dataset ground truth boxes</li>
-									<li>Attempted YOLO finetuning, which was ultimately abandoned due to repeated
-										training crashes on Izar</li>
-									<li>Co-author of the website content and structure </li>
-								</ul>
-							</li>
+							Giovanni set up the Waymo Open Dataset on Izar, developed visualization tools, and
+							implemented and trained the diffusion model. Pranav developed the training pipeline and
+							implemented the graph neural network-based trajectory predictor. Nathan and Léonard worked
+							on the AirSim environment, model architecture design, and evaluation metrics. Nathan
+							additionally implemented the feature extraction and end-to-end pipeline, including
+							YOLO-based feature computation and finetuning experiments. Léonard developed and trained
+							recurrent architectures such as LSTM and GRU models, and explored improvements to model loss
+							and numerical stability. All authors contributed to the website content and structure.
 
 
-							</p>
-							<p>
-								<em>
-									This website is based on the
-									<a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies
-										website
-										template</a>, which is licensed under a
-									<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
-										target="_blank">Creative Commons Attribution-ShareAlike 4.0 International
-										License</a>.
-								</em>
-							</p>
+
+
+						</p>
+						<p>
+							<em>
+								This website is based on the
+								<a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies
+									website
+									template</a>, which is licensed under a
+								<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+									target="_blank">Creative Commons Attribution-ShareAlike 4.0 International
+									License</a>.
+							</em>
+						</p>
 					</div>
 				</div>
 			</div>
