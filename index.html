@@ -910,16 +910,23 @@
 						indicates that the model’s worst predictions move closer to the ground truth with each
 						refinement step. Similarly, the decrease in NLL suggests that the model becomes increasingly
 						confident in the correct prediction as the number of refinement steps increases.
+						<p>
+							What does this tell us?
 
-						What does this tell us?
+						</p>
 
-						Rather than significantly improving raw accuracy, additional refinement steps primarily enhance
-						the model’s confidence in the correct prediction. Although this differs somewhat from our
-						original objective, it is still an important and useful result. It demonstrates that additional
-						refinement steps help generate more reliable and informative predictions. Even if MinADE does
-						not improve, the model’s increased ability to identify and assign higher confidence to the most
-						likely mode is arguably just as important.
-
+						<p>
+							Rather than significantly improving raw accuracy, additional refinement steps primarily
+							enhance
+							the model’s confidence in the correct prediction. Although this differs somewhat from our
+							original objective, it is still an important and useful result. It demonstrates that
+							additional
+							refinement steps help generate more reliable and informative predictions. Even if MinADE
+							does
+							not improve, the model’s increased ability to identify and assign higher confidence to the
+							most
+							likely mode is arguably just as important.
+						</p>
 						<p>
 							Latency naturally increases with the number of refinement steps: the prediction head
 							runs in 4 ms with one step, 10 ms with four steps, and 18 ms with eight steps.
