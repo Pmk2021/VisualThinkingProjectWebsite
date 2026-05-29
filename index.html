@@ -613,16 +613,13 @@
 							</div>
 
 							<p>
-								Using YOLO26 nano
+								YOLO26 nano
 								<a class="citation" id="cite-yolo26" href="#ref-yolo26"
 									aria-label="Jump to YOLO26 reference">[17]</a>
 								for object detection and ByteTrack
 								<a class="citation" id="cite-byetrack" href="#ref-byetrack"
 									aria-label="Jump to ByteTrack reference">[18]</a>
-								for tracking allows
-								to perform both global and local feature extraction.
-								This sequence of model and algorithm constitutes the feature extractor block in our
-								pipeline.
+								for tracking form the feature extraction portion of ATP.
 								It is responsible for processing raw RGB inputs and extracting relevant information
 								about
 								the scene, such as:
@@ -636,7 +633,8 @@
 							outputs
 							to encode inputs into compact representation, both at the scene level and at the object
 							level.
-							These features can then be fed into the model for downstream trajectory prediction.
+							These features can then be fed into ATP to condition the model on scene information without
+							the need for additional compute spent on feature extraction.
 							</p>
 							<h4 class="title is-4">Iterative Refinement</h4>
 
