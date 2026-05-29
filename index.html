@@ -621,7 +621,7 @@
 								<li>Object class labels.</li>
 								<li>Confidence scores for each detection.</li>
 							</ul>
-							In addition to detection- and tracking-related features, we also use intermediate YOLO layer
+							In addition to detection and tracking-related features, we also use intermediate YOLO layer
 							outputs
 							to encode inputs into compact representation, both at the scene level and at the object
 							level.
@@ -847,16 +847,16 @@
 						</p>
 
 						<ol>
-							<li><strong>Minimum Average Displacement Error(MinADE)</strong> — What is the smallest mean
+							<li><strong>Minimum Average Displacement Error (MinADE)</strong> — What is the smallest mean
 								error
 								between our predicted trajectories and the ground truth?</li>
-							<li><strong>Maximum Average Displacement Error(MaxADE)</strong> — What is the maximum mean
+							<li><strong>Maximum Average Displacement Error (MaxADE)</strong> — What is the maximum mean
 								error
 								between our predicted trajectories and the ground truth? Ideally, this value should be
 								low, similar to MinADE,
 								yet not exactly the same. If this value is too close to MinADE, that suggests mode
 								collapse, where our model's modes are always nearly identical</li>
-							<li><strong>Negative Log Likelihood(NLL)</strong> — How likely is the ground truth given the
+							<li><strong>Negative Log Likelihood (NLL)</strong> — How likely is the ground truth given the
 								probability density
 								function our model outputs(lower is better).</li>
 						</ol>
