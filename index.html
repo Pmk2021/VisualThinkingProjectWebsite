@@ -698,39 +698,30 @@
 						<!-- TODO Remove use less terms -->
 						$$\begin{align}
 						\mathcal{L} =
-						\lambda_{\text{diff}} \mathcal{L}_{\text{diff}}
-						+ \lambda_{\text{wta-diff}} \mathcal{L}_{\text{wta-diff}}
 						+ \lambda_{\text{nll}} \mathcal{L}_{\text{nll}}
 						+ \lambda_{\text{ade}} \mathcal{L}_{\text{minADE}}
-						+ \lambda_{\text{fde}} \mathcal{L}_{\text{minFDE}} \\
-						+ \lambda_{\text{mode}} \mathcal{L}_{\text{mode}}
-						+ \lambda_{\text{mode-margin}} \mathcal{L}_{\text{mode-margin}}
-						+ \lambda_{\text{cov}} \mathcal{L}_{\text{cov}}
-						+ \lambda_{\text{bounds}} \mathcal{L}_{\text{bounds}}
-						+ \lambda_{\text{smooth}} \mathcal{L}_{\text{smooth}} \\
-						+ \lambda_{\text{accel}} \mathcal{L}_{\text{accel}}
-						+ \lambda_{\text{jerk}} \mathcal{L}_{\text{jerk}}
-						+ \lambda_{\text{prior}} \mathcal{L}_{\text{prior-res}}
-						+ \lambda_{\text{speed}} \mathcal{L}_{\text{speed}}
-						+ \lambda_{\text{entropy}} \mathcal{L}_{\text{entropy}}
-						+ \lambda_{\text{div}} \mathcal{L}_{\text{div}}\end{align}$$
+						+ \lambda_{\text{smooth}} \mathcal{L}_{\text{smooth}}
+						\end{align}$$
 					</div>
 
-					<p>It consists of three key components:</p>
+					<p>It consists of three key components, each weighted by a \( \lambda \) term:</p>
 
 					<ol>
 						<li><strong>Negative Log-Likelihood Loss</strong> — penalizes the model when the
 							ground
 							truth trajectory is assigned low probability under the predicted distribution.
 						</li>
-						<li><strong>Diversity Loss</strong> — discourages mode collapse,* ensuring the model
-							produces a varied set of plausible trajectories rather than converging to a
-							single
+						<li><strong>minADE(minimum Average Displacement Error)</strong> — The average error between the
+							points of the predicted trajectory, and the predicted mode closest to that trajectory.
+							Discourages mode
+							collapse,* by rewarding the model for its best mode, while avoiding punishing it for any
+							modes which may be further away for the ground truth.
 							prediction.</li>
 						<li><strong>Smoothness Loss</strong> — enforces approximate physical plausibility by
 							encouraging trajectories that are temporally smooth and consistent with
 							realistic
-							motion dynamics.</li>
+							motion dynamics. Is defined to be the average acceleration. By minimizing this, the model
+							avoids predicting trajectories consting of unnatural velocities or sudden jerks.</li>
 					</ol>
 
 					<p>
@@ -993,7 +984,7 @@
 
 						<p>
 							<b>Differing Architectures:</b> In addition to the transformer-based approach, we also
-							experimented with Graph Neural Network (GNN) <a class="citation" id="cite-gnn"
+							experimented with Graph Neural Networks (GNN) <a class="citation" id="cite-gnn"
 								href="#ref-gnn" aria-label="Jump to GNN reference">[15]</a>, and GRU <a class="citation"
 								id="cite-gnn" href="#ref-gru" aria-label="Jump to GRU reference">[14]</a> style
 							models. However,
