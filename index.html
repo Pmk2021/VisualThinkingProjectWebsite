@@ -707,17 +707,20 @@
 					<p>It consists of three key components, each weighted by a \( \lambda \) term:</p>
 
 					<ol>
-						<li><strong>Negative Log-Likelihood Loss</strong> — penalizes the model when the
+						<li><strong>Negative Log-Likelihood Loss(\( \lambda = 0.1\))</strong> — penalizes the model when
+							the
 							ground
 							truth trajectory is assigned low probability under the predicted distribution.
 						</li>
-						<li><strong>minADE(minimum Average Displacement Error)</strong> — The average error between the
+						<li><strong>minADE(minimum Average Displacement Error)(\( \lambda = 1\))</strong> — The average
+							error between the
 							points of the predicted trajectory, and the predicted mode closest to that trajectory.
 							Discourages mode
 							collapse,* by rewarding the model for its best mode, while avoiding punishing it for any
 							modes which may be further away for the ground truth.
 							prediction.</li>
-						<li><strong>Smoothness Loss</strong> — enforces approximate physical plausibility by
+						<li><strong>Smoothness Loss(\( \lambda = 0.1\))</strong> — enforces approximate physical
+							plausibility by
 							encouraging trajectories that are temporally smooth and consistent with
 							realistic
 							motion dynamics. Is defined to be the average acceleration. By minimizing this, the model
