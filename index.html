@@ -185,20 +185,26 @@
 						<p>
 							<!-- [Approach] Explain your main idea, model, or system in one to two sentences. -->
 							In this work we will present ATP, a model based on a anytime prediction framework for which
-                            the agent’s trajectories are iteratively refined, allowing the model to output a usable result
-                            after a limited amount of steps or be improved for longer if more compute is available.
-                            Our approach is based on the transformer architecture and a representation of probable
-                            trajectories as a mixture of gaussians. 
+							the agent’s trajectories are iteratively refined, allowing the model to output a usable
+							result
+							after a limited amount of steps or be improved for longer if more compute is available.
+							Our approach is based on the transformer architecture and a representation of probable
+							trajectories as a mixture of gaussians.
 						</p>
 						<p>
 							<!-- [Results] Summarize key outcomes, such as quantitative improvements, qualitative observations, and main conclusions. -->
-                            This system has proven to be suitable for real-time trajectory prediction while adapting to the agent’s resources.
-                            From qualitative results, we observed that the model outputs accurate predictions even at early refinement steps,
-                            and that it can predict different probable trajectories.
-                            From quantitative results, the model achieves strong performance on the Waymo Open Motion Dataset,
-                            but doesn't improve with additional refinement steps as expected.
-                            However, we provide improvement directions that we believe will allow the model to fully leverage the anytime prediction framework.
-                            Latency-wise, the model is able to output predictions in a suitable time frame for real-time applications.
+							This system has proven to be suitable for real-time trajectory prediction while adapting to
+							the agent’s resources.
+							From qualitative results, we observed that the model outputs accurate predictions even at
+							early refinement steps,
+							and that it can predict different probable trajectories.
+							From quantitative results, the model achieves strong performance on the Waymo Open Motion
+							Dataset,
+							but doesn't improve with additional refinement steps as expected.
+							However, we provide improvement directions that we believe will allow the model to fully
+							leverage the anytime prediction framework.
+							Latency-wise, the model is able to output predictions in a suitable time frame for real-time
+							applications.
 						</p>
 					</div>
 				</div>
@@ -296,7 +302,8 @@
 						<ul>
 							<li>
 								<em>Anytime querying:</em>
-                                We introduce an anytime query method that allows our model to meet downstream-defined latency requirements.
+								We introduce an anytime query method that allows our model to meet downstream-defined
+								latency requirements.
 							</li>
 
 							<li>
@@ -304,7 +311,7 @@
 								We model future trajectories as a mixture of Gaussians,
 								enabling an explicit and structured representation of
 								multimodal uncertainty. This allows our model to capture multiple
-                                plausible future trajectories for a given agent.
+								plausible future trajectories for a given agent.
 							</li>
 
 						</ul>
@@ -313,15 +320,15 @@
 							Anytime querying is the key feature of our model, unlike existing methods, we defined our
 							model to be able to run for a variable amount of iterations in order to continuously refine
 							its predictions. Users can choose to run the model for a limited amount of iterations for
-                            low-latency but less confident predictions, or allow the model to run for longer in order
-                            to receive more accurate predictions.
+							low-latency but less confident predictions, or allow the model to run for longer in order
+							to receive more accurate predictions.
 						</p>
 
 
 						<p>
 							This mechanism is particularly relevant for real time use-cases in low-capability hardware,
 							such as embedded systems on UAVs, as the available compute budget can vary depending on the
-                            control frequency or the urgency of the navigation decision.
+							control frequency or the urgency of the navigation decision.
 						</p>
 						<div
 							style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px; align-items: stretch;">
@@ -546,22 +553,22 @@
 						<!-- TODO Remove use less terms -->
 						$$\begin{align}
 						\mathcal{L} =
-\lambda_{\text{diff}} \mathcal{L}_{\text{diff}}
-+ \lambda_{\text{wta-diff}} \mathcal{L}_{\text{wta-diff}}
-+ \lambda_{\text{nll}} \mathcal{L}_{\text{nll}}
-+ \lambda_{\text{ade}} \mathcal{L}_{\text{minADE}}
-+ \lambda_{\text{fde}} \mathcal{L}_{\text{minFDE}} \\
-+ \lambda_{\text{mode}} \mathcal{L}_{\text{mode}}
-+ \lambda_{\text{mode-margin}} \mathcal{L}_{\text{mode-margin}}
-+ \lambda_{\text{cov}} \mathcal{L}_{\text{cov}}
-+ \lambda_{\text{bounds}} \mathcal{L}_{\text{bounds}}
-+ \lambda_{\text{smooth}} \mathcal{L}_{\text{smooth}} \\
-+ \lambda_{\text{accel}} \mathcal{L}_{\text{accel}}
-+ \lambda_{\text{jerk}} \mathcal{L}_{\text{jerk}}
-+ \lambda_{\text{prior}} \mathcal{L}_{\text{prior-res}}
-+ \lambda_{\text{speed}} \mathcal{L}_{\text{speed}}
-+ \lambda_{\text{entropy}} \mathcal{L}_{\text{entropy}}
-+ \lambda_{\text{div}} \mathcal{L}_{\text{div}}\end{align}$$
+						\lambda_{\text{diff}} \mathcal{L}_{\text{diff}}
+						+ \lambda_{\text{wta-diff}} \mathcal{L}_{\text{wta-diff}}
+						+ \lambda_{\text{nll}} \mathcal{L}_{\text{nll}}
+						+ \lambda_{\text{ade}} \mathcal{L}_{\text{minADE}}
+						+ \lambda_{\text{fde}} \mathcal{L}_{\text{minFDE}} \\
+						+ \lambda_{\text{mode}} \mathcal{L}_{\text{mode}}
+						+ \lambda_{\text{mode-margin}} \mathcal{L}_{\text{mode-margin}}
+						+ \lambda_{\text{cov}} \mathcal{L}_{\text{cov}}
+						+ \lambda_{\text{bounds}} \mathcal{L}_{\text{bounds}}
+						+ \lambda_{\text{smooth}} \mathcal{L}_{\text{smooth}} \\
+						+ \lambda_{\text{accel}} \mathcal{L}_{\text{accel}}
+						+ \lambda_{\text{jerk}} \mathcal{L}_{\text{jerk}}
+						+ \lambda_{\text{prior}} \mathcal{L}_{\text{prior-res}}
+						+ \lambda_{\text{speed}} \mathcal{L}_{\text{speed}}
+						+ \lambda_{\text{entropy}} \mathcal{L}_{\text{entropy}}
+						+ \lambda_{\text{div}} \mathcal{L}_{\text{div}}\end{align}$$
 					</div>
 
 					<p>It consists of three key components:</p>
@@ -715,12 +722,18 @@
 						</p>
 
 						<ol>
-							<li><strong>Accuracy</strong> — How closely do our trajectory predictions match the ground
-								truth?</li>
-							<li><strong>Mode Diversity</strong> — How distinct are the predicted trajectory modes, and
-								does our model avoid mode collapse?</li>
-							<li><strong>Iterative Refinement Effectiveness</strong> — Does prediction accuracy improve
-								as the model is given additional refinement iterations?</li>
+							<li><strong>Minimum Average Displacement Error(MinADE)</strong> — What is the smallest mean
+								error
+								between our predicted trajectories and the ground truth?</li>
+							<li><strong>Maximum Average Displacement Error(MaxADE)</strong> — What is the maximum mean
+								error
+								between our predicted trajectories and the ground truth? Ideally, this value should be
+								low, similar to MinADE,
+								yet not exactly the same. If this value is too close to MinADE, that suggests mode
+								collapse, where our model's modes are always nearly identical</li>
+							<li><strong>Negative Log Likelihood(NLL)</strong> — How likely is the ground truth given the
+								probability density
+								function our model outputs(lower is better).</li>
 						</ol>
 
 						<table class="table is-bordered is-striped is-hoverable is-fullwidth" style="margin-top: 24px;">
@@ -734,22 +747,22 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>Accuracy</td>
-									<td>—</td>
-									<td>—</td>
-									<td>—</td>
+									<td>MinADE</td>
+									<td>0.0856</td>
+									<td>0.0808</td>
+									<td>0.0798</td>
 								</tr>
 								<tr>
-									<td>Mode Diversity</td>
-									<td>—</td>
-									<td>—</td>
-									<td>—</td>
+									<td>MaxADE</td>
+									<td>0.2135</td>
+									<td>0.2050</td>
+									<td>0.1965</td>
 								</tr>
 								<tr>
-									<td>Iterative Refinement Effectiveness</td>
-									<td>—</td>
-									<td>—</td>
-									<td>—</td>
+									<td>NLL</td>
+									<td>-68.58</td>
+									<td>-71.88</td>
+									<td>-72.45</td>
 								</tr>
 							</tbody>
 						</table>
@@ -974,39 +987,48 @@
 				<div class="column is-8">
 					<div class="content">
 						<h6 class="title is-6">Individual Contributions</h6>
-						<p>Pranav developed the training pipeline and implemented and trained the graph neural 
-							network-based trajectory predictor. Nathan and Léonard configured the AirSim environment 
-							and evaluated multiple simulation settings, while Nathan, Giovanni, and Léonard contributed 
-							to model design, including transformer and GRU-based architectures. Giovanni additionally set
-							up the Waymo Open Dataset on Izar, developed visualization tools, and implemented and trained
+						<p>Pranav developed the training pipeline and implemented and trained the graph neural
+							network-based trajectory predictor. Nathan and Léonard configured the AirSim environment
+							and evaluated multiple simulation settings, while Nathan, Giovanni, and Léonard contributed
+							to model design, including transformer and GRU-based architectures. Giovanni additionally
+							set
+							up the Waymo Open Dataset on Izar, developed visualization tools, and implemented and
+							trained
 							the transformer model.
-							
-							TO ADD:
-							<ul>
-								<li>Giovanni : <ul>
-								</ul></li>
-								<li>Léonard : <ul>
-								</ul></li>
-								<li>Pranav : <ul>
-								</ul></li>
-								<li>Nathan : <ul>
-									<li>Feature extractor and End-to-end pipeline implementation</li>
-									<li>Computation of YOLO nano features on both its own detections and on Waymo dataset ground truth boxes</li>
-									<li>Attempted YOLO finetuning, which was ultimately abandoned due to repeated training crashes on Izar</li>
-								</ul></li>
 
-							
-						</p>
-						<p>
-							<em>
-								This website is based on the
-								<a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies website
-									template</a>, which is licensed under a
-								<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
-									target="_blank">Creative Commons Attribution-ShareAlike 4.0 International
-									License</a>.
-							</em>
-						</p>
+							TO ADD:
+						<ul>
+							<li>Giovanni : <ul>
+								</ul>
+							</li>
+							<li>Léonard : <ul>
+								</ul>
+							</li>
+							<li>Pranav : <ul>
+								</ul>
+							</li>
+							<li>Nathan : <ul>
+									<li>Feature extractor and End-to-end pipeline implementation</li>
+									<li>Computation of YOLO nano features on both its own detections and on Waymo
+										dataset ground truth boxes</li>
+									<li>Attempted YOLO finetuning, which was ultimately abandoned due to repeated
+										training crashes on Izar</li>
+								</ul>
+							</li>
+
+
+							</p>
+							<p>
+								<em>
+									This website is based on the
+									<a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies
+										website
+										template</a>, which is licensed under a
+									<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+										target="_blank">Creative Commons Attribution-ShareAlike 4.0 International
+										License</a>.
+								</em>
+							</p>
 					</div>
 				</div>
 			</div>
