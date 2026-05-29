@@ -541,13 +541,13 @@
 								<a class="citation" id="cite-astra-method" href="#ref-astra"
 									aria-label="Jump to Astra reference">[5]</a>
 								, a transformer architecture trained on
-								pedestrian trajectory prediction from rgb images: it was trained on bird’s eye view and
+								pedestrian trajectory prediction from rgb images: it was trained on bird’s eye and
 								ground
-								level view of the scene. Astra has very low latency and low parameter usage, this
+								level views of the scene. Astra has very low latency and has a limited parameter size,
+								this
 								combined with
-								its generalizability across views gave us confidence that even a lightweight transformer
-								was
-								expressive enough to extract relevant information starting from the rgb signal alone.
+								its generalizability across views was the reason we selected Astra as the inspiration
+								for our model.
 							</p>
 
 							<p>
@@ -556,7 +556,7 @@
 									aria-label="Jump to GRU reference">[14]</a>
 								and GNN
 								[<a class="citation" id="cite-gnn" href="#ref-gnn"
-									aria-label="Jump to GNN reference">[15]</a>,]
+									aria-label="Jump to GNN reference">[15]</a>,] based models
 								as they have also shown in the recent
 								past to be promising models for this specific task
 								<a class="citation" id="trajectron++" href="#ref-trajectron++"
@@ -565,8 +565,8 @@
 									aria-label="Jump to GNN model reference">[3]</a>
 								. We decided to pivot at a certain stage to focus only on training
 								and evaluating the transformer architecture,
-								as it was the one behaving the best without significant
-								tradeoffs in latency or parameter number.
+								as it had the best performance without significant
+								tradeoffs in latency or model size.
 							</p>
 
 							<p>
