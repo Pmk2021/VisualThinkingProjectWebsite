@@ -695,11 +695,12 @@
 						\mathcal{L} =
 						+ \lambda_{\text{nll}} \mathcal{L}_{\text{nll}}
 						+ \lambda_{\text{ade}} \mathcal{L}_{\text{minADE}}
-						+ \lambda_{\text{smooth}} \mathcal{L}_{\text{smooth}}
+						+ \lambda_{\text{fde}} \mathcal{L}_{\text{fde}}
+						+ \lambda_{\text{diff}}
 						\end{align}$$
 					</div>
 
-					<p>It consists of three key components, each weighted by a \( \lambda \) term:</p>
+					<p>It consists of four key components, each weighted by a \( \lambda \) term:</p>
 
 					<ol>
 						<li><strong>Negative Log-Likelihood Loss(\( \lambda = 0.1\))</strong> — penalizes the model when
@@ -707,18 +708,14 @@
 							ground
 							truth trajectory is assigned low probability under the predicted distribution.
 						</li>
-						<li><strong>minADE(minimum Average Displacement Error)(\( \lambda = 1\))</strong> — The average
+						<li><strong>minADE(minimum Average Displacement Error) and minFDE (minimum Final Displacement Error)(\( \lambda = 1\))</strong> — The average
 							error between the
 							points of the predicted trajectory, and the predicted mode closest to that trajectory.
 							Discourages mode
-							collapse,* by rewarding the model for its best mode, while avoiding punishing it for any
-							modes which may be further away for the ground truth.</li>
-						<li><strong>Smoothness Loss(\( \lambda = 0.1\))</strong> — enforces approximate physical
-							plausibility by
-							encouraging trajectories that are temporally smooth and consistent with
-							realistic
-							motion dynamics. It is defined to be the average acceleration. By minimizing this, the model
-							avoids predicting trajectories consting of unnatural velocities or sudden jerks.</li>
+							collapse, by rewarding the model for its best mode, while avoiding punishing it for any
+							modes which may be further away for the ground truth. The FDE loss serves as a further incentive
+						to correctly predict final position of agents</li>
+						<li><strong>diff</strong> — is the canonical diffusion error denoising error.</li>
 					</ol>
 
 					<p>
@@ -842,6 +839,77 @@
 						steps correctly predicted the vehicle going straight. Despite being relatively inaccurate, this
 						is already useful in a time-constrained pipeline, but with additional computation,
 						ATM's prediction converges closer to the ground truth.
+
+						<h3 class="title is-4">Baseline Qualitative Results</h3>
+						<p>
+							For comparison, we also visualize qualitative outputs from the baseline models. Files
+							starting with <code>astra</code> correspond to the ASTRA baseline, while the
+							<code>sample</code> result corresponds to the MLP baseline.
+						</p>
+
+						<div style="text-align: center; margin-top: 16px; margin-bottom: 24px;">
+							<img id="baseline-carousel-img" src="assets/baseline/astra_1094.png"
+								alt="ASTRA baseline qualitative result"
+								style="width: 700px; max-width: 100%; border-radius: 8px; display: block; margin: 0 auto;" />
+							<p id="baseline-carousel-label" style="margin-top: 8px; font-weight: 600; font-size: 16px;">
+								ASTRA baseline
+							</p>
+							<p id="baseline-carousel-caption"
+								style="margin-top: 4px; font-size: 14px; color: #555; max-width: 700px; margin-left: auto; margin-right: auto;">
+								Qualitative trajectory prediction produced by the ASTRA baseline.
+							</p>
+							<div
+								style="margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 24px;">
+								<button onclick="changeBaselineSlide(-1)"
+									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8592;</button>
+								<span id="baseline-carousel-counter" style="font-size: 16px;">1 / 4</span>
+								<button onclick="changeBaselineSlide(1)"
+									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8594;</button>
+							</div>
+						</div>
+
+						<script>
+							const baselineSlides = [
+								{
+									src: "assets/baseline/astra_1094.png",
+									label: "ASTRA baseline",
+									alt: "ASTRA baseline qualitative result",
+									caption: "Qualitative trajectory prediction produced by the ASTRA baseline."
+								},
+								{
+									src: "assets/baseline/astra_1095.png",
+									label: "ASTRA baseline",
+									alt: "ASTRA baseline qualitative result",
+									caption: "A second qualitative prediction produced by the ASTRA baseline."
+								},
+								{
+									src: "assets/baseline/astra_1096.png",
+									label: "ASTRA baseline",
+									alt: "ASTRA baseline qualitative result",
+									caption: "A third qualitative prediction produced by the ASTRA baseline."
+								},
+								{
+									src: "assets/baseline/sample_000813.gif",
+									label: "MLP baseline",
+									alt: "MLP baseline qualitative result",
+									caption: "Qualitative trajectory prediction produced by the MLP baseline."
+								}
+							];
+							let currentBaseline = 0;
+
+							function changeBaselineSlide(dir) {
+								currentBaseline = (currentBaseline + dir + baselineSlides.length) % baselineSlides.length;
+								const slide = baselineSlides[currentBaseline];
+								const image = document.getElementById("baseline-carousel-img");
+								image.src = slide.src;
+								image.alt = slide.alt;
+								document.getElementById("baseline-carousel-counter").textContent =
+									(currentBaseline + 1) + " / " + baselineSlides.length;
+								document.getElementById("baseline-carousel-label").textContent = slide.label;
+								document.getElementById("baseline-carousel-caption").textContent = slide.caption;
+							}
+						</script>
+
 						<h3 class="title is-4">Quantitative</h3>
 						<p>
 							We additionally recorded quantitative results to numerically verify the effectiveness of
@@ -877,15 +945,19 @@
 							<tbody>
 								<tr>
 									<td>MinADE</td>
-									<td>0.0856</td>
-									<td>0.0808 <span class="percent-diff">-5.6%</span></td>
-									<td>0.0798 <span class="percent-diff">-6.8%</span></td>
+									<td>0.0856<br><span class="percent-diff">+24.7% vs ASTRA</span></td>
+									<td>0.0808 <span class="percent-diff">-5.6%</span><br><span
+											class="percent-diff">+28.9% vs ASTRA</span></td>
+									<td>0.0798 <span class="percent-diff">-6.8%</span><br><span
+											class="percent-diff">+29.8% vs ASTRA</span></td>
 								</tr>
 								<tr>
 									<td>MaxADE</td>
-									<td>0.2135</td>
-									<td>0.2050 <span class="percent-diff">-4.0%</span></td>
-									<td>0.1965 <span class="percent-diff">-8.0%</span></td>
+									<td>0.2135<br><span class="percent-diff">+11.4% vs ASTRA</span></td>
+									<td>0.2050 <span class="percent-diff">-4.0%</span><br><span
+											class="percent-diff">+14.9% vs ASTRA</span></td>
+									<td>0.1965 <span class="percent-diff">-8.0%</span><br><span
+											class="percent-diff">+18.4% vs ASTRA</span></td>
 								</tr>
 								<tr>
 									<td>NLL</td>
@@ -895,9 +967,54 @@
 								</tr>
 								<tr>
 									<td>Latency (ms)</td>
-									<td>4.09</td>
-									<td>9.99 <span class="percent-diff">+144.0%</span></td>
-									<td>17.60 <span class="percent-diff">+329.8%</span></td>
+									<td>4.09<br><span class="percent-diff">-44.6% vs ASTRA</span></td>
+									<td>9.99 <span class="percent-diff">+144.0%</span><br><span
+											class="percent-diff">-253.1% vs ASTRA</span></td>
+									<td>17.60 <span class="percent-diff">+329.8%</span><br><span
+											class="percent-diff">-522.1% vs ASTRA</span></td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="table-note">
+							Legend: first percentages compare against ATP with 1 refinement step; "vs ASTRA"
+							percentages compare against the ASTRA baseline using the same lower-is-better convention.
+							Negative latency deltas indicate slower inference.
+						</p>
+
+						<p>
+							We additionally evaluated two non-anytime baselines from
+							<code>assets/baseline/full_baseline_eval_summary.csv</code>. The MLP baseline is extremely
+							fast but has a much larger worst-case displacement error; ASTRA provides a closer
+							non-anytime comparison for the displacement metrics.
+						</p>
+
+						<table class="table is-bordered is-striped is-hoverable is-fullwidth" style="margin-top: 24px;">
+							<thead>
+								<tr>
+									<th>Model</th>
+									<th>MinADE</th>
+									<th>MinFDE</th>
+									<th>MaxADE</th>
+									<th>NLL</th>
+									<th>Latency (ms)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>MLP baseline</td>
+									<td>0.0978</td>
+									<td>0.1647</td>
+									<td>1.1182</td>
+									<td>-64.43</td>
+									<td>0.11</td>
+								</tr>
+								<tr>
+									<td>ASTRA baseline</td>
+									<td>0.1136</td>
+									<td>0.2780</td>
+									<td>0.2410</td>
+									<td>N/A</td>
+									<td>2.83</td>
 								</tr>
 							</tbody>
 						</table>
@@ -998,12 +1115,19 @@
 						<p>
 							<b>Polynomial Interpolation:</b> We additionally explored a model that predicted the
 							coefficients of a polynomial interpolation over future trajectory points. The goal of this
-							approach was to generate trajectories that were more physically constrained. However, this
-							approach encountered two major issues. First, the polynomials fit to the ground truth data,
+							approach was to generate trajectories that were more physically constrained. This approach 
+							helped achieving more effectively than regularization losses like smootheness and acceleration
+							geometrically plausable trajectories.
+							however the approach encountered two issues. First, the polynomials fit to the ground truth data,
 							to be used as training targets, frequently became overfitted. Even with regularization,
-							these often had large coefficients and unnatural behavior between trajectory points. Second,
+							these often had large coefficients and gained irregular behavior upon refinement. Second,
 							multiple distinct polynomials can reasonably interpolate the same set of points, creating
 							instability during training and making optimization difficult.
+
+							We tried to combat the refinement problem by introducing a rollout loss: probabilistically the 
+							training loop would run some refinement steps, this is to make the training distribution more aligned
+							to the refinement steps during inference. This improved but did not solve the degredation of 
+							natural looking trajectories.
 						</p>
 
 						<p>
@@ -1015,7 +1139,6 @@
 							benefit was outweighed by the loss of the model’s ability to represent the likelihood
 							weights associated with each predicted mode.
 						</p>
-
 					</div>
 				</div>
 			</div>
@@ -1102,8 +1225,10 @@
 						<h6 class="title is-6">Individual Contributions</h6>
 						<p>
 							Giovanni set up the Waymo Open Dataset on Izar, developed visualization tools, and
-							implemented and trained the diffusion model. Pranav developed the training pipeline and
-							implemented the graph neural network-based trajectory predictor. Nathan and Léonard worked
+							implemented and trained the diffusion model, he also experimented with finetuning,
+							proposed and tested potential new loss functions and training stabilization tricks. 
+							Pranav developed the training pipeline and implemented the graph neural network-based trajectory predictor. 
+							Nathan and Léonard worked
 							on the AirSim environment, model architecture design, and evaluation metrics. Nathan
 							additionally implemented the feature extraction and end-to-end pipeline, including
 							YOLO-based feature computation and finetuning experiments. Léonard developed and trained
