@@ -766,6 +766,26 @@
 								</tr>
 							</tbody>
 						</table>
+
+						These quantitative results provide valuable insight into our model’s behavior. As shown above,
+						increasing the number of refinement steps does not lead to substantial improvements in best-mode
+						accuracy. In fact, the mode closest to the ground truth remains almost unchanged across
+						iterations.
+
+						However, the other two values, NLL and MaxADE do show more improvement. The reduction
+						in MaxADE indicates that the model’s worst predictions move closer to the ground truth with each
+						refinement step. Similarly, the decrease in NLL suggests that the model becomes increasingly
+						confident in the correct prediction as the number of refinement steps increases.
+
+						What does this tell us?
+
+						Rather than significantly improving raw accuracy, additional refinement steps primarily enhance
+						the model’s confidence in the correct prediction. Although this differs somewhat from our
+						original objective, it is still an important and useful result. It demonstrates that additional
+						refinement steps help generate more reliable and informative predictions. Even if MinADE does
+						not improve, the model’s increased ability to identify and assign higher confidence to the most
+						likely mode is arguably just as important.
+
 						<h3 class="title is-4">Additional Examples</h3>
 					</div>
 				</div>
@@ -788,9 +808,35 @@
 						V. Conclusion and Limitations
 					</h2>
 					<div class="content has-text-justified">
+
 						<p>
-							The conclusion and limitations part of the report can be
-							provided here
+							In this work, we introduced ATP, an anytime prediction trajectory prediction model that
+							could predict the trajectory of objects based on RGB video input with varying latency times.
+							Qualitatively, we prove that our model is capable of predicting feasable trajectories of
+							moving objects, quantiatively however, our model appears to not benefit from the iterative
+							refinement process that makes up the core of our anytime-algorithm.
+
+							Despite this, or model did show one unexpected result, rather than improving its accuracy
+							with each iterative refinement step, it increased its confidence in the correct prediction.
+							This feature, while not the original intended goal, does showcase the viability of our
+							approach. It also suggests that with additional tuning, it may be possible to further refine
+							our model to sequentially refine its predictions to generate more accurate trajectories as
+							time goes on rather than simply becoming more confident in the correct trajectory.
+						</p>
+
+						<p>
+							Outside of the above note, limitations that we would like to address in future works are 2
+							fold: 1. addressing mode collapse, 2. Expanding to additional scenarios.
+
+							As to the first point, it was noticed that our model would often tend to collapse to having
+							all modes be extremeley close to eachother. While there are cases where this is intended, it
+							does decrease the usefulness of our model by disregarding alternate movements of objects.
+
+							Secondly, we would like to adjust our model to work in areas outside of autonomous driving.
+							Due to the fact we trained on the Waymo dataset, our model is only capable of predicting the
+							trajectories of cars, bikes, and pedestrians. If we wanted to expand our model to work in
+							areas such as UAVs, we could finetune this on various scenarios as well as under different
+							conditions to obtain various versions of or model for different environments.
 						</p>
 					</div>
 				</div>
@@ -800,182 +846,7 @@
 	</section>
 	<!------------------------------------------------------------------------->
 
-	<!-----------------------------TODO: VISUAL ITEMS THAT CAN BE USED-------------------------------->
-	<section class="section" style="display: none;">
-		<div class="container is-max-desktop">
-			<!-- Visual Items. -->
-			<div class="columns is-centered">
-				<div class="column is-full-width">
-					<h2 class="title is-3" id="visual_items">V. Visual Items</h2>
-					<div class="content has-text-justified">
-						<p>
-							Here you can see possible visualizations that can be used in
-							this website
-						</p>
-					</div>
-					<h3 class="title is-4">Video Clip</h3>
-					<!-- Video can be added like this -->
-					<div class="content has-text-centered">
-						<video id="replay-video" controls muted preload playsinline width="75%">
-							<source src="./static/videos/replay.mp4" type="video/mp4" />
-						</video>
-					</div>
-					<!--------------------------------->
 
-					<h3 class="title is-4">Image Interpolation with Slider</h3>
-					<!-- Image can be added like this -->
-					<div class="columns is-vcentered interpolation-panel">
-						<div class="column is-3 has-text-centered">
-							<img src="./static/images/interpolate_start.jpg" class="interpolation-image"
-								alt="Interpolate start reference image." />
-							<p>Start Frame</p>
-						</div>
-						<div class="column interpolation-video-column">
-							<div id="interpolation-image-wrapper">Loading...</div>
-							<input class="slider is-fullwidth is-large is-info" id="interpolation-slider" step="1"
-								min="0" max="100" value="0" type="range" />
-						</div>
-						<div class="column is-3 has-text-centered">
-							<img src="./static/images/interpolate_end.jpg" class="interpolation-image"
-								alt="Interpolation end reference image." />
-							<p class="is-bold">End Frame</p>
-						</div>
-					</div>
-
-					<h3 class="title is-4">Double Column Media Display</h3>
-					<div class="columns is-centered is-multiline">
-						<!-- Column 1. -->
-						<div class="column is-half">
-							<div class="content">
-								<h3 class="title is-5">Column 1</h3>
-								<p>Add a short description for the first video/image.</p>
-								<video id="dollyzoom" autoplay controls muted loop playsinline width="100%">
-									<source src="./static/videos/dollyzoom-stacked.mp4" type="video/mp4" />
-								</video>
-							</div>
-						</div>
-						<!--/ Column 1 -->
-
-						<!-- Column 2 -->
-						<div class="column is-half">
-							<div class="content">
-								<h3 class="title is-5">Column 2</h3>
-								<p>Add a short description for the second video/image.</p>
-								<video id="matting-video" controls playsinline width="100%">
-									<source src="./static/videos/matting.mp4" type="video/mp4" />
-								</video>
-							</div>
-						</div>
-						<!--/ Column 2 -->
-					</div>
-					<!--------------------------------->
-					<h3 class="title is-4">Card Media Display</h3>
-					<div class="columns is-centered">
-						<div class="column is-three-quarters">
-							<div align="center" class="box">
-								<img src="sample_gif_1.gif"
-									alt="3D Bezier curves are used for representing 3D sketches of objects." />
-								<h5 class="subtitle has-text-centered">
-									<font size="-0.7">
-										<span style="font-weight: normal">
-											Write about the media displayed in the card here. You
-											can also add a link to the media if needed.
-										</span>
-									</font>
-								</h5>
-							</div>
-						</div>
-					</div>
-					<!--------------------------------->
-					<h3 class="title is-4">LaTeX Equation</h3>
-
-					Format the equations using LaTeX and add them to the website like
-					this:
-					<p>
-						\[ D_{\mathrm{KL}}(P \parallel Q) = \sum_{x}
-						P(x)\,\log\!\left(\frac{P(x)}{Q(x)}\right) \]
-					</p>
-					<!--------------------------------->
-
-					<h3 class="title is-4">Sliding Media Display</h3>
-					<section class="section">
-						<div class="container is-max-desktop">
-							<div id="dataset-carousel" class="carousel results-carousel">
-								<a href="./static/gifs/bike.gif" data-lightbox="image">
-									<img src="./static/gifs/bike.gif" alt="Bike Object" />
-								</a>
-
-								<a href="./static/gifs/duck.gif" data-lightbox="image">
-									<img src="./static/gifs/duck.gif" alt="Duck Object" />
-								</a>
-
-								<a href="./static/gifs/horse.gif" data-lightbox="image">
-									<img src="./static/gifs/horse.gif" alt="Horse Object" />
-								</a>
-
-								<a href="./static/gifs/rose.gif" data-lightbox="image">
-									<img src="./static/gifs/rose.gif" alt="Rose Object" />
-								</a>
-							</div>
-						</div>
-					</section>
-					<!--------------------------------->
-					<h3 class="title is-4">Table</h3>
-
-					<div class="content has-text-justified">
-						<p>
-							The table format below can be used for results and other
-							purposes.
-						</p>
-						<div class="table-container">
-							<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-								<thead>
-									<tr>
-										<th>Method</th>
-										<th>Metric 1</th>
-										<th>Metric 2</th>
-										<th>Notes</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Baseline</td>
-										<td>0.00</td>
-										<td>0.00</td>
-										<td>Reference setup</td>
-									</tr>
-									<tr>
-										<td>Method A</td>
-										<td>0.00</td>
-										<td>0.00</td>
-										<td>First variant</td>
-									</tr>
-									<tr>
-										<td>Method B</td>
-										<td>0.00</td>
-										<td>0.00</td>
-										<td>Second variant</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<!--------------------------------->
-					<h3 class="title is-4">Interactive Plot</h3>
-					<div class="box">
-						<iframe src="./static/plotly/interactive_plot.html" frameborder="0" width="100%"
-							height="500px"></iframe>
-					</div>
-
-					<!--------------------------------->
-				</div>
-			</div>
-			<!--/ Visual Items. -->
-		</div>
-	</section>
-
-	<!------------------------------------------------------------------------->
 
 	<footer class="footer">
 		<div class="container">
