@@ -575,8 +575,8 @@
 								is a pretrained and then fine-tuned model whose learning objective is detection.
 								The extractor’s purpose is to identify the targets whose trajectory is to be predicted,
 								and provide a rich latent space representation of the whole scene. Intuitively it is not
-								enough to know about all the agents in an environment, but how that environment is in
-								the first place.
+								enough to know about all the agents in an environment, but also information about the
+								environment itself, such as street and sidewalk locations.
 							</p>
 
 							<p>
@@ -588,13 +588,14 @@
 								<a class="citation" id="cite-diffusion" href="#ref-diffusiontransformer"
 									aria-label="Jump to diffusion transformer reference">[16]</a>
 								, whose trajectory predictions are fed to a GNN.
-								Using diffusion provided anytime inference: by calling the sampler an arbitrary amount
+								Anytime inference is handled by the diffusion layer. By calling the sampler an arbitrary
+								amount
 								of times
-								the output can be made cleaner at the cost of inference time. The parameters of the
+								the output can be made cleaner at the cost of extra inference steps.
+								The
 								final GMM
-								are a simple projection from trajectory points and trajectory hidden state to average
-								and
-								covariance matrix.
+								is a simple projection from trajectory points and trajectory hidden states to a set
+								averages and converiance matrix to construct our mixed gaussian model.
 							</p>
 
 							<h3> Astra Modifications</h3>
