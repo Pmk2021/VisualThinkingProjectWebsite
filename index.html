@@ -913,6 +913,26 @@
 						likely mode is arguably just as important.
 
 						<h3 class="title is-4">Additional Examples</h3>
+						We additionally present qualitative examples to further illustrate the strengths and weaknesses of our model. 
+						In the examples below, we visualize frame-by-frame predictions with 8 refinement steps.
+						
+						<div class="columns is-multiline is-gapless">
+						<div class="column is-half">
+							<img src="assets/additional_examples/1906113358876584689_1359_560_1379_560_qo0sk0esFAv2q_Imz__lAg.gif" alt="Additional example 1">
+						</div>
+						<div class="column is-half">
+							<img src="assets/additional_examples/3731719923709458059_1540_000_1560_000_8_LsdpXxbep9pedo66bR1g.gif" alt="Additional example 2">
+						</div>
+						<div class="column is-half">
+							<img src="assets/additional_examples/14300007604205869133_1160_000_1180_000_iXXWDtTk8ZulKstE2Mt4jg.gif" alt="Additional example 3">
+						</div>
+						<div class="column is-half">
+							<img src="assets/additional_examples/15224741240438106736_960_000_980_000_uHByocSaacA0JoGLQhcqkA.gif" alt="Additional example 4">
+						</div>
+
+						As one can see from the examples above, different modes capture different possible outcomes in some cases, 
+						such as in the first example where some modes predict the car will turn left while others predict it will continue straight. 
+						However, the model may also miss key possibilities, such as the left turn in the bottom right example.
 					</div>
 				</div>
 			</div>
@@ -957,8 +977,8 @@
 						</p>
 
 						<p>
-							Outside of the above note, limitations that we would like to address in future works are 2
-							fold: 1. addressing mode collapse, 2. Expanding to additional scenarios.
+							Outside of the above note, limitations that we would like to address in future works are two-fold: 
+							1. addressing mode collapse, 2. Expanding to additional scenarios.
 
 							Regarding the first point, our model frequently exhibited a tendency to collapse such that
 							all
