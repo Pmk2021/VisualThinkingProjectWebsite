@@ -202,7 +202,7 @@
 							and that it can predict different probable trajectories.
 							From quantitative results, the model achieves strong performance on the Waymo Open Motion
 							Dataset with limited refinement steps, yet additional steps only increased accuracy
-							sightly(6%), while increasing the confidence of our model's predictions.
+							sightly (6%), while increasing the confidence of our model's predictions.
 							We provide improvement directions that we believe will allow the model to fully
 							leverage the anytime prediction framework.
 							Latency-wise, the model is able to output predictions in a suitable time frame for real-time
@@ -399,12 +399,12 @@
 							<a class="citation" id="cite-waymo" href="#ref-waymo"
 								aria-label="Jump to Waymo reference">[9]</a>.
 							The Waymo Open Dataset is a collection of public datasets
-							that aim to “aid the research community in investigating a wide range of interesting
+							that aims to “aid the research community in investigating a wide range of interesting
 							aspects of machine perception and autonomous driving technology”
 							<a class="citation" id="cite-waymo" href="#ref-waymo"
 								aria-label="Jump to Waymo reference">[9]
 							</a>.
-							In our case the Motion Dataset is the most suitable one with object trajectories and
+							In our case, the Motion Dataset is the most suitable one with object trajectories and
 							corresponding
 							3D maps for 103’354 road segments, corresponding to 574 hours of data.
 						</p>
@@ -439,7 +439,7 @@
 							practice due to their tendency to collapse into a single mode. As a result, several
 							different methods have been suggested, including a "best-of-N" loss function
 							<a class="citation" id="cite-wayformer" href="#ref-wayformer"
-								aria-label="Jump to Wayformer reference">[4]</a>.,
+								aria-label="Jump to Wayformer reference">[4]</a>,
 							where only the best prediction is considered, encouraging the model to predict a
 							diverse range of trajectories, which we adapt in our work.
 						</p>
@@ -455,8 +455,7 @@
 							trajectories. Early fusion of the modality has proven to be efficient by matching
 							state-of-the-art performances on the Waymo Motion Dataset. The predictor outputs a
 							Mixture of Gaussians to represent the plausible trajectories agents may take.
-							<br><br>
-							<strong>ASTRA</strong>
+							ASTRA
 							<a class="citation" id="cite-astra" href="#ref-astra"
 								aria-label="Jump to Astra reference">[5]</a>
 							is also a transformer-based architecture combining scene and agent information
@@ -557,7 +556,7 @@
 									aria-label="Jump to GRU reference">[14]</a>
 								and GNN
 								[<a class="citation" id="cite-gnn" href="#ref-gnn"
-									aria-label="Jump to GNN reference">[15]</a>,] based models
+									aria-label="Jump to GNN reference">[15]</a>] based models
 								as they have also shown in the recent
 								past to be promising models for this specific task
 								<a class="citation" id="trajectron++" href="#ref-trajectron++"
@@ -637,7 +636,8 @@
 							These features can then be fed into ATP to condition the model on scene information without
 							the need for spending additional compute on feature extraction.
 							</p>
-							<h4 class="title is-4">Iterative Refinement</h4>
+
+							<h4>Iterative Refinement</h4>
 
 							<p>
 								To enable anytime refinement in ATP, we adopt an iterative denoise-refinement algorithm.
@@ -902,17 +902,19 @@
 							</tbody>
 						</table>
 
-						These quantitative results provide valuable insight into our model’s behavior. As shown above,
-						increasing the number of refinement steps does increase the best-mode accuracy but not as much
-						as expected.
+                        <p>
+                            These quantitative results provide valuable insight into our model’s behavior. As shown above,
+                            increasing the number of refinement steps does increase the best-mode accuracy but not as much
+                            as expected.
 
-						However, the MaxADE do show more improvement. This reduction
-						indicates that the model’s worst predictions move closer to the ground truth with each
-						refinement step. Similarly, the decrease in NLL suggests that the model becomes increasingly
-						confident in the correct prediction as the number of refinement steps increases.
+                            However, the MaxADE do show more improvement. This reduction
+                            indicates that the model’s worst predictions move closer to the ground truth with each
+                            refinement step. Similarly, the decrease in NLL suggests that the model becomes increasingly
+                            confident in the correct prediction as the number of refinement steps increases.
+                        </p>
+
 						<p>
 							What does this tell us?
-
 						</p>
 
 						<p>
