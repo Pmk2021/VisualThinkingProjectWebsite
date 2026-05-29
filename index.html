@@ -931,59 +931,11 @@
 								the
 								probability density
 								function our model outputs(lower is better).</li>
-						</ol>
+                            <li><strong>Latency</strong> — How long does it take for our model to produce a prediction?
+                        </ol>
 
-						<table class="table is-bordered is-striped is-hoverable is-fullwidth" style="margin-top: 24px;">
-							<thead>
-								<tr>
-									<th>Metric</th>
-									<th>1 Refinement Step<br><span class="table-note">Baseline</span></th>
-									<th>4 Refinement Steps</th>
-									<th>8 Refinement Steps</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>MinADE</td>
-									<td>0.0856<br><span class="percent-diff">+24.7% vs ASTRA</span></td>
-									<td>0.0808 <span class="percent-diff">-5.6%</span><br><span
-											class="percent-diff">+28.9% vs ASTRA</span></td>
-									<td>0.0798 <span class="percent-diff">-6.8%</span><br><span
-											class="percent-diff">+29.8% vs ASTRA</span></td>
-								</tr>
-								<tr>
-									<td>MaxADE</td>
-									<td>0.2135<br><span class="percent-diff">+11.4% vs ASTRA</span></td>
-									<td>0.2050 <span class="percent-diff">-4.0%</span><br><span
-											class="percent-diff">+14.9% vs ASTRA</span></td>
-									<td>0.1965 <span class="percent-diff">-8.0%</span><br><span
-											class="percent-diff">+18.4% vs ASTRA</span></td>
-								</tr>
-								<tr>
-									<td>NLL</td>
-									<td>-68.58</td>
-									<td>-71.88 <span class="percent-diff">-4.8%</span></td>
-									<td>-72.45 <span class="percent-diff">-5.6%</span></td>
-								</tr>
-								<tr>
-									<td>Latency (ms)</td>
-									<td>4.09<br><span class="percent-diff">-44.6% vs ASTRA</span></td>
-									<td>9.99 <span class="percent-diff">+144.0%</span><br><span
-											class="percent-diff">-253.1% vs ASTRA</span></td>
-									<td>17.60 <span class="percent-diff">+329.8%</span><br><span
-											class="percent-diff">-522.1% vs ASTRA</span></td>
-								</tr>
-							</tbody>
-						</table>
-						<p class="table-note">
-							Legend: first percentages compare against ATP with 1 refinement step; "vs ASTRA"
-							percentages compare against the ASTRA baseline using the same lower-is-better convention.
-							Negative latency deltas indicate slower inference.
-						</p>
-
-						<p>
-							We additionally evaluated two non-anytime baselines from
-							<code>assets/baseline/full_baseline_eval_summary.csv</code>. The MLP baseline is extremely
+                        <p>
+							We first evaluated two non-anytime baselines: a simple MLP and the ASTRA model. The MLP baseline is extremely
 							fast but has a much larger worst-case displacement error; ASTRA provides a closer
 							non-anytime comparison for the displacement metrics.
 						</p>
@@ -1018,6 +970,57 @@
 								</tr>
 							</tbody>
 						</table>
+
+                        Here are the results for our ATP model with different numbers of refinement steps, compared against the ASTRA baseline:
+
+						<table class="table is-bordered is-striped is-hoverable is-fullwidth" style="margin-top: 24px;">
+							<thead>
+								<tr>
+									<th>Metric</th>
+									<th>1 Refinement Step<br><span class="table-note">Baseline</span></th>
+									<th>4 Refinement Steps</th>
+									<th>8 Refinement Steps</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>MinADE</td>
+									<td>0.0856<br><span class="percent-diff">-24.7% vs ASTRA</span></td>
+									<td>0.0808 <span class="percent-diff">-5.6%</span><br><span
+											class="percent-diff">-28.9% vs ASTRA</span></td>
+									<td>0.0798 <span class="percent-diff">-6.8%</span><br><span
+											class="percent-diff">-29.8% vs ASTRA</span></td>
+								</tr>
+								<tr>
+									<td>MaxADE</td>
+									<td>0.2135<br><span class="percent-diff">-11.4% vs ASTRA</span></td>
+									<td>0.2050 <span class="percent-diff">-4.0%</span><br><span
+											class="percent-diff">-14.9% vs ASTRA</span></td>
+									<td>0.1965 <span class="percent-diff">-8.0%</span><br><span
+											class="percent-diff">-18.4% vs ASTRA</span></td>
+								</tr>
+								<tr>
+									<td>NLL</td>
+									<td>-68.58</td>
+									<td>-71.88 <span class="percent-diff">-4.8%</span></td>
+									<td>-72.45 <span class="percent-diff">-5.6%</span></td>
+								</tr>
+								<tr>
+									<td>Latency (ms)</td>
+									<td>4.09<br><span class="percent-diff">+44.6% vs ASTRA</span></td>
+									<td>9.99 <span class="percent-diff">+144.0%</span><br><span
+											class="percent-diff">+253.1% vs ASTRA</span></td>
+									<td>17.60 <span class="percent-diff">+329.8%</span><br><span
+											class="percent-diff">+522.1% vs ASTRA</span></td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="table-note">
+							Legend: first percentages compare against ATP with 1 refinement step; "vs ASTRA"
+							percentages compare against the ASTRA baseline.
+						</p>
+
+						
 
                         <p>
                             These quantitative results provide valuable insight into our model’s behavior. As shown above,
