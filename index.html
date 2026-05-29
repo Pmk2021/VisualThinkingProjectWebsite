@@ -427,8 +427,8 @@
 
 						<p>
 							<strong>Mixture Density Networks:</strong>
-							Mixture Density networks: MDN are models which output mixed gaussians, this includes
-                            algorithms such as
+							MDNs are models which output mixed gaussians, this includes
+                            algorithms such as Wayformer
                             <a class="citation" id="cite-wayformer" href="#ref-wayformer"
                                 aria-label="Jump to Wayformer reference">[4]</a>.
                             However, training them has been proven to be difficult in
@@ -452,10 +452,10 @@
                             state-of-the-art performances on the Waymo Motion Dataset. The predictor outputs a
                             Mixture of Gaussians to represent the plausible trajectories agents may take.
                             <br><br>
-                            Also, ASTRA
+                            ASTRA
                             <a class="citation" id="cite-astra" href="#ref-astra"
                                 aria-label="Jump to Astra reference">[5]</a>
-                            is a transformer-based architecture combining scene and agent information
+                            is also a transformer-based architecture combining scene and agent information
                             to perform pedestrian trajectory prediction. A U-net feature extractor is used
                             to extract scenes latent representations besides a graph transformer encoder to model
                             the social interactions of the agents. These representations are then concatenated and
@@ -556,8 +556,9 @@
                                     aria-label="Jump to Trajectron++ reference">[2]</a>
                                 <a class="citation" id="cite-gnnmodel" href="#ref-gnnmodel"
                                     aria-label="Jump to GNN model reference">[3]</a>
-                                . We decided to pivot as at an early
-                                evaluation the transformer architecture was the one behaving the best without significant
+                                . We decided to pivot at a certain stage to focus only on training
+                                and evaluating the transformer architecture,
+                                as it was the one behaving the best without significant
                                 tradeoffs in latency or parameter number.
                             </p>
 
@@ -670,7 +671,7 @@
 					<p>
 						ATP was trained on the Waymo Motion Dataset
                         <a class="citation" id="cite-waymo-training" href="#ref-waymo"
-                            aria-label="Jump to Waymo Motion Dataset reference">[9]</a>
+                            aria-label="Jump to Waymo Motion Dataset reference">[9]</a>.
 						At each training step, the model
 						received features extracted from the previous <strong>[N]</strong> frames, including
 						bounding box
@@ -839,7 +840,7 @@
 						steps correctly predicted the vehicle going straight. Despite being relatively inaccurate, this
 						is already useful in a time-constrained pipeline, but with additional computation,
 						ATM's prediction converges closer to the ground truth.
-						<h3 class="title is-4">Quantitaive</h3>
+						<h3 class="title is-4">Quantitative</h3>
 						<p>
 							We additionally recorded quantitative results to numerically verify the effectiveness of
 							ATP.
