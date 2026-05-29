@@ -844,7 +844,7 @@
 						<p>
 							For comparison, we also visualize qualitative outputs from the baseline models. Files
 							starting with <code>astra</code> correspond to the ASTRA baseline, while the
-							<code>sample</code> result corresponds to the MLP baseline.
+							<code>mlp</code> results correspond to the MLP baseline.
 						</p>
 
 						<div style="text-align: center; margin-top: 16px; margin-bottom: 24px;">
@@ -862,7 +862,7 @@
 								style="margin-top: 8px; display: flex; justify-content: center; align-items: center; gap: 24px;">
 								<button onclick="changeBaselineSlide(-1)"
 									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8592;</button>
-								<span id="baseline-carousel-counter" style="font-size: 16px;">1 / 4</span>
+								<span id="baseline-carousel-counter" style="font-size: 16px;">1 / 6</span>
 								<button onclick="changeBaselineSlide(1)"
 									style="padding: 8px 20px; font-size: 18px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc;">&#8594;</button>
 							</div>
@@ -889,10 +889,22 @@
 									caption: "A third qualitative prediction produced by the ASTRA baseline."
 								},
 								{
-									src: "assets/baseline/sample_000813.gif",
+									src: "assets/baseline/mlp_001094.gif",
 									label: "MLP baseline",
 									alt: "MLP baseline qualitative result",
 									caption: "Qualitative trajectory prediction produced by the MLP baseline."
+								},
+								{
+									src: "assets/baseline/mlp_001095.gif",
+									label: "MLP baseline",
+									alt: "MLP baseline qualitative result",
+									caption: "A second qualitative prediction produced by the MLP baseline."
+								},
+								{
+									src: "assets/baseline/mlp_001096.gif",
+									label: "MLP baseline",
+									alt: "MLP baseline qualitative result",
+									caption: "A third qualitative prediction produced by the MLP baseline."
 								}
 							];
 							let currentBaseline = 0;
