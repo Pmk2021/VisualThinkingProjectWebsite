@@ -1,5 +1,6 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  scroll-behavior: smooth;
 }
 
 
@@ -11,6 +12,33 @@ body {
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.citation {
+  font-size: 0.85em;
+  font-weight: 600;
+  line-height: 0;
+  text-decoration: none;
+  vertical-align: super;
+}
+
+.citation:hover {
+  text-decoration: underline;
+}
+
+.references li {
+  scroll-margin-top: 1.5rem;
+}
+
+.references li:target {
+  background: #fff3cd;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px #fff3cd;
+}
+
+.reference-back {
+  font-size: 0.85em;
+  margin-left: 0.4rem;
 }
 
 .dnerf {
