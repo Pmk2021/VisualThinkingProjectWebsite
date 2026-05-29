@@ -810,34 +810,46 @@
 					<div class="content has-text-justified">
 
 						<p>
-							In this work, we introduced ATP, an anytime prediction trajectory prediction model that
-							could predict the trajectory of objects based on RGB video input with varying latency times.
-							Qualitatively, we prove that our model is capable of predicting feasable trajectories of
-							moving objects, quantiatively however, our model appears to not benefit from the iterative
-							refinement process that makes up the core of our anytime-algorithm.
+							In this work, we presented ATP, an anytime trajectory prediction model capable of predicting
+							object trajectories from RGB video input across varying latency budgets. Qualitatively, we
+							demonstrate that our model can produce feasible trajectories for moving objects.
+							Quantitatively,
+							however, our model does not appear to produce more accurate modes through the iterative
+							refinement process that
+							forms
+							the core of our anytime algorithm.
 
-							Despite this, or model did show one unexpected result, rather than improving its accuracy
-							with each iterative refinement step, it increased its confidence in the correct prediction.
-							This feature, while not the original intended goal, does showcase the viability of our
-							approach. It also suggests that with additional tuning, it may be possible to further refine
-							our model to sequentially refine its predictions to generate more accurate trajectories as
-							time goes on rather than simply becoming more confident in the correct trajectory.
+							Despite this, our model produced one notable and unexpected result: rather than improving
+							predictive accuracy with each refinement step, it grew increasingly confident in the correct
+							prediction. While this was not the original intended goal, it does demonstrate the viability
+							of
+							our approach. It also suggests that with further tuning, sequential refinement could be
+							leveraged
+							to generate progressively more accurate trajectories over time, rather than solely
+							increasing
+							confidence in the current prediction.
 						</p>
 
 						<p>
 							Outside of the above note, limitations that we would like to address in future works are 2
 							fold: 1. addressing mode collapse, 2. Expanding to additional scenarios.
 
-							As to the first point, it was noticed that our model would often tend to collapse to having
-							all modes be extremeley close to eachother. While there are cases where this is intended, it
-							does decrease the usefulness of our model by disregarding alternate movements of objects.
+							Regarding the first point, our model frequently exhibited a tendency to collapse such that
+							all
+							predicted modes converged to nearly identical outputs. While this behavior is appropriate in
+							certain cases, it reduces the model's utility by failing to capture the full range of
+							plausible
+							object motions.
 
-							Secondly, we would like to adjust our model to work in areas outside of autonomous driving.
-							Due to the fact we trained on the Waymo dataset, our model is only capable of predicting the
-							trajectories of cars, bikes, and pedestrians. If we wanted to expand our model to work in
-							areas such as UAVs, we could finetune this on various scenarios as well as under different
-							conditions to obtain various versions of or model for different environments.
+							Secondly, we aim to adapt our model for applications beyond autonomous driving.
+							As our model was trained exclusively on the Waymo dataset, its predictions are currently
+							limited
+							to cars, cyclists, and pedestrians. Extending its applicability to domains such as UAV
+							navigation
+							would require finetuning on diverse scenarios and environmental conditions, yielding
+							environment-specific model variants.
 						</p>
+
 					</div>
 				</div>
 			</div>
