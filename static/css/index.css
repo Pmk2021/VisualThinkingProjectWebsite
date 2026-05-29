@@ -41,6 +41,17 @@ body {
   margin-left: 0.4rem;
 }
 
+.table-note,
+.percent-diff {
+  color: #5f6b7a;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.percent-diff {
+  white-space: nowrap;
+}
+
 .dnerf {
   font-variant: small-caps;
 }
