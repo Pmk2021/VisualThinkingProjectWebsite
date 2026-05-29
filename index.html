@@ -199,8 +199,9 @@
 							early refinement steps,
 							and that it can predict different probable trajectories.
 							From quantitative results, the model achieves strong performance on the Waymo Open Motion
-							Dataset, increases sightly (6% relative improvement) with more refinement steps but not as much as intended.
-                            However, more refinement steps do lead to more confident predictions.
+							Dataset, increases sightly (6% relative improvement) with more refinement steps but not as
+							much as intended.
+							However, more refinement steps do lead to more confident predictions.
 							We provide improvement directions that we believe will allow the model to fully
 							leverage the anytime prediction framework.
 							Latency-wise, the model is able to output predictions in a suitable time frame for real-time
@@ -368,113 +369,115 @@
 					<div class="content has-text-justified">
 						<p>
 							Historically, classical approaches to trajectory prediction often
-                            rely on state estimation techniques such as Kalman filters, which assume
-                            linear dynamics and Gaussian noise, but struggle with complex, multimodal
-                            behavior <a class="citation" id="cite-tracking" href="#ref-tracking"
+							rely on state estimation techniques such as Kalman filters, which assume
+							linear dynamics and Gaussian noise, but struggle with complex, multimodal
+							behavior <a class="citation" id="cite-tracking" href="#ref-tracking"
 								aria-label="Jump to real-time tracking reference">[1]</a>.
-                            Consequently, newer architectures such as neural networks
-                            <a class="citation" id="cite-trajectron++" href="#ref-trajectron++"
+							Consequently, newer architectures such as neural networks
+							<a class="citation" id="cite-trajectron++" href="#ref-trajectron++"
 								aria-label="Jump to Trajectron++ reference">[2]</a>
-                            <a class="citation" id="cite-gnnmodel" href="#ref-gnnmodel"
-                                aria-label="Jump to GNN model reference">[3]</a>
-                            and more recently transformers
-                            <a class="citation" id="cite-wayformer" href="#ref-wayformer"
-                                aria-label="Jump to Wayformer reference">[4]</a>
-                            <a class="citation" id="cite-astra" href="#ref-astra"
-                                aria-label="Jump to Astra reference">[5]</a>
-                            have become widely used in the field of trajectory planning.
+							<a class="citation" id="cite-gnnmodel" href="#ref-gnnmodel"
+								aria-label="Jump to GNN model reference">[3]</a>
+							and more recently transformers
+							<a class="citation" id="cite-wayformer" href="#ref-wayformer"
+								aria-label="Jump to Wayformer reference">[4]</a>
+							<a class="citation" id="cite-astra" href="#ref-astra"
+								aria-label="Jump to Astra reference">[5]</a>
+							have become widely used in the field of trajectory planning.
 						</p>
 
 						<p>
 							Additionally, with the rise of autonomous driving, a multitude of contests
-                            and datasets for object prediction have been created 
-                            <a class="citation" id="cite-kitti" href="#ref-kitti"
-                                aria-label="Jump to KITTI reference">[6]</a>
-                            <a class="citation" id="cite-argoverse" href="#ref-argoverse"
-                                aria-label="Jump to Argoverse reference">[7]</a>
-                            <a class="citation" id="cite-nuscenes" href="#ref-nuscenes"
-                                aria-label="Jump to nuScenes reference">[8]</a>
-                            <a class="citation" id="cite-waymo" href="#ref-waymo"
-                                aria-label="Jump to Waymo reference">[9]</a>.
-                            The Waymo Open Dataset is a collection of public datasets
-                            that aim to “aid the research community in investigating a wide range of interesting
-                            aspects of machine perception and autonomous driving technology”
-                            <a class="citation" id="cite-waymo" href="#ref-waymo"
-                                aria-label="Jump to Waymo reference">[9]
-                            </a>. 
-                            In our case the Motion Dataset is the most suitable one with object trajectories and corresponding
-                            3D maps for 103’354 road segments, corresponding to 574 hours of data.
+							and datasets for object prediction have been created
+							<a class="citation" id="cite-kitti" href="#ref-kitti"
+								aria-label="Jump to KITTI reference">[6]</a>
+							<a class="citation" id="cite-argoverse" href="#ref-argoverse"
+								aria-label="Jump to Argoverse reference">[7]</a>
+							<a class="citation" id="cite-nuscenes" href="#ref-nuscenes"
+								aria-label="Jump to nuScenes reference">[8]</a>
+							<a class="citation" id="cite-waymo" href="#ref-waymo"
+								aria-label="Jump to Waymo reference">[9]</a>.
+							The Waymo Open Dataset is a collection of public datasets
+							that aim to “aid the research community in investigating a wide range of interesting
+							aspects of machine perception and autonomous driving technology”
+							<a class="citation" id="cite-waymo" href="#ref-waymo"
+								aria-label="Jump to Waymo reference">[9]
+							</a>.
+							In our case the Motion Dataset is the most suitable one with object trajectories and
+							corresponding
+							3D maps for 103’354 road segments, corresponding to 574 hours of data.
 						</p>
 
 						<p>
 							This has led to many new state-of-the-art algorithms which address this challenge by
-                            outputting multimodal trajectory predictions. Specifically, our model is inspired
-                            by the following areas of work:
+							outputting multimodal trajectory predictions. Specifically, our model is inspired
+							by the following areas of work:
 						</p>
 
-                        <p>
+						<p>
 							<strong>Iterative refinement:</strong>
-								A recent direction in motion prediction consists in predicting the final trajectory
-                                not as a single forward pass but generating a first coarse estimate and then
-                                progressively correcting and improving it with more context information. SmartRefine
-                                is close to this idea: it refines an initial trajectory by retrieving relevant map
-                                and agent context around the trajectory anchors
-                                <a class="citation" id="cite-smartrefine" href="#ref-smartrefine"
-                                    aria-label="Jump to SmartRefine reference">[10]</a>.
-                                Similarly, TrackSSM <a class="citation" id="cite-trackssm" href="#ref-trackssm"
-                                    aria-label="Jump to TrackSSM reference">[11]</a> stacks decoder layers to refine trajectories step by step.
+							A recent direction in motion prediction consists in predicting the final trajectory
+							not as a single forward pass but generating a first coarse estimate and then
+							progressively correcting and improving it with more context information. SmartRefine
+							is close to this idea: it refines an initial trajectory by retrieving relevant map
+							and agent context around the trajectory anchors
+							<a class="citation" id="cite-smartrefine" href="#ref-smartrefine"
+								aria-label="Jump to SmartRefine reference">[10]</a>.
+							Similarly, TrackSSM <a class="citation" id="cite-trackssm" href="#ref-trackssm"
+								aria-label="Jump to TrackSSM reference">[11]</a> stacks decoder layers to refine
+							trajectories step by step.
 						</p>
 
 						<p>
 							<strong>Mixture Density Networks:</strong>
 							MDNs are models which output mixed gaussians, this includes
-                            algorithms such as Wayformer
-                            <a class="citation" id="cite-wayformer" href="#ref-wayformer"
-                                aria-label="Jump to Wayformer reference">[4]</a>.
-                            However, training them has been proven to be difficult in
-                            practice due to their tendency to collapse into a single mode. As a result, several
-                            different methods have been suggested, including a "best-of-N" loss function
-                            <a class="citation" id="cite-wayformer" href="#ref-wayformer"
-                                aria-label="Jump to Wayformer reference">[4]</a>.,
-                            where only the best prediction is considered, encouraging the model to predict a
-                            diverse range of trajectories, which we adapt in our work.
+							algorithms such as Wayformer
+							<a class="citation" id="cite-wayformer" href="#ref-wayformer"
+								aria-label="Jump to Wayformer reference">[4]</a>.
+							However, training them has been proven to be difficult in
+							practice due to their tendency to collapse into a single mode. As a result, several
+							different methods have been suggested, including a "best-of-N" loss function
+							<a class="citation" id="cite-wayformer" href="#ref-wayformer"
+								aria-label="Jump to Wayformer reference">[4]</a>.,
+							where only the best prediction is considered, encouraging the model to predict a
+							diverse range of trajectories, which we adapt in our work.
 						</p>
 
-                        <p>
-                            <strong>Transformer-based models:</strong>
-                            Wayformer 
-                            <a class="citation" id="cite-wayformer" href="#ref-wayformer"
-                                aria-label="Jump to Wayformer reference">[4]</a>
-                            is a family of attention-based architectures for trajectory prediction.
-                            Scenes are first treated by the Encoder to create a useful representation.
-                            Then, the decoder is fed both learned queries and the encoder state to produce the
-                            trajectories. Early fusion of the modality has proven to be efficient by matching
-                            state-of-the-art performances on the Waymo Motion Dataset. The predictor outputs a
-                            Mixture of Gaussians to represent the plausible trajectories agents may take.
-                            <br><br>
-                            ASTRA
-                            <a class="citation" id="cite-astra" href="#ref-astra"
-                                aria-label="Jump to Astra reference">[5]</a>
-                            is also a transformer-based architecture combining scene and agent information
-                            to perform pedestrian trajectory prediction. A U-net feature extractor is used
-                            to extract scenes latent representations besides a graph transformer encoder to model
-                            the social interactions of the agents. These representations are then concatenated and
-                            either fed to a CVAE
-                            <a class="citation" id="cite-cvae" href="#ref-cvae"
-                                aria-label="Jump to CVAE reference">[12]</a>
-                            to generate stochastic predictions or through a MLP for a
-                            deterministic output. 
-                        </p>
+						<p>
+							<strong>Transformer-based models:</strong>
+							Wayformer
+							<a class="citation" id="cite-wayformer" href="#ref-wayformer"
+								aria-label="Jump to Wayformer reference">[4]</a>
+							is a family of attention-based architectures for trajectory prediction.
+							Scenes are first treated by the Encoder to create a useful representation.
+							Then, the decoder is fed both learned queries and the encoder state to produce the
+							trajectories. Early fusion of the modality has proven to be efficient by matching
+							state-of-the-art performances on the Waymo Motion Dataset. The predictor outputs a
+							Mixture of Gaussians to represent the plausible trajectories agents may take.
+							<br><br>
+							ASTRA
+							<a class="citation" id="cite-astra" href="#ref-astra"
+								aria-label="Jump to Astra reference">[5]</a>
+							is also a transformer-based architecture combining scene and agent information
+							to perform pedestrian trajectory prediction. A U-net feature extractor is used
+							to extract scenes latent representations besides a graph transformer encoder to model
+							the social interactions of the agents. These representations are then concatenated and
+							either fed to a CVAE
+							<a class="citation" id="cite-cvae" href="#ref-cvae"
+								aria-label="Jump to CVAE reference">[12]</a>
+							to generate stochastic predictions or through a MLP for a
+							deterministic output.
+						</p>
 
 						<p>
 							<strong>Diffusion Models:</strong>
 							Diffusion-based trajectory prediction methods model future
 							trajectories through iterative denoising processes and have
 							recently demonstrated strong performance on multimodal motion
-							forecasting tasks 
-                            <a class="citation" id="cite-diffusion" href="#ref-diffusion"
-                                aria-label="Jump to diffusion models reference">[13]</a>.
-                            These methods provide flexible generative
+							forecasting tasks
+							<a class="citation" id="cite-diffusion" href="#ref-diffusion"
+								aria-label="Jump to diffusion models reference">[13]</a>.
+							These methods provide flexible generative
 							modeling capabilities for complex trajectory distributions.
 						</p>
 					</div>
@@ -522,73 +525,84 @@
 								Critically, inference must support variable-length computation: the model should be
 								queryable
 								at any point during processing, trading speed for accuracy depending on the deployment
-									constraints. To achieve this, we build on Astra
-									<a class="citation" id="cite-astra-method" href="#ref-astra"
-										aria-label="Jump to Astra reference">[3]</a> as our core
+								constraints. To achieve this, we build on Astra
+								<a class="citation" id="cite-astra-method" href="#ref-astra"
+									aria-label="Jump to Astra reference">[3]</a> as our core
 								architectural
 								inspiration, and extend it with an iterative refinement process that enables continuous
 								improvement of predicted trajectories over time.
 							</p>
 
-                            <h3>Our Model: Anytime Trajectory Predictor (ATP)</h3>
-                            
-                            <p>
-                                Our ATP architecture is heavily inspired by Astra
-                                <a class="citation" id="cite-astra-method" href="#ref-astra"
-                                    aria-label="Jump to Astra reference">[5]</a>
-                                , a transformer architecture trained on
-                                pedestrian trajectory prediction from rgb images: it was trained on bird’s eye view and ground
-                                level view of the scene. Astra has very low latency and low parameter usage, this combined with
-                                its generalizability across views gave us confidence that even a lightweight transformer was
-                                expressive enough to extract relevant information starting from the rgb signal alone.
-                            </p>
+							<h3>Our Model: Anytime Trajectory Predictor (ATP)</h3>
 
-                            <p>
-                                We did explore other architectures like GRU 
-                                <a class="citation" id="cite-gru" href="#ref-gru"
-                                    aria-label="Jump to GRU reference">[14]</a>
-                                and GNN
-                                <a class="citation" id="cite-gnn" href="#ref-gnn"
-                                    aria-label="Jump to GNN reference">[15]</a>, 
-                                as they have also shown in the recent
-                                past to be promising models for this specific task
-                                <a class="citation" id="trajectron++" href="#ref-trajectron++"
-                                    aria-label="Jump to Trajectron++ reference">[2]</a>
-                                <a class="citation" id="cite-gnnmodel" href="#ref-gnnmodel"
-                                    aria-label="Jump to GNN model reference">[3]</a>
-                                . We decided to pivot at a certain stage to focus only on training
-                                and evaluating the transformer architecture,
-                                as it was the one behaving the best without significant
-                                tradeoffs in latency or parameter number.
-                            </p>
+							<p>
+								Our ATP architecture is heavily inspired by Astra
+								<a class="citation" id="cite-astra-method" href="#ref-astra"
+									aria-label="Jump to Astra reference">[5]</a>
+								, a transformer architecture trained on
+								pedestrian trajectory prediction from rgb images: it was trained on bird’s eye view and
+								ground
+								level view of the scene. Astra has very low latency and low parameter usage, this
+								combined with
+								its generalizability across views gave us confidence that even a lightweight transformer
+								was
+								expressive enough to extract relevant information starting from the rgb signal alone.
+							</p>
 
-                            <p>
-                                Like Astra, ATP is divided into a scene extractor and a prediction head. The scene extractor
-                                is a pretrained and then fine-tuned model whose learning objective is detection.
-                                The extractor’s purpose is to identify the targets whose trajectory is to be predicted,
-                                and provide a rich latent space representation of the whole scene. Intuitively it is not
-                                enough to know about all the agents in an environment, but how that environment is in the first place. 
-                            </p>
+							<p>
+								We did explore other architectures like GRU
+								<a class="citation" id="cite-gru" href="#ref-gru"
+									aria-label="Jump to GRU reference">[14]</a>
+								and GNN
+								<a class="citation" id="cite-gnn" href="#ref-gnn"
+									aria-label="Jump to GNN reference">[15]</a>,
+								as they have also shown in the recent
+								past to be promising models for this specific task
+								<a class="citation" id="trajectron++" href="#ref-trajectron++"
+									aria-label="Jump to Trajectron++ reference">[2]</a>
+								<a class="citation" id="cite-gnnmodel" href="#ref-gnnmodel"
+									aria-label="Jump to GNN model reference">[3]</a>
+								. We decided to pivot at a certain stage to focus only on training
+								and evaluating the transformer architecture,
+								as it was the one behaving the best without significant
+								tradeoffs in latency or parameter number.
+							</p>
 
-                            <p>
-                                The extracted features are attended to by a multihead attention capturing all the different
-                                ways in which agents can interact (social interaction/spatial proximity were two captured by ASTRA).
-                                Our prediction head is a diffusion transformer
-                                <a class="citation" id="cite-diffusion" href="#ref-diffusiontransformer"
-                                    aria-label="Jump to diffusion transformer reference">[16]</a>
-                                , whose trajectory predictions are fed to a GNN.
-                                Using diffusion provided anytime inference: by calling the sampler an arbitrary amount of times
-                                the output can be made cleaner at the cost of inference time. The parameters of the final GMM
-                                are a simple projection from trajectory points and trajectory hidden state to average and
-                                covariance matrix.
-                            </p>
+							<p>
+								Like Astra, ATP is divided into a scene extractor and a prediction head. The scene
+								extractor
+								is a pretrained and then fine-tuned model whose learning objective is detection.
+								The extractor’s purpose is to identify the targets whose trajectory is to be predicted,
+								and provide a rich latent space representation of the whole scene. Intuitively it is not
+								enough to know about all the agents in an environment, but how that environment is in
+								the first place.
+							</p>
+
+							<p>
+								The extracted features are attended to by a multihead attention capturing all the
+								different
+								ways in which agents can interact (social interaction/spatial proximity were two
+								captured by ASTRA).
+								Our prediction head is a diffusion transformer
+								<a class="citation" id="cite-diffusion" href="#ref-diffusiontransformer"
+									aria-label="Jump to diffusion transformer reference">[16]</a>
+								, whose trajectory predictions are fed to a GNN.
+								Using diffusion provided anytime inference: by calling the sampler an arbitrary amount
+								of times
+								the output can be made cleaner at the cost of inference time. The parameters of the
+								final GMM
+								are a simple projection from trajectory points and trajectory hidden state to average
+								and
+								covariance matrix.
+							</p>
 
 							<h3> Astra Modifications</h3>
 
-                            <p>
-                                We made several modifications to the original Astra architecture to adapt it to our specific
-                                task and constraints.
-                            </p>
+							<p>
+								We made several modifications to the original Astra architecture to adapt it to our
+								specific
+								task and constraints.
+							</p>
 
 							<h4>Feature Extractor</h4>
 
@@ -603,13 +617,13 @@
 							</div>
 
 							<p>
-								Using YOLO26 nano 
-                                <a class="citation" id="cite-yolo26" href="#ref-yolo26"
-                                    aria-label="Jump to YOLO26 reference">[17]</a>
-                                for object detection and ByteTrack 
-                                <a class="citation" id="cite-byetrack" href="#ref-byetrack"
-                                    aria-label="Jump to ByteTrack reference">[18]</a>
-                                for tracking allows
+								Using YOLO26 nano
+								<a class="citation" id="cite-yolo26" href="#ref-yolo26"
+									aria-label="Jump to YOLO26 reference">[17]</a>
+								for object detection and ByteTrack
+								<a class="citation" id="cite-byetrack" href="#ref-byetrack"
+									aria-label="Jump to ByteTrack reference">[18]</a>
+								for tracking allows
 								to perform both global and local feature extraction.
 								This sequence of model and algorithm constitutes the feature extractor block in our
 								pipeline.
@@ -670,8 +684,8 @@
 
 					<p>
 						ATP was trained on the Waymo Motion Dataset
-                        <a class="citation" id="cite-waymo-training" href="#ref-waymo"
-                            aria-label="Jump to Waymo Motion Dataset reference">[9]</a>.
+						<a class="citation" id="cite-waymo-training" href="#ref-waymo"
+							aria-label="Jump to Waymo Motion Dataset reference">[9]</a>.
 						At each training step, the model
 						received features extracted from the previous <strong>[N]</strong> frames, including
 						bounding box
@@ -739,10 +753,10 @@
 						the
 						predictions.
 					</p>
-	            </div>
-             </div>
-        </div>
-    </section>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-----------------------------TODO: RESULTS-------------------------------->
 	<section class="section">
@@ -857,7 +871,8 @@
 								low, similar to MinADE,
 								yet not exactly the same. If this value is too close to MinADE, that suggests mode
 								collapse, where our model's modes are always nearly identical</li>
-							<li><strong>Negative Log Likelihood (NLL)</strong> — How likely is the ground truth given the
+							<li><strong>Negative Log Likelihood (NLL)</strong> — How likely is the ground truth given
+								the
 								probability density
 								function our model outputs(lower is better).</li>
 						</ol>
@@ -900,7 +915,8 @@
 						</table>
 
 						These quantitative results provide valuable insight into our model’s behavior. As shown above,
-						increasing the number of refinement steps does increase the best-mode accuracy but not as much as expected. 
+						increasing the number of refinement steps does increase the best-mode accuracy but not as much
+						as expected.
 
 						However, the MaxADE do show more improvement. This reduction
 						indicates that the model’s worst predictions move closer to the ground truth with each
@@ -927,27 +943,80 @@
 						</p>
 
 						<h3 class="title is-4">Additional Examples</h3>
-						We additionally present qualitative examples to further illustrate the strengths and weaknesses of our model. 
+						We additionally present qualitative examples to further illustrate the strengths and weaknesses
+						of our model.
 						In the examples below, we visualize frame-by-frame predictions with 8 refinement steps.
-						
+
 						<div class="columns is-multiline is-gapless">
-						<div class="column is-half">
-							<img src="assets/additional_examples/1906113358876584689_1359_560_1379_560_qo0sk0esFAv2q_Imz__lAg.gif" alt="Additional example 1">
-						</div>
-						<div class="column is-half">
-							<img src="assets/additional_examples/3731719923709458059_1540_000_1560_000_8_LsdpXxbep9pedo66bR1g.gif" alt="Additional example 2">
-						</div>
-						<div class="column is-half">
-							<img src="assets/additional_examples/14300007604205869133_1160_000_1180_000_iXXWDtTk8ZulKstE2Mt4jg.gif" alt="Additional example 3">
-						</div>
-						<div class="column is-half">
-							<img src="assets/additional_examples/15224741240438106736_960_000_980_000_uHByocSaacA0JoGLQhcqkA.gif" alt="Additional example 4">
-						</div>
+							<div class="column is-half">
+								<img src="assets/additional_examples/1906113358876584689_1359_560_1379_560_qo0sk0esFAv2q_Imz__lAg.gif"
+									alt="Additional example 1">
+							</div>
+							<div class="column is-half">
+								<img src="assets/additional_examples/3731719923709458059_1540_000_1560_000_8_LsdpXxbep9pedo66bR1g.gif"
+									alt="Additional example 2">
+							</div>
+							<div class="column is-half">
+								<img src="assets/additional_examples/14300007604205869133_1160_000_1180_000_iXXWDtTk8ZulKstE2Mt4jg.gif"
+									alt="Additional example 3">
+							</div>
+							<div class="column is-half">
+								<img src="assets/additional_examples/15224741240438106736_960_000_980_000_uHByocSaacA0JoGLQhcqkA.gif"
+									alt="Additional example 4">
+							</div>
 						</div>
 
-						As one can see from the examples above, different modes capture different possible outcomes in some cases, 
-						such as in the first example where some modes predict the car will turn left while others predict it will continue straight. 
-						However, the model may also miss key possibilities, such as the left turn in the bottom right example.
+						As one can see from the examples above, different modes capture different possible outcomes in
+						some cases,
+						such as in the first example where some modes predict the car will turn left while others
+						predict it will continue straight.
+						However, the model may also miss key possibilities, such as the left turn in the bottom right
+						example.
+
+						As a result, there remain several clear areas for improvement. The primary failure cases involve
+						physical feasibility and trajectory diversity.
+						In the first case, the generated trajectories often follow unnatural paths. In real-world
+						settings, these trajectories would be physically implausible due to factors such as excessively
+						sharp turns or unrealistic motion patterns. The second failure point is the lack of diversity
+						among predicted trajectories. Although the model produces distinct trajectories, they generally
+						follow similar directions. Ideally, the predicted trajectories would be sufficiently diverse to
+						capture the full range of plausible motions an object could take.
+
+						<h3> Attempted solutions to fix trajectory failiure points:</h3>
+
+						<p>
+							Below, we discuss several solutions we explored in an attempt to address the above
+							limitations. Although these approaches ultimately failed to work as intended, documenting
+							them remains valuable so that future work aimed at improving this model can avoid approaches
+							that proved ineffective.
+						</p>
+
+						<p>
+							<b>Differing Architectures:</b> In addition to the transformer-based approach, we also
+							experimented with Graph Neural Network (GNN) [cite] and GRU [cite] style models. However,
+							both approaches were consistently outperformed by the transformer architecture used in ATP.
+						</p>
+
+						<p>
+							<b>Polynomial Interpolation:</b> We additionally explored a model that predicted the
+							coefficients of a polynomial interpolation over future trajectory points. The goal of this
+							approach was to generate trajectories that were more physically constrained. However, this
+							approach encountered two major issues. First, the polynomials fit to the ground truth data,
+							to be used as training targets, frequently became overfitted. Even with regularization,
+							these often had large polynomials and unnatural behavior between trajectory points. Second,
+							multiple distinct polynomials can reasonably interpolate the same set of points, creating
+							instability during training and making optimization difficult.
+						</p>
+
+						<p>
+							<b>Best-of-N Loss Function:</b> Rather than using the standard negative log-likelihood (NLL)
+							loss, we experimented with a “best-of-N” objective that minimized only the lowest NLL of the
+							ground truth given a signal predicted. However, this did not provide a significant
+							improvement in trajectory diversity. While it produced a small increase in diversity, this
+							benefit was outweighed by the loss of the model’s ability to represent the likelihood
+							weights associated with each predicted mode.
+						</p>
+
 					</div>
 				</div>
 			</div>
@@ -992,7 +1061,8 @@
 						</p>
 
 						<p>
-							Outside of the above note, limitations that we would like to address in future works are two-fold: 
+							Outside of the above note, limitations that we would like to address in future works are
+							two-fold:
 							1. addressing mode collapse, 2. Expanding to additional scenarios.
 
 							Regarding the first point, our model frequently exhibited a tendency to collapse such that
@@ -1032,22 +1102,25 @@
 					<div class="content">
 						<h6 class="title is-6">Individual Contributions</h6>
 						<p>
-                            Here we outline the specific contributions of each team member to the project:
+							Here we outline the specific contributions of each team member to the project:
 						<ul>
 							<li>Giovanni : <ul>
-                                    <li>Co-author of the website content and structure </li>
+									<li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 							<li>Léonard : <ul>
-                                    <li>AirSim environment setup on izar, which tuned out not working as expected</li>
-                                    <li>Development of the recurent neural network architectures such as LSTM and GRU and their training workflow</li>
-                                    <li>Added evaluation metrics for latency and prediction diversity, including average pairwise distance (APD) and mean pairwise 2-Wasserstein distance (MPW)</li> 
-                                    <li>Tries at improving model loss and numerical stability, including mixture loss fixes, covariance stabilization and masked-object loss support.</li>
-                                    <li>Co-author of the website content and structure </li>
+									<li>AirSim environment setup on izar, which tuned out not working as expected</li>
+									<li>Development of the recurent neural network architectures such as LSTM and GRU
+										and their training workflow</li>
+									<li>Added evaluation metrics for latency and prediction diversity, including average
+										pairwise distance (APD) and mean pairwise 2-Wasserstein distance (MPW)</li>
+									<li>Tries at improving model loss and numerical stability, including mixture loss
+										fixes, covariance stabilization and masked-object loss support.</li>
+									<li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 							<li>Pranav : <ul>
-                                    <li>Co-author of the website content and structure </li>
+									<li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 							<li>Nathan : <ul>
@@ -1056,7 +1129,7 @@
 										dataset ground truth boxes</li>
 									<li>Attempted YOLO finetuning, which was ultimately abandoned due to repeated
 										training crashes on Izar</li>
-                                    <li>Co-author of the website content and structure </li>
+									<li>Co-author of the website content and structure </li>
 								</ul>
 							</li>
 
@@ -1080,65 +1153,122 @@
 				<div class="column is-8">
 					<div class="content">
 						<h6 class="title is-6">References</h6>
-							<ol class="references">
-	                            <li id="ref-tracking"> C. Stauffer and W. E. L. Grimson, "Learning patterns of activity using real-time tracking," in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 22, no. 8, pp. 747-757, Aug. 2000, doi: 10.1109/34.868677.
-									<a class="reference-back" href="#cite-tracking" aria-label="Back to real-time tracking citation">Back</a>
-								</li>
-                                <li id="ref-trajectron++"> Salzmann, T., Ivanovic, B., Chakravarty, P., and Pavone, M., “Trajectron++: Dynamically-Feasible Trajectory Forecasting With Heterogeneous Data”, <i>arXiv e-prints</i>, Art. no. arXiv:2001.03093, 2020. doi:10.48550/arXiv.2001.03093.
-									<a class="reference-back" href="#cite-trajectron++" aria-label="Back to Trajectron++ citation">Back</a>
-								</li>
-                                <li id="ref-gnnmodel"> Xu, Y., Wang, L., Wang, Y., and Fu, Y., “Adaptive Trajectory Prediction via Transferable GNN”, <i>arXiv e-prints</i>, Art. no. arXiv:2203.05046, 2022. doi:10.48550/arXiv.2203.05046.
-                                    <a class="reference-back" href="#cite-gnnmodel" aria-label="Back to GNN model reference">Back</a>
-                                </li>
-                                <li id="ref-wayformer"> Nayakanti, N., Al-Rfou, R., Zhou, A., Goel, K., Refaat, K. S., and Sapp, B., “Wayformer: Motion Forecasting via Simple & Efficient Attention Networks”, <i>arXiv e-prints</i>, Art. no. arXiv:2207.05844, 2022. doi:10.48550/arXiv.2207.05844.
-                                    <a class="reference-back" href="#cite-wayformer" aria-label="Back to Wayformer reference">Back</a>
-                                </li>
-                                <li id="ref-astra"> Zhu, Y., “Astra: General Interactive World Model with Autoregressive Denoising”, <i>arXiv e-prints</i>, Art. no. arXiv:2512.08931, 2025. doi:10.48550/arXiv.2512.08931.
-                                    <a class="reference-back" href="#cite-astra" aria-label="Back to Astra reference">Back</a>
-                                </li>
-                                <li id="ref-kitti"> A. Geiger, P. Lenz, and R. Urtasun, “Are we ready for autonomous driving? The KITTI vision benchmark suite,” in CVPR, 2012
-                                    <a class="reference-back" href="#cite-kitti" aria-label="Back to KITTI reference">Back</a>
-                                </li>
-                                <li id="ref-argoverse"> Chang, M.-F., “Argoverse: 3D Tracking and Forecasting with Rich Maps”, <i>arXiv e-prints</i>, Art. no. arXiv:1911.02620, 2019. doi:10.48550/arXiv.1911.02620.
-                                    <a class="reference-back" href="#cite-argoverse" aria-label="Back to Argoverse reference">Back</a>
-                                </li>
-                                <li id="ref-nuscenes"> Caesar, H., “nuScenes: A multimodal dataset for autonomous driving”, <i>arXiv e-prints</i>, Art. no. arXiv:1903.11027, 2019. doi:10.48550/arXiv.1903.11027.
-                                    <a class="reference-back" href="#cite-nuscenes" aria-label="Back to nuScenes reference">Back</a>
-                                </li>
-                                <li id="ref-waymo"> Ettinger, S., “Large Scale Interactive Motion Forecasting for Autonomous Driving : The Waymo Open Motion Dataset”, <i>arXiv e-prints</i>, Art. no. arXiv:2104.10133, 2021. doi:10.48550/arXiv.2104.10133.
-                                    <a class="reference-back" href="#cite-waymo" aria-label="Back to Waymo reference">Back</a>
-                                </li>
-                                <li id="ref-smartrefine"> Zhou, Y., Shao, H., Wang, L., Waslander, S. L., Li, H., and Liu, Y., “SmartRefine: A Scenario-Adaptive Refinement Framework for Efficient Motion Prediction”, <i>arXiv e-prints</i>, Art. no. arXiv:2403.11492, 2024. doi:10.48550/arXiv.2403.11492.
-                                    <a class="reference-back" href="#cite-smartrefine" aria-label="Back to SmartRefine reference">Back</a>
-                                </li>
-                                <li id="ref-trackssm"> Hu, B., Luo, R., Liu, Z., Wang, C., and Liu, W., “TrackSSM: A General Motion Predictor by State-Space Model”, <i>arXiv e-prints</i>, Art. no. arXiv:2409.00487, 2024. doi:10.48550/arXiv.2409.00487.
-                                    <a class="reference-back" href="#cite-trackssm" aria-label="Back to TrackSSM reference">Back</a>
-                                </li>
-                                <li id="ref-cvae"> Zhang, C., Barbano, R., and Jin, B., “Conditional Variational Autoencoder for Learned Image Reconstruction”, <i>arXiv e-prints</i>, Art. no. arXiv:2110.11681, 2021. doi:10.48550/arXiv.2110.11681.
-                                    <a class="reference-back" href="#cite-cvae" aria-label="Back to CVAE reference">Back</a>
-                                </li>
-                                <li id="ref-diffusion"> Westny, T., Olofsson, B., and Frisk, E., “Diffusion-Based Environment-Aware Trajectory Prediction”, <i>arXiv e-prints</i>, Art. no. arXiv:2403.11643, 2024. doi:10.48550/arXiv.2403.11643.
-                                    <a class="reference-back" href="#cite-diffusion" aria-label="Back to diffusion models reference">Back</a>
-                                </li>
-                                <li id="ref-gru"> Cho, K., “Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation”, <i>arXiv e-prints</i>, Art. no. arXiv:1406.1078, 2014. doi:10.48550/arXiv.1406.1078.
-                                    <a class="reference-back" href="#cite-gru" aria-label="Back to GRU reference">Back</a>
-                                </li>
-                                <li id="ref-GNN"> F. Scarselli, M. Gori, A. C. Tsoi, M. Hagenbuchner and G. Monfardini, "The Graph Neural Network Model," in IEEE Transactions on Neural Networks, vol. 20, no. 1, pp. 61-80, Jan. 2009, doi: 10.1109/TNN.2008.2005605. keywords: {Neural networks;Biological system modeling;Data engineering;Computer vision;Chemistry;Biology;Pattern recognition;Data mining;Supervised learning;Parameter estimation;Graphical domains;graph neural networks (GNNs);graph processing;recursive neural networks},
-                                    <a class="reference-back" href="#cite-GNN" aria-label="Back to GNN reference">Back</a>
-                                </li>
-                                <li id="ref-diffusiontransformer"> Peebles, W. and Xie, S., “Scalable Diffusion Models with Transformers”, <i>arXiv e-prints</i>, Art. no. arXiv:2212.09748, 2022. doi:10.48550/arXiv.2212.09748.
-                                    <a class="reference-back" href="#cite-diffusiontransformer" aria-label="Back to Diffusion Transformer reference">Back</a>
-                                </li>
-                                <li id="ref-yolo26"> Hidayatullah, P. and Tubagus, R., “YOLO26: A Comprehensive Architecture Overview and Key Improvements”, <i>arXiv e-prints</i>, Art. no. arXiv:2602.14582, 2026. doi:10.48550/arXiv.2602.14582.
-                                    <a class="reference-back" href="#cite-yolo26" aria-label="Back to YOLO26 reference">Back</a>
-                                </li>
-                                <li id="ref-bytetrack"> Zhang, Y., “ByteTrack: Multi-Object Tracking by Associating Every Detection Box”, <i>arXiv e-prints</i>, Art. no. arXiv:2110.06864, 2021. doi:10.48550/arXiv.2110.06864.
-                                    <a class="reference-back" href="#cite-bytetrack" aria-label="Back to ByteTrack reference">Back</a>
-                                </li>
-                                <li id="ref-yolo11-latency"> A. Vina, “Ultralytics YOLO11 on NVIDIA Jetson Orin Nano Super: fast and efficient,” <i>Ultralytics Blog</i>, Jan. 9, 2025. [Online]. Available: https://www.ultralytics.com/blog/ultralytics-yolo11-on-nvidia-jetson-orin-nano-super-fast-and-efficient.
-                                    <a class="reference-back" href="#cite-yolo11-latency" aria-label="Back to YOLO11 latency reference">Back</a>
-                                </li>
-							</ol>
+						<ol class="references">
+							<li id="ref-tracking"> C. Stauffer and W. E. L. Grimson, "Learning patterns of activity
+								using real-time tracking," in IEEE Transactions on Pattern Analysis and Machine
+								Intelligence, vol. 22, no. 8, pp. 747-757, Aug. 2000, doi: 10.1109/34.868677.
+								<a class="reference-back" href="#cite-tracking"
+									aria-label="Back to real-time tracking citation">Back</a>
+							</li>
+							<li id="ref-trajectron++"> Salzmann, T., Ivanovic, B., Chakravarty, P., and Pavone, M.,
+								“Trajectron++: Dynamically-Feasible Trajectory Forecasting With Heterogeneous Data”,
+								<i>arXiv e-prints</i>, Art. no. arXiv:2001.03093, 2020. doi:10.48550/arXiv.2001.03093.
+								<a class="reference-back" href="#cite-trajectron++"
+									aria-label="Back to Trajectron++ citation">Back</a>
+							</li>
+							<li id="ref-gnnmodel"> Xu, Y., Wang, L., Wang, Y., and Fu, Y., “Adaptive Trajectory
+								Prediction via Transferable GNN”, <i>arXiv e-prints</i>, Art. no. arXiv:2203.05046,
+								2022. doi:10.48550/arXiv.2203.05046.
+								<a class="reference-back" href="#cite-gnnmodel"
+									aria-label="Back to GNN model reference">Back</a>
+							</li>
+							<li id="ref-wayformer"> Nayakanti, N., Al-Rfou, R., Zhou, A., Goel, K., Refaat, K. S., and
+								Sapp, B., “Wayformer: Motion Forecasting via Simple & Efficient Attention Networks”,
+								<i>arXiv e-prints</i>, Art. no. arXiv:2207.05844, 2022. doi:10.48550/arXiv.2207.05844.
+								<a class="reference-back" href="#cite-wayformer"
+									aria-label="Back to Wayformer reference">Back</a>
+							</li>
+							<li id="ref-astra"> Zhu, Y., “Astra: General Interactive World Model with Autoregressive
+								Denoising”, <i>arXiv e-prints</i>, Art. no. arXiv:2512.08931, 2025.
+								doi:10.48550/arXiv.2512.08931.
+								<a class="reference-back" href="#cite-astra"
+									aria-label="Back to Astra reference">Back</a>
+							</li>
+							<li id="ref-kitti"> A. Geiger, P. Lenz, and R. Urtasun, “Are we ready for autonomous
+								driving? The KITTI vision benchmark suite,” in CVPR, 2012
+								<a class="reference-back" href="#cite-kitti"
+									aria-label="Back to KITTI reference">Back</a>
+							</li>
+							<li id="ref-argoverse"> Chang, M.-F., “Argoverse: 3D Tracking and Forecasting with Rich
+								Maps”, <i>arXiv e-prints</i>, Art. no. arXiv:1911.02620, 2019.
+								doi:10.48550/arXiv.1911.02620.
+								<a class="reference-back" href="#cite-argoverse"
+									aria-label="Back to Argoverse reference">Back</a>
+							</li>
+							<li id="ref-nuscenes"> Caesar, H., “nuScenes: A multimodal dataset for autonomous driving”,
+								<i>arXiv e-prints</i>, Art. no. arXiv:1903.11027, 2019. doi:10.48550/arXiv.1903.11027.
+								<a class="reference-back" href="#cite-nuscenes"
+									aria-label="Back to nuScenes reference">Back</a>
+							</li>
+							<li id="ref-waymo"> Ettinger, S., “Large Scale Interactive Motion Forecasting for Autonomous
+								Driving : The Waymo Open Motion Dataset”, <i>arXiv e-prints</i>, Art. no.
+								arXiv:2104.10133, 2021. doi:10.48550/arXiv.2104.10133.
+								<a class="reference-back" href="#cite-waymo"
+									aria-label="Back to Waymo reference">Back</a>
+							</li>
+							<li id="ref-smartrefine"> Zhou, Y., Shao, H., Wang, L., Waslander, S. L., Li, H., and Liu,
+								Y., “SmartRefine: A Scenario-Adaptive Refinement Framework for Efficient Motion
+								Prediction”, <i>arXiv e-prints</i>, Art. no. arXiv:2403.11492, 2024.
+								doi:10.48550/arXiv.2403.11492.
+								<a class="reference-back" href="#cite-smartrefine"
+									aria-label="Back to SmartRefine reference">Back</a>
+							</li>
+							<li id="ref-trackssm"> Hu, B., Luo, R., Liu, Z., Wang, C., and Liu, W., “TrackSSM: A General
+								Motion Predictor by State-Space Model”, <i>arXiv e-prints</i>, Art. no.
+								arXiv:2409.00487, 2024. doi:10.48550/arXiv.2409.00487.
+								<a class="reference-back" href="#cite-trackssm"
+									aria-label="Back to TrackSSM reference">Back</a>
+							</li>
+							<li id="ref-cvae"> Zhang, C., Barbano, R., and Jin, B., “Conditional Variational Autoencoder
+								for Learned Image Reconstruction”, <i>arXiv e-prints</i>, Art. no. arXiv:2110.11681,
+								2021. doi:10.48550/arXiv.2110.11681.
+								<a class="reference-back" href="#cite-cvae" aria-label="Back to CVAE reference">Back</a>
+							</li>
+							<li id="ref-diffusion"> Westny, T., Olofsson, B., and Frisk, E., “Diffusion-Based
+								Environment-Aware Trajectory Prediction”, <i>arXiv e-prints</i>, Art. no.
+								arXiv:2403.11643, 2024. doi:10.48550/arXiv.2403.11643.
+								<a class="reference-back" href="#cite-diffusion"
+									aria-label="Back to diffusion models reference">Back</a>
+							</li>
+							<li id="ref-gru"> Cho, K., “Learning Phrase Representations using RNN Encoder-Decoder for
+								Statistical Machine Translation”, <i>arXiv e-prints</i>, Art. no. arXiv:1406.1078, 2014.
+								doi:10.48550/arXiv.1406.1078.
+								<a class="reference-back" href="#cite-gru" aria-label="Back to GRU reference">Back</a>
+							</li>
+							<li id="ref-GNN"> F. Scarselli, M. Gori, A. C. Tsoi, M. Hagenbuchner and G. Monfardini, "The
+								Graph Neural Network Model," in IEEE Transactions on Neural Networks, vol. 20, no. 1,
+								pp. 61-80, Jan. 2009, doi: 10.1109/TNN.2008.2005605. keywords: {Neural
+								networks;Biological system modeling;Data engineering;Computer
+								vision;Chemistry;Biology;Pattern recognition;Data mining;Supervised learning;Parameter
+								estimation;Graphical domains;graph neural networks (GNNs);graph processing;recursive
+								neural networks},
+								<a class="reference-back" href="#cite-GNN" aria-label="Back to GNN reference">Back</a>
+							</li>
+							<li id="ref-diffusiontransformer"> Peebles, W. and Xie, S., “Scalable Diffusion Models with
+								Transformers”, <i>arXiv e-prints</i>, Art. no. arXiv:2212.09748, 2022.
+								doi:10.48550/arXiv.2212.09748.
+								<a class="reference-back" href="#cite-diffusiontransformer"
+									aria-label="Back to Diffusion Transformer reference">Back</a>
+							</li>
+							<li id="ref-yolo26"> Hidayatullah, P. and Tubagus, R., “YOLO26: A Comprehensive Architecture
+								Overview and Key Improvements”, <i>arXiv e-prints</i>, Art. no. arXiv:2602.14582, 2026.
+								doi:10.48550/arXiv.2602.14582.
+								<a class="reference-back" href="#cite-yolo26"
+									aria-label="Back to YOLO26 reference">Back</a>
+							</li>
+							<li id="ref-bytetrack"> Zhang, Y., “ByteTrack: Multi-Object Tracking by Associating Every
+								Detection Box”, <i>arXiv e-prints</i>, Art. no. arXiv:2110.06864, 2021.
+								doi:10.48550/arXiv.2110.06864.
+								<a class="reference-back" href="#cite-bytetrack"
+									aria-label="Back to ByteTrack reference">Back</a>
+							</li>
+							<li id="ref-yolo11-latency"> A. Vina, “Ultralytics YOLO11 on NVIDIA Jetson Orin Nano Super:
+								fast and efficient,” <i>Ultralytics Blog</i>, Jan. 9, 2025. [Online]. Available:
+								https://www.ultralytics.com/blog/ultralytics-yolo11-on-nvidia-jetson-orin-nano-super-fast-and-efficient.
+								<a class="reference-back" href="#cite-yolo11-latency"
+									aria-label="Back to YOLO11 latency reference">Back</a>
+							</li>
+						</ol>
 					</div>
 				</div>
 			</div>
