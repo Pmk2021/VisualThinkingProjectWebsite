@@ -461,7 +461,7 @@
 								aria-label="Jump to Astra reference">[5]</a>
 							is also a transformer-based architecture combining scene and agent information
 							to perform pedestrian trajectory prediction. A U-net feature extractor is used
-							to extract scenes latent representations besides a graph transformer encoder to model
+							to extract scenes latent representations along side a graph transformer encoder which models
 							the social interactions of the agents. These representations are then concatenated and
 							either fed to a CVAE
 							<a class="citation" id="cite-cvae" href="#ref-cvae"
@@ -519,7 +519,7 @@
 								the agent's bounding box — used as a proxy for distance. The distribution \( P \) is
 								modeled
 								as a Gaussian mixture with \( N \) modes, allowing the model to capture the \( N \) most
-								likely trajectories a given agent may follow.
+								likely trajectories a given agent may follow. In this work, we set \( N=8 \)
 							</p>
 
 							<p>
