@@ -1009,7 +1009,8 @@
 						<p>
 							<b>Best-of-N Loss Function:</b> Rather than using the standard negative log-likelihood (NLL)
 							loss, we experimented with a “best-of-N” objective that minimized only the lowest NLL of the
-							ground truth given a signal predicted. However, this did not provide a significant
+							ground truth given a unique gaussian for each predicted mode. However, this did not
+							provide a significant
 							improvement in trajectory diversity. While it produced a small increase in diversity, this
 							benefit was outweighed by the loss of the model’s ability to represent the likelihood
 							weights associated with each predicted mode.
